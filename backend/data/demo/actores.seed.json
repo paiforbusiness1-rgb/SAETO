@@ -1,0 +1,65 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "laura-mendez",
+      "nombre": "Laura Méndez",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "rol": "Liderazgo vecinal",
+      "organizacion": "Comité Barrio Arriba",
+      "capacidad_movilizacion": 45,
+      "reivindicaciones_abiertas": [
+        "agua",
+        "basura"
+      ],
+      "estado_verificacion": "corroborado_demo",
+      "notas_mesa": "Convoca de forma recurrente; vínculo histórico con demandas de agua."
+    },
+    {
+      "slug": "ricardo-solis",
+      "nombre": "Ricardo Solís",
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "rol": "Coordinador de colonia",
+      "organizacion": "Frente Vecinal Oriente",
+      "capacidad_movilizacion": 80,
+      "reivindicaciones_abiertas": [
+        "seguridad",
+        "calles"
+      ],
+      "estado_verificacion": "declarado",
+      "notas_mesa": "Perfil con capacidad media-alta de convocatoria en mitines."
+    },
+    {
+      "slug": "elena-quiroz",
+      "nombre": "Elena Quiroz",
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "rol": "Promotora comunitaria",
+      "organizacion": "Red de Mujeres Orientales",
+      "capacidad_movilizacion": 30,
+      "reivindicaciones_abiertas": [
+        "seguridad",
+        "empleo"
+      ],
+      "estado_verificacion": "corroborado_demo",
+      "notas_mesa": "Enfoca discurso en seguridad percibida y economía local."
+    },
+    {
+      "slug": "miguel-herrera",
+      "nombre": "Miguel Herrera",
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "rol": "Dirigente local",
+      "organizacion": "Unión de Colonos Tláhuac",
+      "capacidad_movilizacion": 60,
+      "reivindicaciones_abiertas": [
+        "transporte",
+        "agua"
+      ],
+      "estado_verificacion": "declarado",
+      "notas_mesa": "Cuenta pendiente recurrente: transporte y continuidad del agua."
+    }
+  ]
+}

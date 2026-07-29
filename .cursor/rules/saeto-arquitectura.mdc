@@ -1,0 +1,23 @@
+---
+description: HRU, anti-God-Object y módulos SAETO obligatorios
+alwaysApply: true
+---
+
+# Arquitectura SAETO (HRU + módulos)
+
+## HRU adaptado
+
+- **Cero hardcoding de negocio:** umbrales, catálogos territoriales, roles y reglas salen de config/datos — no de literales mágicos en lógica.
+- **Seeds/demo permitidos:** fichas y colonias de ejemplo solo en fixtures/seeds claramente marcados (`demo`, `seed`).
+- **Cero regresiones:** no sacrificar un módulo operativo para habilitar otro; en Fase 1+ incluir chequeo de no-regresión.
+- **Universalidad:** el mismo patrón de ficha/visor/filtro para actores, demandas y piezas de discurso.
+
+## Anti-God-Object
+
+- Prohibido acumular dominio en un solo archivo (>~400–600 líneas: alertar y proponer extracción).
+- Un flujo nuevo = servicio/módulo propio importado por el orquestador/router.
+- Routers solo despachan; no calculan ni procesan cadenas largas en el cuerpo.
+
+## Módulos canónicos
+
+`observatorio` · `actores` · `discurso` · `dashboard` — no fusionar responsabilidades entre ellos.

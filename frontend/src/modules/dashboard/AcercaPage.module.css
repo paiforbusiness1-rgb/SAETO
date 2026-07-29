@@ -1,0 +1,29 @@
+.pitch {
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 42rem;
+  font-size: 1.05rem;
+}
+
+.block {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.block h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.block p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--accent-strong);
+}

@@ -1,0 +1,24 @@
+---
+description: Identidad SAETO, fases del proyecto y lenguaje del dominio
+alwaysApply: true
+---
+
+# SAETO — Identidad del proyecto
+
+**SAETO** = Sistema de Análisis Estratégico Territorial Oriente (CDMX).
+Cliente objetivo: Subsecretaría / mesa política-operativa. No es LicitAI.
+
+## Producto
+
+Llave de consumo de información (liderazgos, reivindicaciones, discurso, cruces con BD), no “más datos”.
+Módulos: Observatorio · Mapa de actores · Laboratorio de discurso · Dashboard ejecutivo.
+
+## Dos velocidades (obligatorio respetar)
+
+- **Fase 0 (prototipo/venta):** mockups, seeds demo, narrativa. Sin sobre-ingeniería ni MCP/RAG obligatorio.
+- **Fase 1+ (MVP con BD reales):** APO formal, HRU, seguridad territorial, pruebas de no-regresión.
+
+## Lenguaje
+
+Hablar de territorio, actores, reivindicaciones, cuentas pendientes, coyuntura — no de licitaciones, márgenes ni `chatbot_rag`.
+Responder siempre en español.

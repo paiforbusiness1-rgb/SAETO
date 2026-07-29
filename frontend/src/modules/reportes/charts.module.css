@@ -1,0 +1,154 @@
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1.1fr) 2fr auto;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.barLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.88rem;
+}
+
+.barLabel small {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.barTrack {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 420ms ease;
+}
+
+.accent {
+  background: var(--accent);
+}
+
+.rojo {
+  background: var(--semaforo-rojo);
+}
+
+.amarillo {
+  background: var(--semaforo-amarillo);
+}
+
+.verde {
+  background: var(--semaforo-verde);
+}
+
+.neutral {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.barValue {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+.donutWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.donut {
+  width: 140px;
+  height: 140px;
+}
+
+.donutTotal {
+  fill: var(--text-primary);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.donutSub {
+  fill: var(--text-muted);
+  font-size: 9px;
+}
+
+.legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 2px;
+  margin-right: 0.4rem;
+}
+
+.kpi {
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.kpiLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kpiValue {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+}
+
+.kpi_rojo .kpiValue {
+  color: #ffc2c2;
+}
+
+.kpi_amarillo .kpiValue {
+  color: #ffe49a;
+}
+
+.kpi_verde .kpiValue {
+  color: #b8f0d0;
+}
+
+.kpi_neutral .kpiValue {
+  color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  .barRow {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .barValue {
+    text-align: left;
+  }
+}

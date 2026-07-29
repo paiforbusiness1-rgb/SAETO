@@ -1,0 +1,29 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+}
+
+.verde {
+  color: #b8f0d0;
+  background: rgba(61, 186, 124, 0.18);
+  border-color: rgba(61, 186, 124, 0.4);
+}
+
+.amarillo {
+  color: #ffe49a;
+  background: rgba(212, 160, 23, 0.18);
+  border-color: rgba(212, 160, 23, 0.4);
+}
+
+.rojo {
+  color: #ffc2c2;
+  background: rgba(224, 86, 86, 0.2);
+  border-color: rgba(224, 86, 86, 0.45);
+}

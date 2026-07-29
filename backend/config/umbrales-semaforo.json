@@ -1,0 +1,7 @@
+{
+  "intensidad": [
+    { "min": 1, "max": 2, "semaforo": "verde", "etiqueta": "Contención" },
+    { "min": 3, "max": 3, "semaforo": "amarillo", "etiqueta": "Atención" },
+    { "min": 4, "max": 5, "semaforo": "rojo", "etiqueta": "Prioridad alta" }
+  ]
+}

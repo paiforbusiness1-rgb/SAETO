@@ -1,0 +1,19 @@
+.block {
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.btn {
+  margin-top: 1rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: rgba(126, 184, 162, 0.2);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: rgba(126, 184, 162, 0.32);
+}

@@ -1,0 +1,53 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "discurso-laura-agua",
+      "actor": "laura-mendez",
+      "topico_principal": "Derecho al agua como deuda del Estado",
+      "subtopicos": ["tandeo", "dignidad territorial", "promesas incumplidas"],
+      "audiencia": "Vecindario de Barrio Arriba y colonias aledañas",
+      "niveles": {
+        "lexico-semantico": "Léxico de 'abandono' y 'dignidad'; metafórico del agua como 'vida del barrio'.",
+        "retorico-argumentativo": "Apela a pathos (hartazgo) y ethos (legitimidad vecinal); contrastes antes/después.",
+        "pragmatico-discursivo": "Actos de habla: denuncia + llamado a la acción; deixis 'nosotros los de acá'.",
+        "ideologico": "Nosotros = colonia; ellos = autoridad que no llega.",
+        "narrativo": "Crisis-solución: años de tandeo → exigencia de red continua.",
+        "multimodal": "Asambleas con micrófono abierto; simbolismo de cubetas vacías.",
+        "contextual": "Coyuntura preelectoral; memoria de marchas por agua en oriente."
+      }
+    },
+    {
+      "slug": "discurso-ricardo-seguridad",
+      "actor": "ricardo-solis",
+      "topico_principal": "Seguridad como condición de orden vecinal",
+      "subtopicos": ["vigilancia", "calles", "convocatoria"],
+      "audiencia": "Bases del Frente Vecinal Oriente",
+      "niveles": {
+        "lexico-semantico": "Campo semántico de 'orden', 'cuidado' y 'territorio propio'.",
+        "retorico-argumentativo": "Legitimación por tradición organizativa; logos de cifras de movilización.",
+        "pragmatico-discursivo": "Promesas de presencia; modalización alta de certeza.",
+        "ideologico": "Construcción de identidad de 'colonia organizada'.",
+        "narrativo": "Héroes locales vs. abandono institucional.",
+        "multimodal": "Mitines con listados y megáfono; colores de la organización.",
+        "contextual": "Seguimiento de marchas y meetings reportados en bitácoras demo."
+      }
+    },
+    {
+      "slug": "discurso-elena-empleo",
+      "actor": "elena-quiroz",
+      "topico_principal": "Economía cotidiana y seguridad para mujeres",
+      "subtopicos": ["empleo local", "cuidado", "seguridad percibida"],
+      "audiencia": "Red de mujeres y comercios de Agrícola Oriental",
+      "niveles": {
+        "lexico-semantico": "Léxico de 'sostener el barrio' y 'trabajar cerca'.",
+        "retorico-argumentativo": "Ethos de cuidadora comunitaria; pathos de miedo nocturno.",
+        "pragmatico-discursivo": "Llamados a redes de apoyo; cita voces de comerciantas.",
+        "ideologico": "Identidad de género y clase en el oriente.",
+        "narrativo": "Framing: sin empleo local no hay seguridad real.",
+        "multimodal": "Reuniones en plazas; circularidad de testimonios.",
+        "contextual": "Pico de percepción de inseguridad en datos demo."
+      }
+    }
+  ]
+}

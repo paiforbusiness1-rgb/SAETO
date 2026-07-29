@@ -1,0 +1,24 @@
+---
+description: APO proporcional — planificar impacto antes de tocar dominio
+alwaysApply: true
+---
+
+# APO proporcional (Auditoría antes de cambiar)
+
+**NINGÚN cambio de dominio es trivial.** Prohibido hotfix ciego en lógica de actores, reivindicaciones, cruces, discurso o persistencia.
+
+## Antes de modificar lógica existente
+
+1. Buscar en todo el workspace (grep) símbolos, tipos, APIs y UI del flujo.
+2. Mapear cadena de impacto: UI → API → dominio → persistencia.
+3. Listar efectos secundarios y archivos periféricos **antes** de escribir código.
+4. Presentar `implementation_plan.md` consolidado y esperar **aprobación explícita**.
+
+## Proporcionalidad (Fase 0)
+
+- **Dominio / datos / contratos:** APO completo + plan + aprobación.
+- **UI/demo cosmética sin tocar contratos:** basta alcance breve en el chat y visto bueno; no improvisar reglas de negocio embebidas.
+
+## Si aparece un efecto colateral imprevisto
+
+Detener escritura → actualizar el plan → nueva aprobación. Prohibido parche local en cadena.

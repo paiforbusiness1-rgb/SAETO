@@ -1,0 +1,24 @@
+---
+description: U-First político y seguridad territorial (datos sensibles)
+alwaysApply: true
+---
+
+# UX y seguridad territorial
+
+## U-First (usuario de mesa, no ingeniero)
+
+- Prohibido exigir IDs internos, comandos técnicos o entender la arquitectura.
+- Interacción por lenguaje claro, botones y flujos guiados.
+- Cero callejones sin salida: siempre “Volver”, “Recalcular”, “Editar” o equivalente.
+- El dashboard debe sentirse sala de situación premium: claro, confiable, sin fricción.
+
+## Seguridad por diseño (resignificada a SAETO)
+
+Datos sensibles típicos: actores políticos, capacidad de movilización, BD de gobierno, respuestas ciudadanas.
+
+- Clasificar acceso por rol; no exponer fichas sensibles en demos públicas sin anonimizar.
+- No mezclar en el mismo payload hacia LLMs/herramientas externas lo que sea PII ciudadana + inteligencia de actores privilegiada sin control.
+- Validar entradas en cada servicio (Zero Trust entre componentes).
+- Auditar consultas/exportaciones de datos territoriales cuando existan.
+
+No aplicar literales de LicitAI (márgenes/precios de licitación) salvo que el dominio lo pida explícitamente.

@@ -1,0 +1,15 @@
+{
+  "zonas": [
+    { "slug": "iztapalapa", "nombre": "Iztapalapa" },
+    { "slug": "iztacalco", "nombre": "Iztacalco" },
+    { "slug": "tlahuac", "nombre": "Tláhuac" },
+    { "slug": "xochimilco", "nombre": "Xochimilco" },
+    { "slug": "milpa-alta", "nombre": "Milpa Alta" }
+  ],
+  "colonias_demo": [
+    { "slug": "barrio-arriba", "nombre": "Barrio Arriba", "zona": "iztapalapa" },
+    { "slug": "santa-cruz-meyehualco", "nombre": "Santa Cruz Meyehualco", "zona": "iztapalapa" },
+    { "slug": "agricola-oriental", "nombre": "Agrícola Oriental", "zona": "iztacalco" },
+    { "slug": "san-francisco-tlaltenango", "nombre": "San Francisco Tlaltenango", "zona": "tlahuac" }
+  ]
+}

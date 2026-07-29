@@ -1,0 +1,11 @@
+{
+  "demo": true,
+  "resumen_ejecutivo": "La Zona Oriente concentra cuentas pendientes históricamente asociadas al agua, la basura y la seguridad. El sistema no aporta más datos: organiza liderazgos, reivindicaciones y discurso para la mesa de decisión.",
+  "alertas_coyuntura": [
+    "Intensidad máxima en agua (Barrio Arriba) y transporte (Tláhuac).",
+    "Dos liderazgos con verificación solo 'declarada': conviene corroboración de campo.",
+    "Discurso dominante enlaza dignidad territorial con deuda de servicios."
+  ],
+  "actores_clave_slugs": ["laura-mendez", "ricardo-solis", "miguel-herrera"],
+  "reivindicaciones_top_slugs": ["agua-barrio-arriba", "transporte-tlahuac", "seguridad-agricola", "basura-meyehualco"]
+}

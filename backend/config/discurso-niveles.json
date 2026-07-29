@@ -1,0 +1,77 @@
+{
+  "niveles": [
+    {
+      "slug": "lexico-semantico",
+      "nombre": "Nivel léxico-semántico",
+      "subtopicos": [
+        "Selección léxica",
+        "Campos semánticos",
+        "Connotación vs denotación",
+        "Nominalización",
+        "Metáforas conceptuales"
+      ]
+    },
+    {
+      "slug": "retorico-argumentativo",
+      "nombre": "Nivel retórico-argumentativo",
+      "subtopicos": [
+        "Ethos, pathos, logos",
+        "Figuras retóricas",
+        "Falacias argumentativas",
+        "Estrategias de legitimación",
+        "Estructura argumentativa"
+      ]
+    },
+    {
+      "slug": "pragmatico-discursivo",
+      "nombre": "Nivel pragmático-discursivo",
+      "subtopicos": [
+        "Actos de habla",
+        "Deixis",
+        "Presuposiciones e implicaturas",
+        "Polifonía y voces",
+        "Modalización"
+      ]
+    },
+    {
+      "slug": "ideologico",
+      "nombre": "Nivel ideológico y de representación social",
+      "subtopicos": [
+        "Polarización nosotros/ellos",
+        "Legitimación y deslegitimación",
+        "Relaciones de poder",
+        "Naturalización de ideologías",
+        "Construcción de identidad"
+      ]
+    },
+    {
+      "slug": "narrativo",
+      "nombre": "Nivel narrativo",
+      "subtopicos": [
+        "Storytelling político",
+        "Estructura crisis-solución",
+        "Memoria histórica",
+        "Framing"
+      ]
+    },
+    {
+      "slug": "multimodal",
+      "nombre": "Nivel multimodal",
+      "subtopicos": [
+        "Prosodia",
+        "Gestualidad y proxémica",
+        "Elementos visuales",
+        "Interacción con el público"
+      ]
+    },
+    {
+      "slug": "contextual",
+      "nombre": "Nivel contextual",
+      "subtopicos": [
+        "Contexto situacional",
+        "Contexto histórico",
+        "Intertextualidad"
+      ]
+    }
+  ]
+}

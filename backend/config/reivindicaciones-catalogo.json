@@ -1,0 +1,10 @@
+{
+  "temas": [
+    { "slug": "agua", "nombre": "Agua potable", "descripcion": "Acceso continuo, tandeo y calidad del agua" },
+    { "slug": "basura", "nombre": "Recolección de basura", "descripcion": "Frecuencia y cobertura del servicio" },
+    { "slug": "seguridad", "nombre": "Seguridad pública", "descripcion": "Percepción de seguridad y presencia policial" },
+    { "slug": "calles", "nombre": "Calles e infraestructura", "descripcion": "Pavimentación, baches y alumbrado" },
+    { "slug": "transporte", "nombre": "Transporte público", "descripcion": "Acceso y calidad del transporte" },
+    { "slug": "empleo", "nombre": "Empleo", "descripcion": "Oportunidades laborales en la zona" }
+  ]
+}

@@ -1,0 +1,21 @@
+---
+description: Calidad, doble capa brief/profundidad e IA opcional
+alwaysApply: true
+---
+
+# Calidad, entrega e IA
+
+## Calidad incremental
+
+- Extraer o cambiar comportamiento estable ⇒ documentar firma/dependencias y, en Fase 1+, gemelo de prueba o verificación E2E mínima.
+- Refactors atómicos por módulo; prohibido reescribir varios dominios a la vez sin aprobación.
+- Transiciones de estado (ficha verificada, encuesta cerrada, etc.) deben ser idempotentes.
+
+## Doble capa SAETO (análogo operativo)
+
+- **Capa 1 — Brief ejecutivo:** mapa, semáforo de demandas, actores clave, lectura inmediata para mesa.
+- **Capa 2 — Profundidad:** cruces con BD, verificación de campo, análisis de discurso — puede ir en segundo plano sin bloquear la UX.
+
+## IA / MCP / RAG
+
+**No son obligatorios en Fase 0.** Solo introducir LLM local, MCP Tools/Resources o RAG tras decisión explícita del usuario; si se adoptan, contexto mínimo necesario y herramientas estandarizadas.

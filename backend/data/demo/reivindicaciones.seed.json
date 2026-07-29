@@ -1,0 +1,71 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "agua-barrio-arriba",
+      "tema": "agua",
+      "territorio": "barrio-arriba",
+      "zona": "iztapalapa",
+      "intensidad": 5,
+      "deuda_historica": true,
+      "resumen_deuda": "Tandeo severo no resuelto desde hace varios ciclos; promesas de red no cumplidas.",
+      "fuente": "encuesta_demo",
+      "peso_opinion": 92
+    },
+    {
+      "slug": "basura-meyehualco",
+      "tema": "basura",
+      "territorio": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "intensidad": 4,
+      "deuda_historica": true,
+      "resumen_deuda": "Recolección irregular; puntos de acumulamiento reportados a gobierno local.",
+      "fuente": "bd_gobierno_demo",
+      "peso_opinion": 78
+    },
+    {
+      "slug": "seguridad-agricola",
+      "tema": "seguridad",
+      "territorio": "agricola-oriental",
+      "zona": "iztacalco",
+      "intensidad": 4,
+      "deuda_historica": false,
+      "resumen_deuda": "Alza reciente en percepción de inseguridad nocturna.",
+      "fuente": "campo_demo",
+      "peso_opinion": 85
+    },
+    {
+      "slug": "calles-meyehualco",
+      "tema": "calles",
+      "territorio": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "intensidad": 3,
+      "deuda_historica": true,
+      "resumen_deuda": "Pavimentación parcial; tramos sin alumbrado continuo.",
+      "fuente": "bd_gobierno_demo",
+      "peso_opinion": 64
+    },
+    {
+      "slug": "transporte-tlahuac",
+      "tema": "transporte",
+      "territorio": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "intensidad": 5,
+      "deuda_historica": true,
+      "resumen_deuda": "Conectividad deficitaria hacia el centro; tiempos de traslado elevan molestia política.",
+      "fuente": "encuesta_demo",
+      "peso_opinion": 88
+    },
+    {
+      "slug": "empleo-agricola",
+      "tema": "empleo",
+      "territorio": "agricola-oriental",
+      "zona": "iztacalco",
+      "intensidad": 3,
+      "deuda_historica": false,
+      "resumen_deuda": "Demanda de oportunidades locales y capacitación.",
+      "fuente": "encuesta_demo",
+      "peso_opinion": 55
+    }
+  ]
+}
