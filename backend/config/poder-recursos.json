@@ -1,0 +1,27 @@
+{
+  "recursos": [
+    { "slug": "movilizacion", "nombre": "Capacidad de movilización", "sensible": false },
+    { "slug": "financiamiento", "nombre": "Fuentes de financiamiento", "sensible": true },
+    { "slug": "respaldo_politico", "nombre": "Respaldos políticos", "sensible": false },
+    { "slug": "respaldo_mediatico", "nombre": "Respaldos mediáticos", "sensible": false },
+    { "slug": "legitimidad", "nombre": "Legitimidad", "sensible": false },
+    { "slug": "autoridad_moral", "nombre": "Autoridad moral", "sensible": false },
+    { "slug": "prestigio", "nombre": "Prestigio personal", "sensible": false },
+    { "slug": "violencia", "nombre": "Despliegues de violencia", "sensible": true },
+    { "slug": "otro", "nombre": "Otro", "sensible": false }
+  ],
+  "tipos_actor": [
+    { "slug": "liderazgo_vecinal", "nombre": "Liderazgo vecinal" },
+    { "slug": "organizacion", "nombre": "Organización" },
+    { "slug": "movimiento", "nombre": "Movimiento social" },
+    { "slug": "actor_institucional", "nombre": "Actor institucional" },
+    { "slug": "generador_violencia", "nombre": "Generador de violencia", "sensible": true },
+    { "slug": "otro", "nombre": "Otro" }
+  ],
+  "metodos_comprobacion": [
+    { "slug": "campo", "nombre": "Verificación de campo" },
+    { "slug": "conteo_evento", "nombre": "Conteo en evento" },
+    { "slug": "fuente_oficial", "nombre": "Fuente oficial" },
+    { "slug": "otra", "nombre": "Otra" }
+  ]
+}

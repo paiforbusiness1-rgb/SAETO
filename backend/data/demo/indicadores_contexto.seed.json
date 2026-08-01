@@ -1,0 +1,29 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "inegi-agua-iztapalapa-2020",
+      "territorio": "barrio-arriba",
+      "zona": "iztapalapa",
+      "clave": "disponibilidad_agua",
+      "nombre": "Disponibilidad de agua entubada (contexto)",
+      "valor": 78.5,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Dato referencial demo para contraste con percepción local.",
+      "demo": true
+    },
+    {
+      "slug": "inegi-seguridad-iztacalco-2024",
+      "territorio": "agricola-oriental",
+      "zona": "iztacalco",
+      "clave": "percepcion_inseguridad",
+      "nombre": "Percepción de inseguridad (contexto)",
+      "valor": 64.2,
+      "anio": 2024,
+      "fuente": "INEGI",
+      "nota": "Referencia demo; no sustituye encuesta in situ.",
+      "demo": true
+    }
+  ]
+}

@@ -5,7 +5,11 @@
       "slug": "discurso-laura-agua",
       "actor": "laura-mendez",
       "topico_principal": "Derecho al agua como deuda del Estado",
-      "subtopicos": ["tandeo", "dignidad territorial", "promesas incumplidas"],
+      "subtopicos": [
+        "tandeo",
+        "dignidad territorial",
+        "promesas incumplidas"
+      ],
       "audiencia": "Vecindario de Barrio Arriba y colonias aledañas",
       "niveles": {
         "lexico-semantico": "Léxico de 'abandono' y 'dignidad'; metafórico del agua como 'vida del barrio'.",
@@ -15,13 +19,29 @@
         "narrativo": "Crisis-solución: años de tandeo → exigencia de red continua.",
         "multimodal": "Asambleas con micrófono abierto; simbolismo de cubetas vacías.",
         "contextual": "Coyuntura preelectoral; memoria de marchas por agua en oriente."
-      }
+      },
+      "narrativas": "El agua como derecho y deuda del Estado con el oriente",
+      "argumentos": "Años de tandeo demuestran abandono; sin red no hay dignidad",
+      "ideologia": "derechos_territorio",
+      "emociones": [
+        "agravio",
+        "esperanza",
+        "solidaridad"
+      ],
+      "endo_grupo": "Vecindario unido alrededor del comité",
+      "exo_grupo": "Autoridad que no llega / interlocutor a exigir",
+      "coaliciones_posibles": "Posible enlace con colonias aledañas por tandeo",
+      "hipotesis_mesa": true
     },
     {
       "slug": "discurso-ricardo-seguridad",
       "actor": "ricardo-solis",
       "topico_principal": "Seguridad como condición de orden vecinal",
-      "subtopicos": ["vigilancia", "calles", "convocatoria"],
+      "subtopicos": [
+        "vigilancia",
+        "calles",
+        "convocatoria"
+      ],
       "audiencia": "Bases del Frente Vecinal Oriente",
       "niveles": {
         "lexico-semantico": "Campo semántico de 'orden', 'cuidado' y 'territorio propio'.",
@@ -31,13 +51,28 @@
         "narrativo": "Héroes locales vs. abandono institucional.",
         "multimodal": "Mitines con listados y megáfono; colores de la organización.",
         "contextual": "Seguimiento de marchas y meetings reportados en bitácoras demo."
-      }
+      },
+      "narrativas": "Orden vecinal como condición de vida",
+      "argumentos": "Sin vigilancia y calles dignas no hay comunidad",
+      "ideologia": "orden_seguridad",
+      "emociones": [
+        "enojo",
+        "desconfianza"
+      ],
+      "endo_grupo": "Bases del frente como familia organizada",
+      "exo_grupo": "Quienes abandonan el territorio",
+      "coaliciones_posibles": "Alianza táctica con liderazgos de calles",
+      "hipotesis_mesa": true
     },
     {
       "slug": "discurso-elena-empleo",
       "actor": "elena-quiroz",
       "topico_principal": "Economía cotidiana y seguridad para mujeres",
-      "subtopicos": ["empleo local", "cuidado", "seguridad percibida"],
+      "subtopicos": [
+        "empleo local",
+        "cuidado",
+        "seguridad percibida"
+      ],
       "audiencia": "Red de mujeres y comercios de Agrícola Oriental",
       "niveles": {
         "lexico-semantico": "Léxico de 'sostener el barrio' y 'trabajar cerca'.",
@@ -47,7 +82,19 @@
         "narrativo": "Framing: sin empleo local no hay seguridad real.",
         "multimodal": "Reuniones en plazas; circularidad de testimonios.",
         "contextual": "Pico de percepción de inseguridad en datos demo."
-      }
+      },
+      "narrativas": "Economía cotidiana y cuidado",
+      "argumentos": "Sin empleo cerca no hay seguridad real para mujeres",
+      "ideologia": "justicia_social",
+      "emociones": [
+        "miedo",
+        "esperanza",
+        "solidaridad"
+      ],
+      "endo_grupo": "Red de mujeres y comercios",
+      "exo_grupo": "Mercado laboral lejano / indiferencia institucional",
+      "coaliciones_posibles": "Coalición con promotoras de seguridad comunitaria",
+      "hipotesis_mesa": true
     }
   ]
 }

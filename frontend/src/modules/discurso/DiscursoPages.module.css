@@ -61,3 +61,26 @@
   color: var(--accent);
   font-size: 0.9rem;
 }
+
+.block {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.block h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.block p {
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 0.45rem;
+}
+
+.tags {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--accent);
+}

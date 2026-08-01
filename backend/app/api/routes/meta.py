@@ -26,4 +26,8 @@ def catalogos():
         reivindicaciones=seed_loader.load_catalogo_reivindicaciones(),
         umbrales=seed_loader.load_umbrales(),
         discurso_niveles=seed_loader.load_discurso_niveles(),
+        ciclo_vital=seed_loader.load_ciclo_vital(),
+        coyuntura=seed_loader.load_coyuntura_catalogos(),
+        poder=seed_loader.load_poder_recursos(),
+        discurso_mesa=seed_loader.load_discurso_mesa(),
     )

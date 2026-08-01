@@ -11,12 +11,17 @@ import styles from "./reportes.module.css";
 type ActoresRep = {
   capacidad_total: number;
   lectura_gerencial: string;
+  kpis: { actores: number; con_comprobada: number; solo_estimada: number };
   ranking: {
     slug: string;
     nombre: string;
     organizacion: string;
     colonia_nombre: string;
     capacidad_movilizacion: number;
+    capacidad_estimada: number;
+    capacidad_comprobada: number | null;
+    movilizacion_display: number;
+    movilizacion_fuente: string;
     share: number;
     estado_verificacion: string;
   }[];
@@ -58,11 +63,13 @@ export function ReporteActoresPage() {
         <BotonVolver to="/reportes" label="Volver a reportes" />
         <h1>Mapa de poder</h1>
         <p className={styles.lead}>
-          Capacidad de movilización relativa entre liderazgos.
+          Capacidad de movilización — comprobada cuando existe; si no, estimada.
         </p>
         <div className={styles.kpiGrid}>
-          <KpiTile label="Capacidad total" value={data.capacidad_total} />
-          <KpiTile label="Actores mapeados" value={data.ranking.length} />
+          <KpiTile label="Capacidad total (ranking)" value={data.capacidad_total} />
+          <KpiTile label="Actores mapeados" value={data.kpis.actores} />
+          <KpiTile label="Con comprobada" value={data.kpis.con_comprobada} tone="verde" />
+          <KpiTile label="Solo estimada" value={data.kpis.solo_estimada} tone="amarillo" />
         </div>
         <p className={styles.lectura}>{data.lectura_gerencial}</p>
       </GlassPanel>
@@ -72,9 +79,9 @@ export function ReporteActoresPage() {
         <HBarChart
           items={data.ranking.map((a) => ({
             label: a.nombre,
-            value: a.capacidad_movilizacion,
-            hint: `${a.share}% del total · ${a.colonia_nombre}`,
-            tone: "accent",
+            value: a.movilizacion_display,
+            hint: `${a.share}% · ${a.movilizacion_fuente}${a.capacidad_comprobada != null ? ` (est. ${a.capacidad_estimada})` : " (no verificada)"}`,
+            tone: a.movilizacion_fuente === "comprobada" ? "verde" : "amarillo",
           }))}
         />
       </GlassPanel>
@@ -90,8 +97,16 @@ export function ReporteActoresPage() {
                   <p className={styles.meta}>
                     {a.organizacion} · {a.estado_verificacion.replaceAll("_", " ")}
                   </p>
+                  <p className={styles.meta}>
+                    Estimada ~{a.capacidad_estimada}
+                    {a.capacidad_comprobada != null
+                      ? ` · Comprobada ${a.capacidad_comprobada}`
+                      : " · sin comprobación"}
+                  </p>
                 </div>
-                <span className={styles.meta}>~{a.capacidad_movilizacion}</span>
+                <span className={styles.meta}>
+                  ~{a.movilizacion_display} ({a.movilizacion_fuente})
+                </span>
               </div>
             </GlassCard>
           ))}

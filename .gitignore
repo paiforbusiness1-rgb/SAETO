@@ -24,3 +24,6 @@ Thumbs.db
 # Env secrets
 .env
 .env.local
+
+# Runtime local (audit demo, no versionar)
+backend/data/runtime/

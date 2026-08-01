@@ -11,6 +11,11 @@ const items = [
     desc: "Semáforo global, presión por tema y focos prioritarios",
   },
   {
+    to: "/reportes/ciclo-vital",
+    title: "Ciclo vital",
+    desc: "Fases, sentido y demandas que escalan",
+  },
+  {
     to: "/reportes/territorio",
     title: "Calor territorial",
     desc: "Qué zona y colonia concentran la presión",
@@ -18,7 +23,22 @@ const items = [
   {
     to: "/reportes/actores",
     title: "Mapa de poder",
-    desc: "Quién moviliza y cuánto pesa cada liderazgo",
+    desc: "Movilización estimada vs comprobada por liderazgo",
+  },
+  {
+    to: "/reportes/coyuntura",
+    title: "Bitácora coyuntura",
+    desc: "Acciones, respuestas gubernamentales y reacciones",
+  },
+  {
+    to: "/reportes/discurso-mesa",
+    title: "Discurso de mesa",
+    desc: "Narrativas, emociones e ideología agregadas",
+  },
+  {
+    to: "/reportes/contexto-inegi",
+    title: "Contexto INEGI",
+    desc: "Indicadores referenciales por territorio (con disclaimer)",
   },
   {
     to: "/reportes/deudas",

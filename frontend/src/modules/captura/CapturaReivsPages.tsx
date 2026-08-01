@@ -1,8 +1,9 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { api, type ReivindicacionWrite } from "../../shared/api/client";
-import type { ReivindicacionSummary } from "../../shared/api/types";
+import type { CatalogosConfig, ReivindicacionSummary } from "../../shared/api/types";
 import { BotonVolver } from "../../shared/ui/BotonVolver";
+import { CicloBadge } from "../../shared/ui/CicloBadge";
 import { GlassCard } from "../../shared/ui/GlassCard";
 import { GlassPanel } from "../../shared/ui/GlassPanel";
 import { SemaforoPill } from "../../shared/ui/SemaforoPill";
@@ -16,8 +17,16 @@ const empty: ReivindicacionWrite = {
   intensidad: 3,
   deuda_historica: false,
   resumen_deuda: "",
-  fuente: "campo_demo",
+  fuente: "campo",
   peso_opinion: 50,
+  tipo_demanda: "actual_in_situ",
+  fuentes_evidencia: [],
+  fase_ciclo_vital: "emergencia",
+  grado_escalamiento: 1,
+  sentido_ciclo: "estable",
+  fecha_deteccion: null,
+  fecha_ultima_actualizacion_ciclo: null,
+  notas_ciclo: "",
 };
 
 export function CapturaReivsListPage() {
@@ -71,6 +80,11 @@ export function CapturaReivsListPage() {
                   <p className={styles.meta}>
                     {r.territorio_nombre} · intensidad {r.intensidad}
                   </p>
+                  <CicloBadge
+                    faseNombre={r.fase_ciclo_nombre}
+                    sentido={r.sentido_ciclo}
+                    compact
+                  />
                 </div>
                 <div className={styles.actions}>
                   <SemaforoPill value={r.semaforo} label={r.semaforo_etiqueta} />
@@ -106,15 +120,17 @@ export function CapturaReivFormPage() {
   const [colonias, setColonias] = useState<
     { slug: string; nombre: string; zona: string }[]
   >([]);
+  const [catalogos, setCatalogos] = useState<CatalogosConfig | null>(null);
   const [msg, setMsg] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(!isNew);
 
   useEffect(() => {
-    Promise.all([api.catalogoTemas(), api.catalogoTerritorio()])
-      .then(([temasData, terr]) => {
+    Promise.all([api.catalogoTemas(), api.catalogoTerritorio(), api.catalogosConfig()])
+      .then(([temasData, terr, cats]) => {
         setTemas(temasData.temas);
         setColonias(terr.colonias_demo);
+        setCatalogos(cats);
         if (isNew) {
           setForm((f) => ({
             ...f,
@@ -139,6 +155,14 @@ export function CapturaReivFormPage() {
             resumen_deuda: r.resumen_deuda,
             fuente: r.fuente,
             peso_opinion: r.peso_opinion,
+            tipo_demanda: r.tipo_demanda,
+            fuentes_evidencia: r.fuentes_evidencia,
+            fase_ciclo_vital: r.fase_ciclo_vital,
+            grado_escalamiento: r.grado_escalamiento,
+            sentido_ciclo: r.sentido_ciclo,
+            fecha_deteccion: r.fecha_deteccion,
+            fecha_ultima_actualizacion_ciclo: r.fecha_ultima_actualizacion_ciclo,
+            notas_ciclo: r.notas_ciclo,
             slug: r.slug,
           });
         })
@@ -146,6 +170,18 @@ export function CapturaReivFormPage() {
         .finally(() => setLoading(false));
     }
   }, [isNew, slug]);
+
+  const toggleFuente = (fuenteSlug: string) => {
+    setForm((f) => {
+      const has = (f.fuentes_evidencia ?? []).includes(fuenteSlug);
+      return {
+        ...f,
+        fuentes_evidencia: has
+          ? (f.fuentes_evidencia ?? []).filter((x) => x !== fuenteSlug)
+          : [...(f.fuentes_evidencia ?? []), fuenteSlug],
+      };
+    });
+  };
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -172,6 +208,8 @@ export function CapturaReivFormPage() {
       </GlassPanel>
     );
   }
+
+  const ciclo = catalogos?.ciclo_vital;
 
   return (
     <GlassPanel strong>
@@ -241,14 +279,16 @@ export function CapturaReivFormPage() {
             />
           </div>
           <div className={styles.field}>
-            <label>Fuente</label>
+            <label>Fuente principal</label>
             <select
               value={form.fuente}
               onChange={(e) => setForm({ ...form, fuente: e.target.value })}
             >
-              <option value="encuesta_demo">encuesta_demo</option>
-              <option value="bd_gobierno_demo">bd_gobierno_demo</option>
-              <option value="campo_demo">campo_demo</option>
+              {(ciclo?.fuentes_evidencia ?? []).map((f) => (
+                <option key={f.slug} value={f.slug}>
+                  {f.nombre}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -268,6 +308,109 @@ export function CapturaReivFormPage() {
             onChange={(e) => setForm({ ...form, resumen_deuda: e.target.value })}
           />
         </div>
+
+        <h2>Evidencia y ciclo</h2>
+        <div className={styles.row2}>
+          <div className={styles.field}>
+            <label>Tipo de demanda</label>
+            <select
+              value={form.tipo_demanda}
+              onChange={(e) => setForm({ ...form, tipo_demanda: e.target.value })}
+            >
+              {(ciclo?.tipos_demanda ?? []).map((t) => (
+                <option key={t.slug} value={t.slug}>
+                  {t.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.field}>
+            <label>Fase del ciclo vital</label>
+            <select
+              value={form.fase_ciclo_vital}
+              onChange={(e) => setForm({ ...form, fase_ciclo_vital: e.target.value })}
+            >
+              {(ciclo?.fases ?? []).map((f) => (
+                <option key={f.slug} value={f.slug}>
+                  {f.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.field}>
+            <label>Sentido del ciclo</label>
+            <select
+              value={form.sentido_ciclo}
+              onChange={(e) => setForm({ ...form, sentido_ciclo: e.target.value })}
+            >
+              {(ciclo?.sentidos_ciclo ?? []).map((s) => (
+                <option key={s.slug} value={s.slug}>
+                  {s.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className={styles.row2}>
+          <div className={styles.field}>
+            <label>Grado de escalamiento (1–5)</label>
+            <input
+              type="number"
+              min={1}
+              max={5}
+              value={form.grado_escalamiento}
+              onChange={(e) =>
+                setForm({ ...form, grado_escalamiento: Number(e.target.value) })
+              }
+            />
+          </div>
+          <div className={styles.field}>
+            <label>Fecha de detección</label>
+            <input
+              type="date"
+              value={form.fecha_deteccion ?? ""}
+              onChange={(e) =>
+                setForm({ ...form, fecha_deteccion: e.target.value || null })
+              }
+            />
+          </div>
+          <div className={styles.field}>
+            <label>Última revisión de ciclo</label>
+            <input
+              type="date"
+              value={form.fecha_ultima_actualizacion_ciclo ?? ""}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  fecha_ultima_actualizacion_ciclo: e.target.value || null,
+                })
+              }
+            />
+          </div>
+        </div>
+        <div className={styles.field}>
+          <label>Fuentes de evidencia</label>
+          <div className={styles.checkGrid}>
+            {(ciclo?.fuentes_evidencia ?? []).map((f) => (
+              <label key={f.slug} className={styles.checkItem}>
+                <input
+                  type="checkbox"
+                  checked={(form.fuentes_evidencia ?? []).includes(f.slug)}
+                  onChange={() => toggleFuente(f.slug)}
+                />
+                {f.nombre}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className={styles.field}>
+          <label>Notas de ciclo (mesa)</label>
+          <textarea
+            value={form.notas_ciclo ?? ""}
+            onChange={(e) => setForm({ ...form, notas_ciclo: e.target.value })}
+          />
+        </div>
+
         <div className={styles.actions}>
           <button type="submit" className={styles.btn}>
             Guardar

@@ -66,3 +66,35 @@
   flex-direction: column;
   gap: 1.25rem;
 }
+
+.disclaimer {
+  font-size: 0.85rem;
+  color: var(--accent-strong);
+  border-left: 3px solid rgba(196, 163, 90, 0.5);
+  padding: 0.5rem 0 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.5rem 0.65rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.table td {
+  color: var(--text-secondary);
+}

@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../../shared/api/client";
 import type { Brief } from "../../shared/api/types";
+import { CicloBadge } from "../../shared/ui/CicloBadge";
 import { GlassCard } from "../../shared/ui/GlassCard";
 import { GlassPanel } from "../../shared/ui/GlassPanel";
 import { SemaforoPill } from "../../shared/ui/SemaforoPill";
 import { StateBlock } from "../../shared/ui/StateBlock";
 import styles from "./DashboardPage.module.css";
+
+function movilizacionLabel(a: Brief["actores_clave"][0]): string {
+  const val = a.movilizacion_display ?? a.capacidad_movilizacion;
+  const fuente = a.movilizacion_fuente === "comprobada" ? "comprobada" : "estimada";
+  return `Movilización ${fuente}: ~${val}`;
+}
 
 export function DashboardPage() {
   const [data, setData] = useState<Brief | null>(null);
@@ -45,6 +52,8 @@ export function DashboardPage() {
     );
   }
 
+  const fasesCiclo = Object.entries(data.conteo_ciclo ?? {});
+
   return (
     <div className={styles.layout}>
       <GlassPanel strong className={styles.hero}>
@@ -65,7 +74,19 @@ export function DashboardPage() {
           <span>
             Verde <strong>{data.conteo_semaforo.verde ?? 0}</strong>
           </span>
+          <span className={styles.escalando}>
+            Escalando <strong>{data.escalando ?? 0}</strong>
+          </span>
         </div>
+        {fasesCiclo.length > 0 ? (
+          <div className={styles.cicloCounts}>
+            {fasesCiclo.map(([fase, count]) => (
+              <span key={fase}>
+                {fase.replaceAll("_", " ")} <strong>{count}</strong>
+              </span>
+            ))}
+          </div>
+        ) : null}
       </GlassPanel>
 
       <div className={styles.grid}>
@@ -85,6 +106,11 @@ export function DashboardPage() {
                     <p className={styles.meta}>
                       {r.territorio_nombre} · {r.zona_nombre}
                     </p>
+                    <CicloBadge
+                      faseNombre={r.fase_ciclo_nombre}
+                      sentido={r.sentido_ciclo}
+                      compact
+                    />
                   </div>
                   <SemaforoPill value={r.semaforo} label={r.semaforo_etiqueta} />
                 </div>
@@ -107,9 +133,7 @@ export function DashboardPage() {
                 <p className={styles.meta}>
                   {a.rol} · {a.colonia_nombre}
                 </p>
-                <p className={styles.meta}>
-                  Movilización estimada: {a.capacidad_movilizacion}
-                </p>
+                <p className={styles.meta}>{movilizacionLabel(a)}</p>
               </GlassCard>
             ))}
           </div>

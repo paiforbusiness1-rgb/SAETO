@@ -1,0 +1,30 @@
+{
+  "fases": [
+    { "slug": "emergencia", "nombre": "Emergencia", "orden": 1 },
+    { "slug": "articulacion", "nombre": "Articulación", "orden": 2 },
+    { "slug": "movilizacion", "nombre": "Movilización", "orden": 3 },
+    { "slug": "negociacion", "nombre": "Negociación", "orden": 4 },
+    { "slug": "resolucion_parcial", "nombre": "Resolución parcial", "orden": 5 },
+    { "slug": "latencia", "nombre": "Latencia", "orden": 6 },
+    { "slug": "cierre", "nombre": "Cierre", "orden": 7 }
+  ],
+  "tipos_demanda": [
+    { "slug": "actual_in_situ", "nombre": "Actual in situ" },
+    { "slug": "historica_latente", "nombre": "Histórica latente" }
+  ],
+  "fuentes_evidencia": [
+    { "slug": "percepcion_local", "nombre": "Percepción local / in situ" },
+    { "slug": "encuesta_opinion", "nombre": "Encuesta de opinión" },
+    { "slug": "inegi_referencia", "nombre": "Referencia INEGI (contexto)" },
+    { "slug": "bd_gobierno", "nombre": "Base de gobierno" },
+    { "slug": "campo", "nombre": "Verificación de campo" },
+    { "slug": "encuesta_demo", "nombre": "Encuesta demo (legacy)" },
+    { "slug": "bd_gobierno_demo", "nombre": "BD gobierno demo (legacy)" },
+    { "slug": "campo_demo", "nombre": "Campo demo (legacy)" }
+  ],
+  "sentidos_ciclo": [
+    { "slug": "escalando", "nombre": "Escalando" },
+    { "slug": "estable", "nombre": "Estable" },
+    { "slug": "desescalando", "nombre": "Desescalando" }
+  ]
+}

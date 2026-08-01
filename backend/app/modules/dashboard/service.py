@@ -25,8 +25,13 @@ def get_brief() -> BriefResponse:
     ]
 
     conteo = {"verde": 0, "amarillo": 0, "rojo": 0}
+    conteo_ciclo: dict[str, int] = {}
+    escalando = 0
     for r in observatorio_service.list_reivindicaciones():
         conteo[r.semaforo] = conteo.get(r.semaforo, 0) + 1
+        conteo_ciclo[r.fase_ciclo_vital] = conteo_ciclo.get(r.fase_ciclo_vital, 0) + 1
+        if r.sentido_ciclo == "escalando":
+            escalando += 1
 
     return BriefResponse(
         demo=True,
@@ -35,6 +40,8 @@ def get_brief() -> BriefResponse:
         actores_clave=actores_clave,
         reivindicaciones_top=reivs_top,
         conteo_semaforo=conteo,
+        conteo_ciclo=conteo_ciclo,
+        escalando=escalando,
     )
 
 

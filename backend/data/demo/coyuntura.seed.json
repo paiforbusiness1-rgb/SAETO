@@ -1,0 +1,72 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "evt-laura-mitin-2026-05",
+      "fecha": "2026-05-18",
+      "actor": "laura-mendez",
+      "demanda": "agua-barrio-arriba",
+      "tipo_accion": "mitin",
+      "descripcion_accion": "Mitin por el agua en Barrio Arriba (~40 personas).",
+      "respuesta_gobierno": "mesa_negociacion",
+      "detalle_respuesta": "Se abrió mesa con enlace territorial.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "Compromiso de diagnóstico de red; sin fecha de obra.",
+      "impacto_ciclo": "negociacion",
+      "fuentes": [
+        "campo",
+        "medios"
+      ]
+    },
+    {
+      "slug": "evt-laura-bloqueo-2026-07",
+      "fecha": "2026-07-08",
+      "actor": "laura-mendez",
+      "demanda": "agua-barrio-arriba",
+      "tipo_accion": "bloqueo",
+      "descripcion_accion": "Bloqueo breve de vialidad por incumplimiento de plazos.",
+      "respuesta_gobierno": "negativa",
+      "detalle_respuesta": "Negativa a calendario firme de obra.",
+      "reaccion": "rechazo_parcial",
+      "resultado": "Reactivación de presión; demanda marcada escalando.",
+      "impacto_ciclo": "movilizacion",
+      "fuentes": [
+        "campo"
+      ]
+    },
+    {
+      "slug": "evt-ricardo-manifestacion",
+      "fecha": "2026-06-02",
+      "actor": "ricardo-solis",
+      "demanda": "seguridad-agricola",
+      "tipo_accion": "manifestacion",
+      "descripcion_accion": "Marcha por seguridad percibida.",
+      "respuesta_gobierno": "silencio",
+      "detalle_respuesta": "Sin posicionamiento público inmediato.",
+      "reaccion": "diferimiento",
+      "resultado": "Demanda permanece en emergencia/articulación.",
+      "impacto_ciclo": "articulacion",
+      "fuentes": [
+        "medios",
+        "campo"
+      ]
+    },
+    {
+      "slug": "evt-miguel-reunion",
+      "fecha": "2026-07-15",
+      "actor": "miguel-herrera",
+      "demanda": "transporte-tlahuac",
+      "tipo_accion": "reunion",
+      "descripcion_accion": "Reunión con autoridades de movilidad.",
+      "respuesta_gobierno": "mesa_negociacion",
+      "detalle_respuesta": "Mesa técnica de rutas.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "Se abre canal; sin resolución de fondo.",
+      "impacto_ciclo": "negociacion",
+      "fuentes": [
+        "bd_gobierno",
+        "campo"
+      ]
+    }
+  ]
+}

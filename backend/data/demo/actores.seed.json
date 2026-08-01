@@ -8,13 +8,26 @@
       "zona": "iztapalapa",
       "rol": "Liderazgo vecinal",
       "organizacion": "Comité Barrio Arriba",
-      "capacidad_movilizacion": 45,
+      "capacidad_movilizacion": 40,
       "reivindicaciones_abiertas": [
         "agua",
         "basura"
       ],
-      "estado_verificacion": "corroborado_demo",
-      "notas_mesa": "Convoca de forma recurrente; vínculo histórico con demandas de agua."
+      "estado_verificacion": "corroborado",
+      "notas_mesa": "Convoca de forma recurrente; vínculo histórico con demandas de agua.",
+      "capacidad_estimada": 45,
+      "capacidad_comprobada": 40,
+      "fecha_comprobacion": "2026-06-12",
+      "metodo_comprobacion": "campo",
+      "tipo_actor": "liderazgo_vecinal",
+      "interes_declarado": "Red continua de agua y dignidad del barrio",
+      "interes_reservado": "Posicionar al comité como interlocutor único ante la alcaldía",
+      "recursos_poder": [
+        "movilizacion",
+        "legitimidad",
+        "autoridad_moral"
+      ],
+      "notas_poder": "Alto prestigio local"
     },
     {
       "slug": "ricardo-solis",
@@ -29,7 +42,19 @@
         "calles"
       ],
       "estado_verificacion": "declarado",
-      "notas_mesa": "Perfil con capacidad media-alta de convocatoria en mitines."
+      "notas_mesa": "Perfil con capacidad media-alta de convocatoria en mitines.",
+      "capacidad_estimada": 80,
+      "capacidad_comprobada": null,
+      "fecha_comprobacion": null,
+      "metodo_comprobacion": null,
+      "tipo_actor": "movimiento",
+      "interes_declarado": "Seguridad y pavimentación",
+      "interes_reservado": "",
+      "recursos_poder": [
+        "movilizacion",
+        "respaldo_politico"
+      ],
+      "notas_poder": ""
     },
     {
       "slug": "elena-quiroz",
@@ -38,13 +63,26 @@
       "zona": "iztacalco",
       "rol": "Promotora comunitaria",
       "organizacion": "Red de Mujeres Orientales",
-      "capacidad_movilizacion": 30,
+      "capacidad_movilizacion": 28,
       "reivindicaciones_abiertas": [
         "seguridad",
         "empleo"
       ],
-      "estado_verificacion": "corroborado_demo",
-      "notas_mesa": "Enfoca discurso en seguridad percibida y economía local."
+      "estado_verificacion": "corroborado",
+      "notas_mesa": "Enfoca discurso en seguridad percibida y economía local.",
+      "capacidad_estimada": 30,
+      "capacidad_comprobada": 28,
+      "fecha_comprobacion": "2026-05-20",
+      "metodo_comprobacion": "conteo_evento",
+      "tipo_actor": "organizacion",
+      "interes_declarado": "Empleo local y seguridad para mujeres",
+      "interes_reservado": "",
+      "recursos_poder": [
+        "legitimidad",
+        "respaldo_mediatico",
+        "movilizacion"
+      ],
+      "notas_poder": ""
     },
     {
       "slug": "miguel-herrera",
@@ -59,7 +97,19 @@
         "agua"
       ],
       "estado_verificacion": "declarado",
-      "notas_mesa": "Cuenta pendiente recurrente: transporte y continuidad del agua."
+      "notas_mesa": "Cuenta pendiente recurrente: transporte y continuidad del agua.",
+      "capacidad_estimada": 60,
+      "capacidad_comprobada": null,
+      "fecha_comprobacion": null,
+      "metodo_comprobacion": null,
+      "tipo_actor": "liderazgo_vecinal",
+      "interes_declarado": "Transporte y agua en Tláhuac",
+      "interes_reservado": "",
+      "recursos_poder": [
+        "movilizacion",
+        "prestigio"
+      ],
+      "notas_poder": ""
     }
   ]
 }

@@ -1,0 +1,49 @@
+.wrap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.compact {
+  gap: 0.25rem;
+}
+
+.fase {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(126, 184, 162, 0.18);
+  border: 1px solid rgba(126, 184, 162, 0.35);
+  color: var(--text-primary);
+}
+
+.sentido {
+  font-size: 0.72rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.escalando {
+  background: rgba(224, 86, 86, 0.2);
+  border: 1px solid rgba(224, 86, 86, 0.4);
+  color: #ffc2c2;
+}
+
+.estable {
+  background: rgba(212, 160, 23, 0.18);
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  color: #f0d890;
+}
+
+.desescalando {
+  background: rgba(61, 186, 124, 0.18);
+  border: 1px solid rgba(61, 186, 124, 0.35);
+  color: #a8e6c8;
+}
+
+.grado {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}

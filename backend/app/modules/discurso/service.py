@@ -21,8 +21,11 @@ def list_discursos() -> list[DiscursoSummary]:
             actor=item["actor"],
             actor_nombre=_actor_nombre(item["actor"]),
             topico_principal=item["topico_principal"],
-            subtopicos=item["subtopicos"],
-            audiencia=item["audiencia"],
+            subtopicos=item.get("subtopicos", []),
+            audiencia=item.get("audiencia", ""),
+            narrativas=item.get("narrativas", ""),
+            ideologia=item.get("ideologia", ""),
+            emociones=item.get("emociones", []),
         )
         for item in seed_loader.load_discurso_seed()["items"]
     ]
@@ -36,10 +39,18 @@ def get_discurso(slug: str) -> DiscursoDetail:
                 actor=item["actor"],
                 actor_nombre=_actor_nombre(item["actor"]),
                 topico_principal=item["topico_principal"],
-                subtopicos=item["subtopicos"],
-                audiencia=item["audiencia"],
-                niveles=item["niveles"],
+                subtopicos=item.get("subtopicos", []),
+                audiencia=item.get("audiencia", ""),
+                niveles=item.get("niveles", {}),
                 niveles_meta=seed_loader.load_discurso_niveles()["niveles"],
+                narrativas=item.get("narrativas", ""),
+                argumentos=item.get("argumentos", ""),
+                ideologia=item.get("ideologia", ""),
+                emociones=item.get("emociones", []),
+                endo_grupo=item.get("endo_grupo", ""),
+                exo_grupo=item.get("exo_grupo", ""),
+                coaliciones_posibles=item.get("coaliciones_posibles", ""),
+                hipotesis_mesa=item.get("hipotesis_mesa", True),
             )
     raise HTTPException(status_code=404, detail="Pieza de discurso no encontrada")
 
@@ -60,6 +71,14 @@ def _to_raw(payload: DiscursoWrite, slug: str) -> dict:
         "subtopicos": [s.strip() for s in payload.subtopicos if s.strip()],
         "audiencia": payload.audiencia.strip(),
         "niveles": niveles,
+        "narrativas": payload.narrativas.strip(),
+        "argumentos": payload.argumentos.strip(),
+        "ideologia": payload.ideologia.strip(),
+        "emociones": payload.emociones,
+        "endo_grupo": payload.endo_grupo.strip(),
+        "exo_grupo": payload.exo_grupo.strip(),
+        "coaliciones_posibles": payload.coaliciones_posibles.strip(),
+        "hipotesis_mesa": payload.hipotesis_mesa,
     }
 
 
@@ -67,7 +86,9 @@ def create_discurso(payload: DiscursoWrite) -> DiscursoDetail:
     _validate_refs(payload)
     data = seed_loader.load_discurso_seed()
     items = list(data["items"])
-    slug = slugify(payload.slug or f"discurso-{payload.actor}-{payload.topico_principal[:24]}")
+    slug = slugify(
+        payload.slug or f"discurso-{payload.actor}-{payload.topico_principal[:24]}"
+    )
     if any(i["slug"] == slug for i in items):
         raise HTTPException(status_code=409, detail="Ya existe esa pieza de discurso")
     items.append(_to_raw(payload, slug))

@@ -56,6 +56,29 @@
   border-color: rgba(126, 184, 162, 0.35);
 }
 
+.rolWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 7.5rem;
+}
+
+.rolLabel {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.rolSelect {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text-primary);
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
 .badge {
   font-size: 0.7rem;
   letter-spacing: 0.12em;

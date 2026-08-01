@@ -23,3 +23,23 @@ def actores():
 @router.get("/deudas")
 def deudas():
     return service.reporte_deudas()
+
+
+@router.get("/ciclo-vital")
+def ciclo_vital():
+    return service.reporte_ciclo_vital()
+
+
+@router.get("/coyuntura")
+def coyuntura():
+    return service.reporte_coyuntura()
+
+
+@router.get("/discurso-mesa")
+def discurso_mesa():
+    return service.reporte_discurso_mesa()
+
+
+@router.get("/contexto-inegi")
+def contexto_inegi():
+    return service.reporte_contexto_inegi()

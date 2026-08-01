@@ -13,12 +13,22 @@ const items = [
   {
     to: "/captura/reivindicaciones",
     title: "Reivindicaciones",
-    desc: "Demandas, intensidad y deuda histórica",
+    desc: "Demandas, ciclo vital y evidencia",
+  },
+  {
+    to: "/captura/coyuntura",
+    title: "Coyuntura",
+    desc: "Acciones, respuesta gubernamental y reacciones",
   },
   {
     to: "/captura/discurso",
     title: "Discurso",
-    desc: "Piezas discursivas por actor y niveles",
+    desc: "Rúbricas de mesa y niveles analíticos",
+  },
+  {
+    to: "/captura/indicadores",
+    title: "Indicadores INEGI",
+    desc: "Contexto estadístico referencial por colonia",
   },
   {
     to: "/captura/brief",

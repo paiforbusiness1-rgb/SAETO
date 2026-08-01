@@ -1,0 +1,29 @@
+{
+  "tipos_accion": [
+    { "slug": "reunion", "nombre": "Reunión" },
+    { "slug": "mitin", "nombre": "Mitin" },
+    { "slug": "manifestacion", "nombre": "Manifestación" },
+    { "slug": "bloqueo", "nombre": "Bloqueo" },
+    { "slug": "planton", "nombre": "Plantón" },
+    { "slug": "comunicado", "nombre": "Comunicado" },
+    { "slug": "violencia", "nombre": "Conducta violenta" },
+    { "slug": "otra", "nombre": "Otra" }
+  ],
+  "respuestas_gobierno": [
+    { "slug": "mesa_negociacion", "nombre": "Mesa de negociación" },
+    { "slug": "concesion", "nombre": "Concesión" },
+    { "slug": "negativa", "nombre": "Negativa franca" },
+    { "slug": "silencio", "nombre": "Silencio / sin respuesta" },
+    { "slug": "represion", "nombre": "Respuesta coercitiva" },
+    { "slug": "otra", "nombre": "Otra" },
+    { "slug": "no_aplica", "nombre": "No aplica" }
+  ],
+  "reacciones": [
+    { "slug": "aceptacion_total", "nombre": "Aceptación total" },
+    { "slug": "aceptacion_parcial", "nombre": "Aceptación parcial" },
+    { "slug": "rechazo_total", "nombre": "Rechazo total" },
+    { "slug": "rechazo_parcial", "nombre": "Rechazo parcial" },
+    { "slug": "diferimiento", "nombre": "Diferimiento" },
+    { "slug": "no_aplica", "nombre": "No aplica" }
+  ]
+}

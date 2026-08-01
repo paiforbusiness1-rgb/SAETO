@@ -10,7 +10,38 @@
       "deuda_historica": true,
       "resumen_deuda": "Tandeo severo no resuelto desde hace varios ciclos; promesas de red no cumplidas.",
       "fuente": "encuesta_demo",
-      "peso_opinion": 92
+      "peso_opinion": 92,
+      "tipo_demanda": "historica_latente",
+      "fuentes_evidencia": [
+        "encuesta_opinion",
+        "percepcion_local"
+      ],
+      "fase_ciclo_vital": "negociacion",
+      "grado_escalamiento": 5,
+      "sentido_ciclo": "escalando",
+      "fecha_deteccion": "2024-03-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-05-18",
+      "notas_ciclo": "Cuenta pendiente recurrente de agua.",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2024-03-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "movilizacion",
+          "fecha": "2026-07-01",
+          "origen": "revision",
+          "nota": "Cuenta pendiente recurrente de agua."
+        },
+        {
+          "fase": "negociacion",
+          "fecha": "2026-05-18",
+          "origen": "coyuntura:evt-laura-mitin-2026-05",
+          "nota": "Confirmado desde evento Mitin"
+        }
+      ]
     },
     {
       "slug": "basura-meyehualco",
@@ -21,7 +52,32 @@
       "deuda_historica": true,
       "resumen_deuda": "Recolección irregular; puntos de acumulamiento reportados a gobierno local.",
       "fuente": "bd_gobierno_demo",
-      "peso_opinion": 78
+      "peso_opinion": 78,
+      "tipo_demanda": "historica_latente",
+      "fuentes_evidencia": [
+        "bd_gobierno",
+        "percepcion_local"
+      ],
+      "fase_ciclo_vital": "articulacion",
+      "grado_escalamiento": 4,
+      "sentido_ciclo": "estable",
+      "fecha_deteccion": "2024-06-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-06-15",
+      "notas_ciclo": "",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2024-06-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "articulacion",
+          "fecha": "2026-06-15",
+          "origen": "revision",
+          "nota": ""
+        }
+      ]
     },
     {
       "slug": "seguridad-agricola",
@@ -32,7 +88,32 @@
       "deuda_historica": false,
       "resumen_deuda": "Alza reciente en percepción de inseguridad nocturna.",
       "fuente": "campo_demo",
-      "peso_opinion": 85
+      "peso_opinion": 85,
+      "tipo_demanda": "actual_in_situ",
+      "fuentes_evidencia": [
+        "percepcion_local",
+        "campo"
+      ],
+      "fase_ciclo_vital": "emergencia",
+      "grado_escalamiento": 4,
+      "sentido_ciclo": "escalando",
+      "fecha_deteccion": "2026-05-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-07-10",
+      "notas_ciclo": "",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2026-05-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "emergencia",
+          "fecha": "2026-07-10",
+          "origen": "revision",
+          "nota": ""
+        }
+      ]
     },
     {
       "slug": "calles-meyehualco",
@@ -43,7 +124,31 @@
       "deuda_historica": true,
       "resumen_deuda": "Pavimentación parcial; tramos sin alumbrado continuo.",
       "fuente": "bd_gobierno_demo",
-      "peso_opinion": 64
+      "peso_opinion": 64,
+      "tipo_demanda": "historica_latente",
+      "fuentes_evidencia": [
+        "bd_gobierno"
+      ],
+      "fase_ciclo_vital": "latencia",
+      "grado_escalamiento": 3,
+      "sentido_ciclo": "estable",
+      "fecha_deteccion": "2023-01-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-04-01",
+      "notas_ciclo": "",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2023-01-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "latencia",
+          "fecha": "2026-04-01",
+          "origen": "revision",
+          "nota": ""
+        }
+      ]
     },
     {
       "slug": "transporte-tlahuac",
@@ -54,7 +159,32 @@
       "deuda_historica": true,
       "resumen_deuda": "Conectividad deficitaria hacia el centro; tiempos de traslado elevan molestia política.",
       "fuente": "encuesta_demo",
-      "peso_opinion": 88
+      "peso_opinion": 88,
+      "tipo_demanda": "historica_latente",
+      "fuentes_evidencia": [
+        "encuesta_opinion",
+        "inegi_referencia"
+      ],
+      "fase_ciclo_vital": "negociacion",
+      "grado_escalamiento": 5,
+      "sentido_ciclo": "escalando",
+      "fecha_deteccion": "2024-01-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-07-20",
+      "notas_ciclo": "",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2024-01-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "negociacion",
+          "fecha": "2026-07-20",
+          "origen": "revision",
+          "nota": ""
+        }
+      ]
     },
     {
       "slug": "empleo-agricola",
@@ -65,7 +195,31 @@
       "deuda_historica": false,
       "resumen_deuda": "Demanda de oportunidades locales y capacitación.",
       "fuente": "encuesta_demo",
-      "peso_opinion": 55
+      "peso_opinion": 55,
+      "tipo_demanda": "actual_in_situ",
+      "fuentes_evidencia": [
+        "encuesta_opinion"
+      ],
+      "fase_ciclo_vital": "emergencia",
+      "grado_escalamiento": 3,
+      "sentido_ciclo": "estable",
+      "fecha_deteccion": "2026-02-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-06-01",
+      "notas_ciclo": "",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2026-02-01",
+          "origen": "deteccion",
+          "nota": "Entrada al radar"
+        },
+        {
+          "fase": "emergencia",
+          "fecha": "2026-06-01",
+          "origen": "revision",
+          "nota": ""
+        }
+      ]
     }
   ]
 }

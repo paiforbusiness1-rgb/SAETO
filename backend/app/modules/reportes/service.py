@@ -139,9 +139,9 @@ def reporte_territorio() -> dict:
 def reporte_actores() -> dict:
     actores = sorted(
         actores_service.list_actores(),
-        key=lambda a: -a.capacidad_movilizacion,
+        key=lambda a: -a.movilizacion_display,
     )
-    total = sum(a.capacidad_movilizacion for a in actores) or 1
+    total = sum(a.movilizacion_display for a in actores) or 1
     ranking = [
         {
             "slug": a.slug,
@@ -150,21 +150,248 @@ def reporte_actores() -> dict:
             "colonia_nombre": a.colonia_nombre,
             "zona_nombre": a.zona_nombre,
             "capacidad_movilizacion": a.capacidad_movilizacion,
-            "share": round(100 * a.capacidad_movilizacion / total, 1),
+            "capacidad_estimada": a.capacidad_estimada,
+            "capacidad_comprobada": a.capacidad_comprobada,
+            "movilizacion_display": a.movilizacion_display,
+            "movilizacion_fuente": a.movilizacion_fuente,
+            "share": round(100 * a.movilizacion_display / total, 1),
             "estado_verificacion": a.estado_verificacion,
             "reivindicaciones_abiertas": a.reivindicaciones_abiertas,
         }
         for a in actores
     ]
+    comprobados = sum(1 for a in actores if a.capacidad_comprobada is not None)
     return {
         "demo": True,
-        "capacidad_total": sum(a.capacidad_movilizacion for a in actores),
+        "capacidad_total": sum(a.movilizacion_display for a in actores),
+        "kpis": {
+            "actores": len(actores),
+            "con_comprobada": comprobados,
+            "solo_estimada": len(actores) - comprobados,
+        },
         "ranking": ranking,
         "lectura_gerencial": (
-            f"{ranking[0]['nombre']} concentra la mayor capacidad de movilización "
-            f"({ranking[0]['capacidad_movilizacion']} personas, {ranking[0]['share']}%)."
+            f"{ranking[0]['nombre']} concentra la mayor capacidad "
+            f"({ranking[0]['movilizacion_display']} · {ranking[0]['movilizacion_fuente']}, "
+            f"{ranking[0]['share']}%)."
             if ranking
             else "Sin actores cargados."
+        ),
+    }
+
+
+def reporte_ciclo_vital() -> dict:
+    reivs = observatorio_service.list_reivindicaciones()
+    fases_meta = {
+        f["slug"]: f["nombre"] for f in seed_loader.load_ciclo_vital().get("fases", [])
+    }
+    por_fase: dict[str, dict] = {}
+    por_sentido = {"escalando": 0, "estable": 0, "desescalando": 0}
+    for r in reivs:
+        bucket = por_fase.setdefault(
+            r.fase_ciclo_vital,
+            {
+                "fase": r.fase_ciclo_vital,
+                "fase_nombre": fases_meta.get(r.fase_ciclo_vital, r.fase_ciclo_nombre),
+                "count": 0,
+                "escalando": 0,
+            },
+        )
+        bucket["count"] += 1
+        if r.sentido_ciclo == "escalando":
+            bucket["escalando"] += 1
+        por_sentido[r.sentido_ciclo] = por_sentido.get(r.sentido_ciclo, 0) + 1
+
+    series = sorted(por_fase.values(), key=lambda x: -x["count"])
+    top = sorted(reivs, key=lambda r: (-r.grado_escalamiento, -r.intensidad))[:8]
+    return {
+        "demo": True,
+        "kpis": {
+            "total": len(reivs),
+            "escalando": por_sentido.get("escalando", 0),
+            "desescalando": por_sentido.get("desescalando", 0),
+            "estable": por_sentido.get("estable", 0),
+        },
+        "por_fase": series,
+        "por_sentido": [
+            {"clave": k, "etiqueta": k.replace("_", " ").title(), "valor": v}
+            for k, v in por_sentido.items()
+        ],
+        "top": [
+            {
+                "slug": r.slug,
+                "tema_nombre": r.tema_nombre,
+                "territorio_nombre": r.territorio_nombre,
+                "fase_ciclo_nombre": r.fase_ciclo_nombre,
+                "sentido_ciclo": r.sentido_ciclo,
+                "grado_escalamiento": r.grado_escalamiento,
+                "semaforo": r.semaforo,
+            }
+            for r in top
+        ],
+        "lectura_gerencial": (
+            f"{por_sentido.get('escalando', 0)} focos escalando; "
+            f"fase dominante: {series[0]['fase_nombre']}."
+            if series
+            else "Sin reivindicaciones cargadas."
+        ),
+    }
+
+
+def reporte_coyuntura() -> dict:
+    from app.modules.coyuntura import service as coyuntura_service
+
+    eventos = coyuntura_service.list_eventos()
+    por_tipo: dict[str, dict] = {}
+    for e in eventos:
+        b = por_tipo.setdefault(
+            e.tipo_accion,
+            {"tipo": e.tipo_accion, "tipo_nombre": e.tipo_accion_nombre, "count": 0},
+        )
+        b["count"] += 1
+    series = sorted(por_tipo.values(), key=lambda x: -x["count"])
+    return {
+        "demo": True,
+        "kpis": {"eventos": len(eventos)},
+        "por_tipo": series,
+        "timeline": [
+            {
+                "slug": e.slug,
+                "fecha": e.fecha,
+                "tipo_accion_nombre": e.tipo_accion_nombre,
+                "actor_nombre": e.actor_nombre,
+                "demanda_nombre": e.demanda_nombre,
+                "respuesta_gobierno": e.respuesta_gobierno,
+                "reaccion": e.reaccion,
+            }
+            for e in eventos[:20]
+        ],
+        "lectura_gerencial": (
+            f"{len(eventos)} eventos en bitácora; acción más frecuente: {series[0]['tipo_nombre']}."
+            if series
+            else "Sin eventos de coyuntura. Captura acciones para armar el CÓMO."
+        ),
+    }
+
+
+def reporte_discurso_mesa() -> dict:
+    from app.modules.discurso import service as discurso_service
+
+    items = discurso_service.list_discursos()
+    emociones: dict[str, int] = {}
+    for d in items:
+        for emo in d.emociones:
+            emociones[emo] = emociones.get(emo, 0) + 1
+    emo_series = sorted(
+        [{"clave": k, "valor": v} for k, v in emociones.items()],
+        key=lambda x: -x["valor"],
+    )
+    return {
+        "demo": True,
+        "kpis": {"piezas": len(items)},
+        "emociones": emo_series,
+        "piezas": [
+            {
+                "slug": d.slug,
+                "actor_nombre": d.actor_nombre,
+                "topico_principal": d.topico_principal,
+                "narrativas": d.narrativas,
+                "ideologia": d.ideologia,
+                "emociones": d.emociones,
+            }
+            for d in items
+        ],
+        "lectura_gerencial": (
+            f"Emoción dominante en mesa: {emo_series[0]['clave']}."
+            if emo_series
+            else "Sin piezas de discurso con rúbricas de mesa."
+        ),
+    }
+
+
+def reporte_contexto_inegi() -> dict:
+    indicadores = observatorio_service.list_indicadores()
+    reivs = observatorio_service.list_reivindicaciones()
+    por_territorio: dict[str, dict] = {}
+    for ind in indicadores:
+        b = por_territorio.setdefault(
+            ind.territorio,
+            {
+                "territorio": ind.territorio,
+                "territorio_nombre": ind.territorio_nombre,
+                "indicadores": [],
+            },
+        )
+        b["indicadores"].append(
+            {
+                "clave": ind.clave,
+                "nombre": ind.nombre,
+                "valor": ind.valor,
+                "anio": ind.anio,
+                "fuente": ind.fuente,
+            }
+        )
+
+    # Brecha lectura: percepción local (peso/intensidad) vs indicador referencial
+    por_terr_reiv: dict[str, list] = {}
+    for r in reivs:
+        por_terr_reiv.setdefault(r.territorio, []).append(r)
+
+    brechas = []
+    for terr, inds in por_territorio.items():
+        local = por_terr_reiv.get(terr, [])
+        if not local:
+            continue
+        top = max(local, key=lambda x: (x.peso_opinion, x.intensidad))
+        for ind in inds["indicadores"]:
+            try:
+                valor_num = float(ind["valor"])
+            except (TypeError, ValueError):
+                valor_num = None
+            lectura = (
+                "Alta percepción local vs indicador contextual — priorizar verificación de campo."
+                if top.peso_opinion >= 70 and (valor_num is None or valor_num < 80)
+                else "Contexto disponible; contrastar con evidencia in situ."
+            )
+            brechas.append(
+                {
+                    "territorio": terr,
+                    "territorio_nombre": inds["territorio_nombre"],
+                    "demanda_slug": top.slug,
+                    "demanda": f"{top.tema_nombre} · {top.territorio_nombre}",
+                    "peso_opinion": top.peso_opinion,
+                    "intensidad": top.intensidad,
+                    "semaforo": top.semaforo,
+                    "indicador": ind["nombre"],
+                    "valor_indicador": ind["valor"],
+                    "anio": ind["anio"],
+                    "lectura": lectura,
+                }
+            )
+
+    return {
+        "demo": True,
+        "disclaimer": (
+            "Indicadores referenciales (demo). No son levantamiento SAETO ni sustituyen "
+            "la lectura de campo; sirven solo como contexto estadístico. "
+            "La 'brecha' es una lectura orientativa de mesa, no un índice estadístico oficial."
+        ),
+        "kpis": {
+            "indicadores": len(indicadores),
+            "territorios": len(por_territorio),
+            "brechas": len(brechas),
+        },
+        "por_territorio": list(por_territorio.values()),
+        "brechas": brechas,
+        "lectura_gerencial": (
+            f"{len(brechas)} cruces percepción–contexto en {len(por_territorio)} colonias."
+            if brechas
+            else (
+                f"{len(indicadores)} indicadores referenciales; "
+                "cargue demandas e indicadores en el mismo territorio para ver brechas."
+                if indicadores
+                else "Sin indicadores de contexto cargados."
+            )
         ),
     }
 

@@ -31,7 +31,7 @@ export function DiscursoListPage() {
       <BotonVolver />
       <h1>Laboratorio de discurso</h1>
       <p className={styles.lead}>
-        Tópico, audiencia y lectura por niveles (marco del PDF de análisis político).
+        Rúbricas de mesa primero; niveles analíticos como profundidad opcional.
       </p>
       {loading ? (
         <StateBlock>Cargando…</StateBlock>
@@ -47,6 +47,12 @@ export function DiscursoListPage() {
               <p className={styles.meta}>
                 {d.actor_nombre} · {d.audiencia}
               </p>
+              {d.narrativas ? (
+                <p className={styles.meta}>{d.narrativas.slice(0, 80)}…</p>
+              ) : null}
+              {d.emociones.length > 0 ? (
+                <p className={styles.tags}>{d.emociones.join(" · ")}</p>
+              ) : null}
             </GlassCard>
           ))}
         </div>
@@ -67,7 +73,7 @@ export function DiscursoDetailPage() {
       .discurso(slug)
       .then((d) => {
         setItem(d);
-        setOpen(d.niveles_meta[0]?.slug ?? null);
+        setOpen(null);
       })
       .catch((e: Error) => setError(e.message));
   }, [slug]);
@@ -102,27 +108,69 @@ export function DiscursoDetailPage() {
       <p className={styles.meta}>Audiencia: {item.audiencia}</p>
       <p className={styles.meta}>Subtópicos: {item.subtopicos.join(" · ")}</p>
 
-      <div className={styles.accordion}>
-        {item.niveles_meta.map((nivel) => {
-          const isOpen = open === nivel.slug;
-          return (
-            <div key={nivel.slug} className={styles.item}>
-              <button
-                type="button"
-                className={styles.trigger}
-                onClick={() => setOpen(isOpen ? null : nivel.slug)}
-                aria-expanded={isOpen}
-              >
-                {nivel.nombre}
-              </button>
-              {isOpen ? (
-                <div className={styles.body}>
-                  <p>{item.niveles[nivel.slug] ?? "Sin captura en demo."}</p>
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
+      <div className={styles.block}>
+        <h2>Rúbricas de mesa</h2>
+        {item.narrativas ? (
+          <p>
+            <strong>Narrativas:</strong> {item.narrativas}
+          </p>
+        ) : null}
+        {item.argumentos ? (
+          <p>
+            <strong>Argumentos:</strong> {item.argumentos}
+          </p>
+        ) : null}
+        {item.ideologia ? (
+          <p>
+            <strong>Ideología:</strong> {item.ideologia}
+          </p>
+        ) : null}
+        {item.emociones.length > 0 ? (
+          <p>
+            <strong>Emociones:</strong> {item.emociones.join(", ")}
+          </p>
+        ) : null}
+        {item.endo_grupo ? (
+          <p>
+            <strong>Endo-grupo:</strong> {item.endo_grupo}
+          </p>
+        ) : null}
+        {item.exo_grupo ? (
+          <p>
+            <strong>Exo-grupo:</strong> {item.exo_grupo}
+          </p>
+        ) : null}
+        {item.coaliciones_posibles ? (
+          <p>
+            <strong>Coaliciones (hipótesis de mesa):</strong> {item.coaliciones_posibles}
+          </p>
+        ) : null}
+      </div>
+
+      <div className={styles.block}>
+        <h2>Niveles analíticos (Capa 2)</h2>
+        <div className={styles.accordion}>
+          {item.niveles_meta.map((nivel) => {
+            const isOpen = open === nivel.slug;
+            return (
+              <div key={nivel.slug} className={styles.item}>
+                <button
+                  type="button"
+                  className={styles.trigger}
+                  onClick={() => setOpen(isOpen ? null : nivel.slug)}
+                  aria-expanded={isOpen}
+                >
+                  {nivel.nombre}
+                </button>
+                {isOpen ? (
+                  <div className={styles.body}>
+                    <p>{item.niveles[nivel.slug] ?? "Sin captura en demo."}</p>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <Link to="/" className={styles.backLink}>

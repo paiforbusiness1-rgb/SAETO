@@ -1,0 +1,18 @@
+{
+  "emociones": [
+    { "slug": "enojo", "nombre": "Enojo" },
+    { "slug": "miedo", "nombre": "Miedo" },
+    { "slug": "orgullo", "nombre": "Orgullo" },
+    { "slug": "esperanza", "nombre": "Esperanza" },
+    { "slug": "agravio", "nombre": "Agravio" },
+    { "slug": "solidaridad", "nombre": "Solidaridad" },
+    { "slug": "desconfianza", "nombre": "Desconfianza" }
+  ],
+  "ideologias": [
+    { "slug": "derechos_territorio", "nombre": "Derechos territoriales" },
+    { "slug": "identidad_barrial", "nombre": "Identidad barrial" },
+    { "slug": "justicia_social", "nombre": "Justicia social" },
+    { "slug": "orden_seguridad", "nombre": "Orden y seguridad" },
+    { "slug": "otra", "nombre": "Otra" }
+  ]
+}

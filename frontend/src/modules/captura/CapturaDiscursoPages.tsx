@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { api, type DiscursoWrite } from "../../shared/api/client";
-import type { ActorSummary, DiscursoSummary } from "../../shared/api/types";
+import type { ActorSummary, CatalogosConfig, DiscursoSummary } from "../../shared/api/types";
 import { BotonVolver } from "../../shared/ui/BotonVolver";
 import { GlassCard } from "../../shared/ui/GlassCard";
 import { GlassPanel } from "../../shared/ui/GlassPanel";
@@ -57,6 +57,9 @@ export function CapturaDiscursoListPage() {
                 <div>
                   <strong>{d.topico_principal}</strong>
                   <p className={styles.meta}>{d.actor_nombre}</p>
+                  {d.emociones.length > 0 ? (
+                    <p className={styles.meta}>Emociones: {d.emociones.join(", ")}</p>
+                  ) : null}
                 </div>
                 <div className={styles.actions}>
                   <Link to={`/captura/discurso/${d.slug}`} className={styles.btnGhost}>
@@ -87,12 +90,22 @@ export function CapturaDiscursoFormPage() {
   const [nivelesMeta, setNivelesMeta] = useState<
     { slug: string; nombre: string }[]
   >([]);
+  const [catalogos, setCatalogos] = useState<CatalogosConfig | null>(null);
+  const [nivelesOpen, setNivelesOpen] = useState(false);
   const [form, setForm] = useState<DiscursoWrite>({
     actor: "",
     topico_principal: "",
     subtopicos: [],
     audiencia: "",
     niveles: {},
+    narrativas: "",
+    argumentos: "",
+    ideologia: "",
+    emociones: [],
+    endo_grupo: "",
+    exo_grupo: "",
+    coaliciones_posibles: "",
+    hipotesis_mesa: true,
   });
   const [subtopicosText, setSubtopicosText] = useState("");
   const [msg, setMsg] = useState("");
@@ -100,10 +113,15 @@ export function CapturaDiscursoFormPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([api.actores(), api.catalogoDiscursoNiveles()])
-      .then(([acts, niv]) => {
+    Promise.all([
+      api.actores(),
+      api.catalogoDiscursoNiveles(),
+      api.catalogosConfig(),
+    ])
+      .then(([acts, niv, cats]) => {
         setActores(acts);
         setNivelesMeta(niv.niveles);
+        setCatalogos(cats);
         if (isNew) {
           const niveles: Record<string, string> = {};
           niv.niveles.forEach((n) => {
@@ -132,6 +150,14 @@ export function CapturaDiscursoFormPage() {
             subtopicos: d.subtopicos,
             audiencia: d.audiencia,
             niveles: d.niveles,
+            narrativas: d.narrativas,
+            argumentos: d.argumentos,
+            ideologia: d.ideologia,
+            emociones: d.emociones,
+            endo_grupo: d.endo_grupo,
+            exo_grupo: d.exo_grupo,
+            coaliciones_posibles: d.coaliciones_posibles,
+            hipotesis_mesa: d.hipotesis_mesa,
             slug: d.slug,
           });
           setSubtopicosText(d.subtopicos.join(", "));
@@ -141,6 +167,18 @@ export function CapturaDiscursoFormPage() {
         .finally(() => setLoading(false));
     }
   }, [isNew, slug]);
+
+  const toggleEmocion = (emo: string) => {
+    setForm((f) => {
+      const has = (f.emociones ?? []).includes(emo);
+      return {
+        ...f,
+        emociones: has
+          ? (f.emociones ?? []).filter((x) => x !== emo)
+          : [...(f.emociones ?? []), emo],
+      };
+    });
+  };
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -152,6 +190,7 @@ export function CapturaDiscursoFormPage() {
         .split(",")
         .map((s) => s.trim())
         .filter(Boolean),
+      hipotesis_mesa: true,
     };
     try {
       if (isNew) {
@@ -174,6 +213,8 @@ export function CapturaDiscursoFormPage() {
       </GlassPanel>
     );
   }
+
+  const mesa = catalogos?.discurso_mesa;
 
   return (
     <GlassPanel strong>
@@ -216,21 +257,104 @@ export function CapturaDiscursoFormPage() {
             onChange={(e) => setSubtopicosText(e.target.value)}
           />
         </div>
-        <h2>Niveles analíticos</h2>
-        {nivelesMeta.map((n) => (
-          <div key={n.slug} className={styles.field}>
-            <label>{n.nombre}</label>
-            <textarea
-              value={form.niveles[n.slug] ?? ""}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  niveles: { ...form.niveles, [n.slug]: e.target.value },
-                })
-              }
-            />
+
+        <h2>Rúbricas de mesa (Capa 1)</h2>
+        <div className={styles.field}>
+          <label>Narrativas que difunden</label>
+          <textarea
+            value={form.narrativas ?? ""}
+            onChange={(e) => setForm({ ...form, narrativas: e.target.value })}
+          />
+        </div>
+        <div className={styles.field}>
+          <label>Argumentos que sostienen</label>
+          <textarea
+            value={form.argumentos ?? ""}
+            onChange={(e) => setForm({ ...form, argumentos: e.target.value })}
+          />
+        </div>
+        <div className={styles.field}>
+          <label>Ideología que proclaman</label>
+          <input
+            list="ideologias-list"
+            value={form.ideologia ?? ""}
+            onChange={(e) => setForm({ ...form, ideologia: e.target.value })}
+          />
+          <datalist id="ideologias-list">
+            {(mesa?.ideologias ?? []).map((i) => (
+              <option key={i.slug} value={i.nombre} />
+            ))}
+          </datalist>
+        </div>
+        <div className={styles.field}>
+          <label>Emociones que manifiestan</label>
+          <div className={styles.checkGrid}>
+            {(mesa?.emociones ?? []).map((e) => (
+              <label key={e.slug} className={styles.checkItem}>
+                <input
+                  type="checkbox"
+                  checked={(form.emociones ?? []).includes(e.slug)}
+                  onChange={() => toggleEmocion(e.slug)}
+                />
+                {e.nombre}
+              </label>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className={styles.field}>
+          <label>Relaciones endo-grupo</label>
+          <textarea
+            value={form.endo_grupo ?? ""}
+            onChange={(e) => setForm({ ...form, endo_grupo: e.target.value })}
+          />
+        </div>
+        <div className={styles.field}>
+          <label>Relaciones exo-grupo</label>
+          <textarea
+            value={form.exo_grupo ?? ""}
+            onChange={(e) => setForm({ ...form, exo_grupo: e.target.value })}
+          />
+        </div>
+        <div className={styles.field}>
+          <label>Coaliciones posibles (hipótesis de mesa)</label>
+          <textarea
+            value={form.coaliciones_posibles ?? ""}
+            onChange={(e) =>
+              setForm({ ...form, coaliciones_posibles: e.target.value })
+            }
+          />
+          <p className={styles.meta}>
+            Siempre se registran como hipótesis — no como predicción automática.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className={styles.btnGhost}
+          onClick={() => setNivelesOpen((o) => !o)}
+        >
+          {nivelesOpen ? "Ocultar" : "Mostrar"} niveles analíticos (Capa 2)
+        </button>
+        {nivelesOpen ? (
+          <>
+            <h2>Niveles analíticos (Capa 2)</h2>
+            {nivelesMeta.map((n) => (
+              <div key={n.slug} className={styles.field}>
+                <label>{n.nombre}</label>
+                <textarea
+                  value={form.niveles[n.slug] ?? ""}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      niveles: { ...form.niveles, [n.slug]: e.target.value },
+                    })
+                  }
+                />
+              </div>
+            ))}
+          </>
+        ) : null}
+
         <div className={styles.actions}>
           <button type="submit" className={styles.btn}>
             Guardar

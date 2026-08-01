@@ -2,12 +2,69 @@ from __future__ import annotations
 
 from typing import Any, Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 Semaforo = Literal["verde", "amarillo", "rojo"]
-EstadoVerificacion = Literal["declarado", "corroborado_demo"]
-Fuente = Literal["encuesta_demo", "bd_gobierno_demo", "campo_demo"]
+EstadoVerificacion = Literal["declarado", "corroborado_demo", "corroborado", "en_revision"]
+Fuente = Literal[
+    "encuesta_demo",
+    "bd_gobierno_demo",
+    "campo_demo",
+    "percepcion_local",
+    "encuesta_opinion",
+    "inegi_referencia",
+    "bd_gobierno",
+    "campo",
+]
+TipoDemanda = Literal["actual_in_situ", "historica_latente"]
+FaseCiclo = Literal[
+    "emergencia",
+    "articulacion",
+    "movilizacion",
+    "negociacion",
+    "resolucion_parcial",
+    "latencia",
+    "cierre",
+]
+SentidoCiclo = Literal["escalando", "estable", "desescalando"]
+TipoActor = Literal[
+    "liderazgo_vecinal",
+    "organizacion",
+    "movimiento",
+    "actor_institucional",
+    "generador_violencia",
+    "otro",
+]
+MetodoComprobacion = Literal["campo", "conteo_evento", "fuente_oficial", "otra"]
+TipoAccion = Literal[
+    "reunion",
+    "mitin",
+    "manifestacion",
+    "bloqueo",
+    "planton",
+    "comunicado",
+    "violencia",
+    "otra",
+]
+RespuestaGobierno = Literal[
+    "mesa_negociacion",
+    "concesion",
+    "negativa",
+    "silencio",
+    "represion",
+    "otra",
+    "no_aplica",
+]
+Reaccion = Literal[
+    "aceptacion_total",
+    "aceptacion_parcial",
+    "rechazo_total",
+    "rechazo_parcial",
+    "diferimiento",
+    "no_aplica",
+]
+RolSaeto = Literal["lector", "capturista", "analista", "analista_sensible", "admin"]
 
 
 class HealthResponse(BaseModel):
@@ -33,14 +90,25 @@ class ActorSummary(BaseModel):
     rol: str
     organizacion: str
     capacidad_movilizacion: int
+    capacidad_estimada: int = 0
+    capacidad_comprobada: int | None = None
+    fecha_comprobacion: str | None = None
+    metodo_comprobacion: MetodoComprobacion | None = None
+    tipo_actor: TipoActor = "liderazgo_vecinal"
     estado_verificacion: EstadoVerificacion
     reivindicaciones_abiertas: list[str]
+    movilizacion_display: int = 0
+    movilizacion_fuente: str = "estimada"
 
 
 class ActorDetail(ActorSummary):
     demo: bool = True
     notas_mesa: str
     reivindicaciones_nombres: list[str]
+    interes_declarado: str = ""
+    interes_reservado: str | None = None
+    recursos_poder: list[str] = Field(default_factory=list)
+    notas_poder: str = ""
 
 
 class ReivindicacionSummary(BaseModel):
@@ -57,11 +125,29 @@ class ReivindicacionSummary(BaseModel):
     deuda_historica: bool
     peso_opinion: int
     fuente: Fuente
+    tipo_demanda: TipoDemanda = "actual_in_situ"
+    fuentes_evidencia: list[str] = Field(default_factory=list)
+    fase_ciclo_vital: FaseCiclo = "emergencia"
+    fase_ciclo_nombre: str = "Emergencia"
+    grado_escalamiento: int = 1
+    sentido_ciclo: SentidoCiclo = "estable"
+    fecha_deteccion: str | None = None
+    fecha_ultima_actualizacion_ciclo: str | None = None
+
+
+class CicloHistorialEntry(BaseModel):
+    fase: FaseCiclo
+    fase_nombre: str = ""
+    fecha: str
+    origen: str = "revision"
+    nota: str = ""
 
 
 class ReivindicacionDetail(ReivindicacionSummary):
     demo: bool = True
     resumen_deuda: str
+    notas_ciclo: str = ""
+    historial_ciclo: list[CicloHistorialEntry] = Field(default_factory=list)
 
 
 class DiscursoSummary(BaseModel):
@@ -71,12 +157,56 @@ class DiscursoSummary(BaseModel):
     topico_principal: str
     subtopicos: list[str]
     audiencia: str
+    narrativas: str = ""
+    ideologia: str = ""
+    emociones: list[str] = Field(default_factory=list)
 
 
 class DiscursoDetail(DiscursoSummary):
     demo: bool = True
     niveles: dict[str, str]
     niveles_meta: list[dict[str, Any]]
+    argumentos: str = ""
+    endo_grupo: str = ""
+    exo_grupo: str = ""
+    coaliciones_posibles: str = ""
+    hipotesis_mesa: bool = True
+
+
+class CoyunturaSummary(BaseModel):
+    slug: str
+    fecha: str
+    actor: str | None = None
+    actor_nombre: str | None = None
+    demanda: str | None = None
+    demanda_nombre: str | None = None
+    tipo_accion: TipoAccion
+    tipo_accion_nombre: str = ""
+    respuesta_gobierno: RespuestaGobierno = "no_aplica"
+    reaccion: Reaccion = "no_aplica"
+
+
+class CoyunturaDetail(CoyunturaSummary):
+    demo: bool = True
+    descripcion_accion: str = ""
+    detalle_respuesta: str = ""
+    resultado: str = ""
+    impacto_ciclo: FaseCiclo | None = None
+    fuentes: list[str] = Field(default_factory=list)
+
+
+class IndicadorContexto(BaseModel):
+    slug: str
+    territorio: str
+    territorio_nombre: str = ""
+    zona: str = ""
+    clave: str
+    nombre: str
+    valor: float | str
+    anio: int
+    fuente: str = "INEGI"
+    nota: str = ""
+    demo: bool = True
 
 
 class BriefResponse(BaseModel):
@@ -86,6 +216,8 @@ class BriefResponse(BaseModel):
     actores_clave: list[ActorSummary]
     reivindicaciones_top: list[ReivindicacionSummary]
     conteo_semaforo: dict[str, int]
+    conteo_ciclo: dict[str, int] = Field(default_factory=dict)
+    escalando: int = 0
 
 
 class CatalogosResponse(BaseModel):
@@ -94,9 +226,10 @@ class CatalogosResponse(BaseModel):
     reivindicaciones: dict[str, Any]
     umbrales: dict[str, Any]
     discurso_niveles: dict[str, Any]
-
-
-# --- Escritura / captura ---
+    ciclo_vital: dict[str, Any] = Field(default_factory=dict)
+    coyuntura: dict[str, Any] = Field(default_factory=dict)
+    poder: dict[str, Any] = Field(default_factory=dict)
+    discurso_mesa: dict[str, Any] = Field(default_factory=dict)
 
 
 class ActorWrite(BaseModel):
@@ -105,10 +238,19 @@ class ActorWrite(BaseModel):
     zona: str
     rol: str
     organizacion: str
-    capacidad_movilizacion: int
+    capacidad_movilizacion: int | None = None
+    capacidad_estimada: int | None = None
+    capacidad_comprobada: int | None = None
+    fecha_comprobacion: str | None = None
+    metodo_comprobacion: MetodoComprobacion | None = None
+    tipo_actor: TipoActor = "liderazgo_vecinal"
     reivindicaciones_abiertas: list[str] = []
     estado_verificacion: EstadoVerificacion = "declarado"
     notas_mesa: str = ""
+    interes_declarado: str = ""
+    interes_reservado: str = ""
+    recursos_poder: list[str] = []
+    notas_poder: str = ""
     slug: str | None = None
 
 
@@ -119,8 +261,16 @@ class ReivindicacionWrite(BaseModel):
     intensidad: int
     deuda_historica: bool = False
     resumen_deuda: str = ""
-    fuente: Fuente = "campo_demo"
+    fuente: Fuente = "campo"
     peso_opinion: int = 50
+    tipo_demanda: TipoDemanda = "actual_in_situ"
+    fuentes_evidencia: list[str] = []
+    fase_ciclo_vital: FaseCiclo = "emergencia"
+    grado_escalamiento: int = 1
+    sentido_ciclo: SentidoCiclo = "estable"
+    fecha_deteccion: str | None = None
+    fecha_ultima_actualizacion_ciclo: str | None = None
+    notas_ciclo: str = ""
     slug: str | None = None
 
 
@@ -130,6 +280,41 @@ class DiscursoWrite(BaseModel):
     subtopicos: list[str] = []
     audiencia: str = ""
     niveles: dict[str, str] = {}
+    narrativas: str = ""
+    argumentos: str = ""
+    ideologia: str = ""
+    emociones: list[str] = []
+    endo_grupo: str = ""
+    exo_grupo: str = ""
+    coaliciones_posibles: str = ""
+    hipotesis_mesa: bool = True
+    slug: str | None = None
+
+
+class CoyunturaWrite(BaseModel):
+    fecha: str
+    actor: str | None = None
+    demanda: str | None = None
+    tipo_accion: TipoAccion
+    descripcion_accion: str = ""
+    respuesta_gobierno: RespuestaGobierno = "no_aplica"
+    detalle_respuesta: str = ""
+    reaccion: Reaccion = "no_aplica"
+    resultado: str = ""
+    impacto_ciclo: FaseCiclo | None = None
+    fuentes: list[str] = []
+    slug: str | None = None
+
+
+class IndicadorWrite(BaseModel):
+    territorio: str
+    zona: str = ""
+    clave: str
+    nombre: str
+    valor: float | str
+    anio: int
+    fuente: str = "INEGI"
+    nota: str = ""
     slug: str | None = None
 
 
@@ -156,3 +341,6 @@ class UmbralesCatalog(BaseModel):
 class DiscursoNivelesCatalog(BaseModel):
     niveles: list[dict[str, Any]]
 
+
+class RolContext(BaseModel):
+    rol: RolSaeto = "analista"
