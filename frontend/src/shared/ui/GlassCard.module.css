@@ -8,10 +8,22 @@
   padding: 1rem 1.1rem;
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
   color: inherit;
+  min-width: 0;
+  max-width: 100%;
 }
 
 a.card:hover {
   background: var(--glass-bg-strong);
   border-color: rgba(126, 184, 162, 0.45);
   transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 0.85rem 0.9rem;
+  }
+
+  a.card:hover {
+    transform: none;
+  }
 }

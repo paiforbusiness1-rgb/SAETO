@@ -74,3 +74,10 @@
   color: #f0a0a0;
   font-size: 0.9rem;
 }
+
+@media (max-width: 640px) {
+  .linkBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

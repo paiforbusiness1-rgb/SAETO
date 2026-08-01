@@ -72,7 +72,7 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
   gap: 1.25rem;
 }
 
@@ -82,6 +82,7 @@
   align-items: baseline;
   gap: 1rem;
   margin-bottom: 0.9rem;
+  flex-wrap: wrap;
 }
 
 .sectionHead h2 {
@@ -121,4 +122,15 @@
 
 .alerts li + li {
   margin-top: 0.45rem;
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .counts {
+    gap: 0.65rem 1rem;
+  }
 }

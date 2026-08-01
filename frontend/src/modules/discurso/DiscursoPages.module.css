@@ -42,6 +42,7 @@
   color: var(--text-primary);
   font-size: 0.95rem;
   cursor: pointer;
+  min-height: 2.75rem;
 }
 
 .trigger:hover {

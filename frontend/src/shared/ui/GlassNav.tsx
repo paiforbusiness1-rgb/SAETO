@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getSaetoRol, setSaetoRol } from "../api/client";
 import type { SaetoRol } from "../api/types";
@@ -26,28 +26,94 @@ const ROLES: { value: SaetoRol; label: string }[] = [
 
 export function GlassNav() {
   const [rol, setRol] = useState<SaetoRol>(getSaetoRol);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
 
   useEffect(() => {
     setRol(getSaetoRol());
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
 
   const onRolChange = (next: SaetoRol) => {
     setSaetoRol(next);
     setRol(next);
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className={styles.nav}>
-      <div className={styles.brand}>
-        <span className={styles.mark}>SAETO</span>
-        <span className={styles.sub}>Zona Oriente · CDMX</span>
+      <div className={styles.topRow}>
+        <div className={styles.brand}>
+          <span className={styles.mark}>SAETO</span>
+          <span className={styles.sub}>Zona Oriente · CDMX</span>
+        </div>
+
+        <div className={styles.topActions}>
+          <div className={styles.rolWrap}>
+            <label className={styles.rolLabel} htmlFor="saeto-rol">
+              Rol demo
+            </label>
+            <select
+              id="saeto-rol"
+              className={styles.rolSelect}
+              value={rol}
+              onChange={(e) => onRolChange(e.target.value as SaetoRol)}
+              title="Control de acceso demo para campos sensibles"
+            >
+              {ROLES.map((r) => (
+                <option key={r.value} value={r.value}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <span className={styles.badge}>DEMO</span>
+          <button
+            type="button"
+            className={styles.menuBtn}
+            aria-expanded={menuOpen}
+            aria-controls={menuId}
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            {menuOpen ? "Cerrar" : "Menú"}
+          </button>
+        </div>
       </div>
-      <nav className={styles.links} aria-label="Principal">
+
+      {menuOpen ? (
+        <button
+          type="button"
+          className={styles.backdrop}
+          aria-label="Cerrar menú"
+          onClick={closeMenu}
+        />
+      ) : null}
+
+      <nav
+        id={menuId}
+        className={`${styles.links} ${menuOpen ? styles.linksOpen : ""}`}
+        aria-label="Principal"
+      >
         {links.map((l) => (
           <NavLink
             key={l.to}
             to={l.to}
             end={l.to === "/"}
+            onClick={closeMenu}
             className={({ isActive }) =>
               isActive ? `${styles.link} ${styles.active}` : styles.link
             }
@@ -56,25 +122,6 @@ export function GlassNav() {
           </NavLink>
         ))}
       </nav>
-      <div className={styles.rolWrap}>
-        <label className={styles.rolLabel} htmlFor="saeto-rol">
-          Rol demo
-        </label>
-        <select
-          id="saeto-rol"
-          className={styles.rolSelect}
-          value={rol}
-          onChange={(e) => onRolChange(e.target.value as SaetoRol)}
-          title="Control de acceso demo para campos sensibles"
-        >
-          {ROLES.map((r) => (
-            <option key={r.value} value={r.value}>
-              {r.label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <span className={styles.badge}>DEMO</span>
     </header>
   );
 }

@@ -85,60 +85,64 @@ export function ReporteContextoInegiPage() {
       {data.brechas?.length ? (
         <GlassPanel>
           <h2 className={styles.sectionTitle}>Brecha percepción vs contexto</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Territorio</th>
-                <th>Demanda (percepción)</th>
-                <th>Peso / int.</th>
-                <th>Indicador</th>
-                <th>Lectura de mesa</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.brechas.map((b) => (
-                <tr key={`${b.demanda_slug}-${b.indicador}`}>
-                  <td>{b.territorio_nombre}</td>
-                  <td>
-                    <Link to={`/observatorio/${b.demanda_slug}`}>{b.demanda}</Link>
-                  </td>
-                  <td>
-                    {b.peso_opinion} / {b.intensidad}
-                  </td>
-                  <td>
-                    {b.indicador}: {b.valor_indicador} ({b.anio})
-                  </td>
-                  <td>{b.lectura}</td>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Territorio</th>
+                  <th>Demanda (percepción)</th>
+                  <th>Peso / int.</th>
+                  <th>Indicador</th>
+                  <th>Lectura de mesa</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.brechas.map((b) => (
+                  <tr key={`${b.demanda_slug}-${b.indicador}`}>
+                    <td>{b.territorio_nombre}</td>
+                    <td>
+                      <Link to={`/observatorio/${b.demanda_slug}`}>{b.demanda}</Link>
+                    </td>
+                    <td>
+                      {b.peso_opinion} / {b.intensidad}
+                    </td>
+                    <td>
+                      {b.indicador}: {b.valor_indicador} ({b.anio})
+                    </td>
+                    <td>{b.lectura}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </GlassPanel>
       ) : null}
 
       {data.por_territorio.map((t) => (
         <GlassPanel key={t.territorio}>
           <h2 className={styles.sectionTitle}>{t.territorio_nombre}</h2>
-          <table className={styles.table}>
-            <thead>
-              <tr>
-                <th>Indicador</th>
-                <th>Valor</th>
-                <th>Año</th>
-                <th>Fuente</th>
-              </tr>
-            </thead>
-            <tbody>
-              {t.indicadores.map((ind) => (
-                <tr key={ind.clave}>
-                  <td>{ind.nombre}</td>
-                  <td>{ind.valor}</td>
-                  <td>{ind.anio}</td>
-                  <td>{ind.fuente}</td>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Indicador</th>
+                  <th>Valor</th>
+                  <th>Año</th>
+                  <th>Fuente</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {t.indicadores.map((ind) => (
+                  <tr key={ind.clave}>
+                    <td>{ind.nombre}</td>
+                    <td>{ind.valor}</td>
+                    <td>{ind.anio}</td>
+                    <td>{ind.fuente}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </GlassPanel>
       ))}
     </div>

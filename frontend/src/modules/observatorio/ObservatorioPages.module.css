@@ -68,7 +68,8 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  min-width: 160px;
+  min-width: min(100%, 160px);
+  flex: 1 1 160px;
 }
 
 .filterField label {
@@ -83,6 +84,9 @@
   color: var(--text-primary);
   padding: 0.45rem 0.6rem;
   font: inherit;
+  width: 100%;
+  min-height: 2.75rem;
+  font-size: 16px;
 }
 
 .disclaimer {
@@ -109,4 +113,25 @@
 
 .histList li {
   margin-bottom: 0.45rem;
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filterField {
+    flex: 1 1 auto;
+    width: 100%;
+  }
 }
