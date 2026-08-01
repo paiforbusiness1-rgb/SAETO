@@ -85,10 +85,17 @@ def enrich_actor(raw: dict, include_sensible: bool = False) -> ActorSummary:
 
 
 def actor_detail(raw: dict, include_sensible: bool = False) -> ActorDetail:
+    from app.shared.seguridad import recursos_sensibles
+
     base = enrich_actor(raw, include_sensible=include_sensible)
     reservado = raw.get("interes_reservado") or ""
+    recursos = list(raw.get("recursos_poder") or [])
+    notas_poder = raw.get("notas_poder", "")
     if not include_sensible:
         reservado = None
+        bloqueados = set(recursos_sensibles(recursos))
+        recursos = [r for r in recursos if r not in bloqueados]
+        notas_poder = ""
     return ActorDetail(
         **base.model_dump(),
         notas_mesa=raw.get("notas_mesa", ""),
@@ -97,8 +104,8 @@ def actor_detail(raw: dict, include_sensible: bool = False) -> ActorDetail:
         ],
         interes_declarado=raw.get("interes_declarado", ""),
         interes_reservado=reservado,
-        recursos_poder=raw.get("recursos_poder", []),
-        notas_poder=raw.get("notas_poder", ""),
+        recursos_poder=recursos,
+        notas_poder=notas_poder,
     )
 
 

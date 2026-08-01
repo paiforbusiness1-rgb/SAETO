@@ -55,7 +55,9 @@ export function CapturaEncuestasListPage() {
       <p className={styles.lead}>
         Tres plantillas para evaluación: rápida de mesa, percepción ciudadana y
         diagnóstico de necesidades. Anonimizadas (sin nombre ni teléfono). Las
-        respuestas de captura se guardan en runtime local.
+        respuestas de captura se guardan en runtime local.{" "}
+        <strong>La encuesta no crea reivindicaciones solas</strong>: la mesa decide el
+        cruce con Observatorio.
       </p>
       <div className={styles.actions}>
         <Link to="/captura/encuestas/nueva" className={styles.btn}>

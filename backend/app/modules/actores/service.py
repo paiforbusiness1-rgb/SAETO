@@ -15,16 +15,25 @@ from app.shared.seguridad import (
 
 
 def list_actores(rol: str = "analista") -> list[ActorSummary]:
-    return [
-        enrich_actor(item, include_sensible=rol_ve_sensible(rol))
-        for item in seed_loader.load_actores_seed()["items"]
-    ]
+    ve = rol_ve_sensible(rol)
+    out: list[ActorSummary] = []
+    for item in seed_loader.load_actores_seed()["items"]:
+        if tipo_actor_es_sensible(item.get("tipo_actor")) and not ve:
+            continue
+        out.append(enrich_actor(item, include_sensible=ve))
+    return out
 
 
 def get_actor(slug: str, rol: str = "analista") -> ActorDetail:
     for item in seed_loader.load_actores_seed()["items"]:
         if item["slug"] == slug:
-            if rol_ve_sensible(rol) and item.get("interes_reservado"):
+            ve = rol_ve_sensible(rol)
+            if tipo_actor_es_sensible(item.get("tipo_actor")) and not ve:
+                raise HTTPException(
+                    status_code=404,
+                    detail="Actor no encontrado o requiere rol Analista sensible / Admin",
+                )
+            if ve and item.get("interes_reservado"):
                 seed_loader.append_audit(
                     {
                         "accion": "leer_interes_reservado",
@@ -32,7 +41,7 @@ def get_actor(slug: str, rol: str = "analista") -> ActorDetail:
                         "rol": rol,
                     }
                 )
-            return actor_detail(item, include_sensible=rol_ve_sensible(rol))
+            return actor_detail(item, include_sensible=ve)
     raise HTTPException(status_code=404, detail="Actor no encontrado")
 
 

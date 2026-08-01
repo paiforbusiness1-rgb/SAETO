@@ -23,7 +23,7 @@ const items = [
   {
     to: "/captura/encuestas",
     title: "Encuestas",
-    desc: "Rápida, percepción ciudadana y diagnóstico de necesidades",
+    desc: "Tres plantillas; no crean reivindicaciones solas",
   },
   {
     to: "/captura/discurso",

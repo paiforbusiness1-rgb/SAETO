@@ -23,7 +23,7 @@ const items = [
   {
     to: "/reportes/actores",
     title: "Mapa de poder",
-    desc: "Movilización estimada vs comprobada por liderazgo",
+    desc: "Ranking de movilización (no GIS) — estimada vs comprobada",
   },
   {
     to: "/reportes/coyuntura",
@@ -38,12 +38,12 @@ const items = [
   {
     to: "/reportes/contexto-inegi",
     title: "Contexto INEGI",
-    desc: "Indicadores referenciales por territorio (con disclaimer)",
+    desc: "Triplete colonia: demanda + indicador + encuesta (lectura de mesa)",
   },
   {
     to: "/reportes/encuestas",
     title: "Encuestas",
-    desc: "Rápida, percepción ciudadana y diagnóstico por colonia",
+    desc: "Percepción local; no crea reivindicaciones solas",
   },
   {
     to: "/reportes/deudas",

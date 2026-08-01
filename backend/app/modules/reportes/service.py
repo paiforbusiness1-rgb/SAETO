@@ -310,8 +310,16 @@ def reporte_discurso_mesa() -> dict:
 
 
 def reporte_contexto_inegi() -> dict:
+    from app.modules.encuestas import service as encuestas_service
+
     indicadores = observatorio_service.list_indicadores()
     reivs = observatorio_service.list_reivindicaciones()
+    encuestas = encuestas_service.list_encuestas()
+
+    por_encuesta: dict[str, int] = {}
+    for e in encuestas:
+        por_encuesta[e.colonia] = por_encuesta.get(e.colonia, 0) + 1
+
     por_territorio: dict[str, dict] = {}
     for ind in indicadores:
         b = por_territorio.setdefault(
@@ -343,16 +351,22 @@ def reporte_contexto_inegi() -> dict:
         if not local:
             continue
         top = max(local, key=lambda x: (x.peso_opinion, x.intensidad))
+        n_enc = por_encuesta.get(terr, 0)
         for ind in inds["indicadores"]:
             try:
                 valor_num = float(ind["valor"])
             except (TypeError, ValueError):
                 valor_num = None
-            lectura = (
-                "Alta percepción local vs indicador contextual — priorizar verificación de campo."
-                if top.peso_opinion >= 70 and (valor_num is None or valor_num < 80)
-                else "Contexto disponible; contrastar con evidencia in situ."
-            )
+            if top.peso_opinion >= 70 and (valor_num is None or valor_num < 80):
+                lectura = (
+                    "Alta percepción local vs indicador contextual — priorizar verificación de campo."
+                )
+            else:
+                lectura = "Contexto disponible; contrastar con evidencia in situ."
+            if n_enc:
+                lectura += f" Hay {n_enc} respuesta(s) de encuesta SAETO en la colonia."
+            else:
+                lectura += " Sin encuesta SAETO en esta colonia: capture percepción local."
             brechas.append(
                 {
                     "territorio": terr,
@@ -365,34 +379,90 @@ def reporte_contexto_inegi() -> dict:
                     "indicador": ind["nombre"],
                     "valor_indicador": ind["valor"],
                     "anio": ind["anio"],
+                    "respuestas_encuesta": n_enc,
                     "lectura": lectura,
                 }
             )
+
+    # Triplete explícito: misma colonia con indicador + demanda + encuesta
+    cruces_triplete = []
+    colonias_ref = set(por_territorio) | set(por_terr_reiv) | set(por_encuesta)
+    for terr in sorted(colonias_ref):
+        inds = por_territorio.get(terr)
+        local = por_terr_reiv.get(terr, [])
+        n_enc = por_encuesta.get(terr, 0)
+        if not inds or not local or not n_enc:
+            continue
+        top = max(local, key=lambda x: (x.peso_opinion, x.intensidad))
+        ind0 = inds["indicadores"][0]
+        try:
+            valor_num = float(ind0["valor"])
+        except (TypeError, ValueError):
+            valor_num = None
+        if top.peso_opinion >= 70 and (valor_num is None or valor_num < 80):
+            lectura = (
+                f"En {inds['territorio_nombre']}: la demanda «{top.tema_nombre}» "
+                f"(peso {top.peso_opinion}) choca con el indicador «{ind0['nombre']}» "
+                f"({ind0['valor']}, {ind0['anio']}) y se refuerza con {n_enc} encuesta(s). "
+                "Lectura de mesa: verificar en campo antes de priorizar recurso."
+            )
+        else:
+            lectura = (
+                f"En {inds['territorio_nombre']}: hay triplete completo "
+                f"(demanda + INEGI + {n_enc} encuesta(s)); contrastar sin sobredimensionar."
+            )
+        cruces_triplete.append(
+            {
+                "territorio": terr,
+                "territorio_nombre": inds["territorio_nombre"],
+                "demanda_slug": top.slug,
+                "demanda": f"{top.tema_nombre} · {inds['territorio_nombre']}",
+                "peso_opinion": top.peso_opinion,
+                "intensidad": top.intensidad,
+                "semaforo": top.semaforo,
+                "indicador": ind0["nombre"],
+                "valor_indicador": ind0["valor"],
+                "anio": ind0["anio"],
+                "respuestas_encuesta": n_enc,
+                "lectura": lectura,
+            }
+        )
+
+    cruces_triplete.sort(key=lambda x: (-x["respuestas_encuesta"], -x["peso_opinion"]))
+
+    if cruces_triplete:
+        lectura_gerencial = cruces_triplete[0]["lectura"]
+    elif brechas:
+        lectura_gerencial = (
+            f"{len(brechas)} cruces percepción–contexto en {len(por_territorio)} colonias."
+        )
+    elif indicadores:
+        lectura_gerencial = (
+            f"{len(indicadores)} indicadores referenciales; "
+            "cargue demandas, indicadores y encuestas en la misma colonia para el triplete."
+        )
+    else:
+        lectura_gerencial = "Sin indicadores de contexto cargados."
 
     return {
         "demo": True,
         "disclaimer": (
             "Indicadores referenciales (demo). No son levantamiento SAETO ni sustituyen "
             "la lectura de campo; sirven solo como contexto estadístico. "
-            "La 'brecha' es una lectura orientativa de mesa, no un índice estadístico oficial."
+            "La 'brecha' y el 'triplete' son lecturas orientativas de mesa, "
+            "no un índice estadístico oficial. La encuesta no crea reivindicaciones solas."
         ),
         "kpis": {
             "indicadores": len(indicadores),
             "territorios": len(por_territorio),
             "brechas": len(brechas),
+            "tripletes": len(cruces_triplete),
+            "encuestas": len(encuestas),
         },
         "por_territorio": list(por_territorio.values()),
         "brechas": brechas,
-        "lectura_gerencial": (
-            f"{len(brechas)} cruces percepción–contexto en {len(por_territorio)} colonias."
-            if brechas
-            else (
-                f"{len(indicadores)} indicadores referenciales; "
-                "cargue demandas e indicadores en el mismo territorio para ver brechas."
-                if indicadores
-                else "Sin indicadores de contexto cargados."
-            )
-        ),
+        "cruces_triplete": cruces_triplete,
+        "lectura_gerencial": lectura_gerencial,
     }
 
 

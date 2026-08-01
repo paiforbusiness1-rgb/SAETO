@@ -4,7 +4,7 @@
 **Para:** personal de mesa, enlace operativo y gerencia  
 **No requiere** conocimientos de programación  
 
-**Versión del manual:** 1.1 · agosto 2026  
+**Versión del manual:** 1.2 · agosto 2026  
 
 ---
 
@@ -48,7 +48,7 @@ No necesita instalar nada: Chrome, Edge o Firefox recomendados.
 | **Reivindicaciones** | Demandas con ciclo, evidencia y filtros | Analistas / mesa |
 | **Coyuntura** | Bitácora CÓMO | Analistas / mesa |
 | **Encuestas** | Percepción local rápida (anonimizada) | Capturista / mesa |
-| **Actores** | Fichas de liderazgos y poder | Analistas / mesa |
+| **Actores** | Ranking de liderazgos y poder (**no es mapa GIS**) | Analistas / mesa |
 | **Discurso** | Rúbricas de mesa + profundidad analítica | Analista de discurso |
 | **Catálogos** | Listas maestras (zonas, temas, semáforo…) | Quien configura |
 | **Captura** | Alta y edición de información | Operativo / captura |
@@ -159,11 +159,11 @@ En la ficha encontrará:
 | **Tablero ejecutivo** | ¿Dónde está el fuego hoy? |
 | **Ciclo vital** | ¿Qué demandas escalan y en qué fase están? |
 | **Calor territorial** | ¿Qué zona o colonia priorizar? |
-| **Mapa de poder** | ¿Quién moviliza más — y qué está verificado? |
+| **Mapa de poder** | ¿Quién moviliza más — y qué está verificado? (ranking, no GIS) |
 | **Bitácora coyuntura** | ¿Qué pasó, qué respondió el Estado y qué siguió? |
 | **Discurso de mesa** | ¿Qué narrativas y emociones dominan? |
-| **Contexto INEGI** | ¿Qué dice el contexto estadístico? ¿Hay brecha con la percepción? |
-| **Encuesta rápida** | ¿Qué problemas prioriza la gente en colonia? |
+| **Contexto INEGI** | ¿Hay triplete colonia (demanda + indicador + encuesta)? |
+| **Encuestas** | ¿Qué prioriza la gente? (no crea demandas solas) |
 | **Cuentas pendientes** | ¿Qué deudas históricas pesan? |
 
 El recuadro dorado de cada reporte es la **lectura gerencial** lista para mesa.
@@ -196,9 +196,11 @@ Intensidad, peso de opinión, deuda, y bloque **Evidencia y ciclo** (tipo, fuent
 ### 11.3 Coyuntura  
 Eventos del CÓMO; opcionalmente proponga impacto de fase para confirmar después.
 
-### 11.4 Encuestas rápidas  
-Captura **anonimizada** (sin nombre ni teléfono): fecha, colonia, edad, sexo, hasta 3 problemas prioritarios, satisfacción, confianza y seguridad percibida.  
-Alimenta el reporte de percepción local. No sustituye INEGI ni encuestas formales largas.
+### 11.4 Encuestas  
+Tres plantillas: **rápida de mesa**, **percepción ciudadana** y **diagnóstico de necesidades**.  
+Captura **anonimizada** (sin nombre ni teléfono). Colonia = comunidad del catálogo.  
+Alimenta reportes de percepción. **No sustituye INEGI** ni crea reivindicaciones automáticamente: la mesa decide el cruce en Observatorio.  
+Las respuestas nuevas se guardan en runtime local (`backend/data/runtime/encuestas.json`).
 
 ### 11.5 Discurso  
 Rúbricas de mesa primero; niveles analíticos después.
@@ -230,8 +232,17 @@ Qué resumen, alertas y destacados aparecen en la Sala.
 - [ ] Top demandas con fase clara  
 - [ ] Actores clave (estimado vs comprobado)  
 - [ ] Coyuntura reciente / confirmar fases si aplica  
-- [ ] Cuentas pendientes e INEGI (si aportan)  
+- [ ] Cuentas pendientes e INEGI (triplete si hay encuesta en la colonia)  
 - [ ] Una frase de lectura (recuadro de reportes)
+
+### Pruebas de campo (ensayo)
+
+Para el recorrido demo cerrado (Barrio Arriba) y el protocolo capturista/gerencia, use:
+
+- `docs/guion_demo_campo_saeto.md`  
+- `docs/checklist_qa_campo_saeto.md`  
+
+**Expectativas:** “Mapa” = ranking territorial, no GIS. Encuesta ≠ alta automática de demanda. Vercel puede ser solo vitrina; capture con disco escribible.
 
 ---
 

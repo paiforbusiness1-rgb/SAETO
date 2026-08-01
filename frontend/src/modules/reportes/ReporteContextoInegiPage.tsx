@@ -7,10 +7,29 @@ import { StateBlock } from "../../shared/ui/StateBlock";
 import { KpiTile } from "./charts";
 import styles from "./reportes.module.css";
 
+type FilaCruce = {
+  territorio_nombre: string;
+  demanda: string;
+  demanda_slug: string;
+  peso_opinion: number;
+  intensidad: number;
+  indicador: string;
+  valor_indicador: number | string;
+  anio: number;
+  respuestas_encuesta?: number;
+  lectura: string;
+};
+
 type ContextoInegiRep = {
   disclaimer: string;
   lectura_gerencial: string;
-  kpis: { indicadores: number; territorios: number; brechas: number };
+  kpis: {
+    indicadores: number;
+    territorios: number;
+    brechas: number;
+    tripletes?: number;
+    encuestas?: number;
+  };
   por_territorio: {
     territorio: string;
     territorio_nombre: string;
@@ -22,17 +41,8 @@ type ContextoInegiRep = {
       fuente: string;
     }[];
   }[];
-  brechas: {
-    territorio_nombre: string;
-    demanda: string;
-    demanda_slug: string;
-    peso_opinion: number;
-    intensidad: number;
-    indicador: string;
-    valor_indicador: number | string;
-    anio: number;
-    lectura: string;
-  }[];
+  brechas: FilaCruce[];
+  cruces_triplete?: FilaCruce[];
 };
 
 export function ReporteContextoInegiPage() {
@@ -74,13 +84,62 @@ export function ReporteContextoInegiPage() {
         <div className={styles.kpiGrid}>
           <KpiTile label="Indicadores" value={data.kpis.indicadores} />
           <KpiTile label="Territorios" value={data.kpis.territorios} />
-          <KpiTile label="Cruces / brechas" value={data.kpis.brechas ?? 0} />
+          <KpiTile label="Tripletes" value={data.kpis.tripletes ?? 0} />
+          <KpiTile label="Encuestas" value={data.kpis.encuestas ?? 0} />
         </div>
         <p className={styles.lectura}>{data.lectura_gerencial}</p>
         <p className={styles.meta}>
-          <Link to="/captura/indicadores">Capturar o editar indicadores →</Link>
+          <Link to="/captura/indicadores">Capturar indicadores →</Link>
+          {" · "}
+          <Link to="/captura/encuestas">Capturar encuestas →</Link>
+          {" · "}
+          <Link to="/reportes/encuestas">Reporte encuestas →</Link>
         </p>
       </GlassPanel>
+
+      {data.cruces_triplete?.length ? (
+        <GlassPanel>
+          <h2 className={styles.sectionTitle}>
+            Triplete de mesa: demanda + INEGI + encuesta
+          </h2>
+          <p className={styles.meta}>
+            Misma colonia con los tres insumos. Lectura orientativa — no crea demandas
+            solas ni es índice oficial.
+          </p>
+          <div className={styles.tableWrap}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Colonia</th>
+                  <th>Demanda</th>
+                  <th>Peso / int.</th>
+                  <th>Indicador INEGI</th>
+                  <th>Encuestas</th>
+                  <th>Lectura</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.cruces_triplete.map((b) => (
+                  <tr key={`t-${b.demanda_slug}-${b.indicador}`}>
+                    <td>{b.territorio_nombre}</td>
+                    <td>
+                      <Link to={`/observatorio/${b.demanda_slug}`}>{b.demanda}</Link>
+                    </td>
+                    <td>
+                      {b.peso_opinion} / {b.intensidad}
+                    </td>
+                    <td>
+                      {b.indicador}: {b.valor_indicador} ({b.anio})
+                    </td>
+                    <td>{b.respuestas_encuesta ?? 0}</td>
+                    <td>{b.lectura}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </GlassPanel>
+      ) : null}
 
       {data.brechas?.length ? (
         <GlassPanel>
@@ -93,6 +152,7 @@ export function ReporteContextoInegiPage() {
                   <th>Demanda (percepción)</th>
                   <th>Peso / int.</th>
                   <th>Indicador</th>
+                  <th>Encuestas</th>
                   <th>Lectura de mesa</th>
                 </tr>
               </thead>
@@ -109,6 +169,7 @@ export function ReporteContextoInegiPage() {
                     <td>
                       {b.indicador}: {b.valor_indicador} ({b.anio})
                     </td>
+                    <td>{b.respuestas_encuesta ?? 0}</td>
                     <td>{b.lectura}</td>
                   </tr>
                 ))}

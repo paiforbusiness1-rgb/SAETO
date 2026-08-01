@@ -43,7 +43,9 @@ export function ActoresListPage() {
       <BotonVolver />
       <h1>Mapa de actores</h1>
       <p className={styles.lead}>
-        Liderazgos, organizaciones y capacidad de movilización (datos demo).
+        Ranking territorial de liderazgos y movilización (estimada / comprobada).{" "}
+        <strong>No es un mapa GIS</strong>: ubica por colonia/zona del catálogo, no
+        cartografía.
       </p>
       {loading ? (
         <StateBlock>Cargando…</StateBlock>

@@ -110,6 +110,33 @@
         "prestigio"
       ],
       "notas_poder": ""
+    },
+    {
+      "slug": "actor-demo-oriente-01",
+      "nombre": "Actor demo Oriente-01",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "rol": "Perfil de riesgo (demo)",
+      "organizacion": "Nodo anónimo — datos de demostración",
+      "capacidad_movilizacion": 25,
+      "reivindicaciones_abiertas": [
+        "agua"
+      ],
+      "estado_verificacion": "declarado",
+      "notas_mesa": "Ficha ANONIMIZADA para ensayo de roles. No representa persona real. Solo visible con rol Analista sensible / Admin.",
+      "capacidad_estimada": 35,
+      "capacidad_comprobada": null,
+      "fecha_comprobacion": null,
+      "metodo_comprobacion": null,
+      "tipo_actor": "generador_violencia",
+      "interes_declarado": "Presión por servicio de agua en la colonia",
+      "interes_reservado": "DEMO — control de ruta de bloqueo y disuasión de interlocutores rivales (ficticio)",
+      "recursos_poder": [
+        "movilizacion",
+        "violencia",
+        "financiamiento"
+      ],
+      "notas_poder": "Recursos sensibles de demostración; contrastar siempre en campo."
     }
   ]
 }
