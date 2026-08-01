@@ -230,6 +230,39 @@ class CatalogosResponse(BaseModel):
     coyuntura: dict[str, Any] = Field(default_factory=dict)
     poder: dict[str, Any] = Field(default_factory=dict)
     discurso_mesa: dict[str, Any] = Field(default_factory=dict)
+    encuesta_rapida: dict[str, Any] = Field(default_factory=dict)
+    encuestas_plantillas: list[dict[str, Any]] = Field(default_factory=list)
+
+
+class EncuestaSummary(BaseModel):
+    slug: str
+    fecha: str
+    plantilla: str = "rapida_mesa"
+    plantilla_nombre: str = ""
+    colonia: str
+    colonia_nombre: str = ""
+    zona: str
+    zona_nombre: str = ""
+    edad: str | None = None
+    sexo: str | None = None
+    problemas_prioridad: list[str] = Field(default_factory=list)
+    demo: bool = False
+
+
+class EncuestaDetail(EncuestaSummary):
+    respuestas: dict[str, Any] = Field(default_factory=dict)
+    notas_mesa: str = ""
+    plantilla_meta: dict[str, Any] = Field(default_factory=dict)
+
+
+class EncuestaWrite(BaseModel):
+    fecha: str
+    colonia: str
+    zona: str = ""
+    respuestas: dict[str, Any] = Field(default_factory=dict)
+    notas_mesa: str = ""
+    plantilla: str = "rapida_mesa"
+    slug: str | None = None
 
 
 class ActorWrite(BaseModel):

@@ -1,0 +1,23 @@
+{
+  "demo": true,
+  "plantillas": [
+    {
+      "slug": "rapida_mesa",
+      "nombre": "Encuesta rápida de mesa",
+      "archivo": "encuesta-rapida.json",
+      "orden": 1
+    },
+    {
+      "slug": "percepcion_ciudadana",
+      "nombre": "Encuesta de Percepción Ciudadana de la zona",
+      "archivo": "encuesta-percepcion-ciudadana.json",
+      "orden": 2
+    },
+    {
+      "slug": "diagnostico_necesidades",
+      "nombre": "Encuesta de Diagnóstico de Necesidades de la zona",
+      "archivo": "encuesta-diagnostico-necesidades.json",
+      "orden": 3
+    }
+  ]
+}

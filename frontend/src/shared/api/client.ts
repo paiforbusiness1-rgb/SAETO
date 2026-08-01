@@ -7,6 +7,9 @@ import type {
   CoyunturaSummary,
   DiscursoDetail,
   DiscursoSummary,
+  EncuestaDetail,
+  EncuestaPlantilla,
+  EncuestaSummary,
   Health,
   IndicadorContexto,
   ReivindicacionDetail,
@@ -178,6 +181,16 @@ export type IndicadorWrite = {
   slug?: string | null;
 };
 
+export type EncuestaWrite = {
+  fecha: string;
+  colonia: string;
+  zona?: string;
+  respuestas: Record<string, string | string[] | number>;
+  notas_mesa?: string;
+  plantilla?: string;
+  slug?: string | null;
+};
+
 export type BriefWrite = {
   resumen_ejecutivo: string;
   alertas_coyuntura: string[];
@@ -273,6 +286,27 @@ export const api = {
       demanda_nombre: string;
     }>(`/api/coyuntura/${slug}/aplicar-fase`, "POST"),
 
+  encuestas: (params?: { colonia?: string; plantilla?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.colonia) q.set("colonia", params.colonia);
+    if (params?.plantilla) q.set("plantilla", params.plantilla);
+    const suffix = q.toString() ? `?${q}` : "";
+    return apiGet<EncuestaSummary[]>(`/api/encuestas${suffix}`);
+  },
+  encuestaPlantillas: () =>
+    apiGet<
+      { slug: string; nombre: string; disclaimer?: string; preguntas_count?: number }[]
+    >("/api/encuestas/plantillas"),
+  encuestaPlantilla: (slug: string) =>
+    apiGet<EncuestaPlantilla>(`/api/encuestas/plantillas/${slug}`),
+  encuesta: (slug: string) => apiGet<EncuestaDetail>(`/api/encuestas/${slug}`),
+  createEncuesta: (body: EncuestaWrite) =>
+    apiSend<EncuestaDetail>("/api/encuestas", "POST", body),
+  updateEncuesta: (slug: string, body: EncuestaWrite) =>
+    apiSend<EncuestaDetail>(`/api/encuestas/${slug}`, "PUT", body),
+  deleteEncuesta: (slug: string) =>
+    apiSend<{ ok: boolean }>(`/api/encuestas/${slug}`, "DELETE"),
+
   catalogoTerritorio: () =>
     apiGet<{
       zonas: { slug: string; nombre: string }[];
@@ -304,4 +338,10 @@ export const api = {
   reporteCoyuntura: () => apiGet<any>("/api/reportes/coyuntura"),
   reporteDiscursoMesa: () => apiGet<any>("/api/reportes/discurso-mesa"),
   reporteContextoInegi: () => apiGet<any>("/api/reportes/contexto-inegi"),
+  reporteEncuestas: (params?: { plantilla?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.plantilla) q.set("plantilla", params.plantilla);
+    const suffix = q.toString() ? `?${q}` : "";
+    return apiGet<any>(`/api/reportes/encuestas${suffix}`);
+  },
 };

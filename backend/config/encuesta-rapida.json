@@ -1,0 +1,204 @@
+{
+  "slug": "rapida_mesa",
+  "nombre": "Encuesta rápida de mesa",
+  "disclaimer": "Captura anonimizada para percepción local. Sin nombre ni teléfono. No sustituye levantamientos formales ni INEGI.",
+  "max_problemas_prioridad": 3,
+  "preguntas": [
+    {
+      "slug": "edad",
+      "texto": "Edad",
+      "tipo": "opcion_unica",
+      "bloque": "demografico",
+      "obligatoria": true,
+      "orden": 1,
+      "opciones": [
+        {
+          "slug": "menor_18",
+          "nombre": "Menor de 18"
+        },
+        {
+          "slug": "18_29",
+          "nombre": "18 a 29"
+        },
+        {
+          "slug": "30_44",
+          "nombre": "30 a 44"
+        },
+        {
+          "slug": "45_59",
+          "nombre": "45 a 59"
+        },
+        {
+          "slug": "60_mas",
+          "nombre": "60 o más"
+        }
+      ]
+    },
+    {
+      "slug": "sexo",
+      "texto": "Sexo",
+      "tipo": "opcion_unica",
+      "bloque": "demografico",
+      "obligatoria": true,
+      "orden": 2,
+      "opciones": [
+        {
+          "slug": "mujer",
+          "nombre": "Mujer"
+        },
+        {
+          "slug": "hombre",
+          "nombre": "Hombre"
+        },
+        {
+          "slug": "otro",
+          "nombre": "Otro"
+        },
+        {
+          "slug": "prefiero_no",
+          "nombre": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "slug": "problemas_prioridad",
+      "texto": "Tres principales problemas de su colonia",
+      "tipo": "opcion_multiple",
+      "bloque": "prioridades",
+      "obligatoria": true,
+      "orden": 3,
+      "max_selecciones": 3,
+      "opciones": [
+        {
+          "slug": "agua",
+          "nombre": "Agua / tandeo"
+        },
+        {
+          "slug": "basura",
+          "nombre": "Basura"
+        },
+        {
+          "slug": "seguridad",
+          "nombre": "Seguridad"
+        },
+        {
+          "slug": "calles",
+          "nombre": "Calles / baches"
+        },
+        {
+          "slug": "transporte",
+          "nombre": "Transporte"
+        },
+        {
+          "slug": "empleo",
+          "nombre": "Empleo"
+        },
+        {
+          "slug": "alumbrado",
+          "nombre": "Alumbrado"
+        },
+        {
+          "slug": "otro",
+          "nombre": "Otro"
+        }
+      ]
+    },
+    {
+      "slug": "satisfaccion_zona",
+      "texto": "¿Qué tan satisfecho(a) está con vivir en esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "percepcion",
+      "obligatoria": true,
+      "orden": 4,
+      "opciones": [
+        {
+          "slug": "muy_satisfecho",
+          "nombre": "Muy satisfecho(a)"
+        },
+        {
+          "slug": "satisfecho",
+          "nombre": "Satisfecho(a)"
+        },
+        {
+          "slug": "neutral",
+          "nombre": "Ni satisfecho(a) ni insatisfecho(a)"
+        },
+        {
+          "slug": "insatisfecho",
+          "nombre": "Insatisfecho(a)"
+        },
+        {
+          "slug": "muy_insatisfecho",
+          "nombre": "Muy insatisfecho(a)"
+        }
+      ]
+    },
+    {
+      "slug": "confianza_gobierno",
+      "texto": "¿Qué tanto confía en el gobierno?",
+      "tipo": "opcion_unica",
+      "bloque": "percepcion",
+      "obligatoria": true,
+      "orden": 5,
+      "opciones": [
+        {
+          "slug": "mucho",
+          "nombre": "Mucho"
+        },
+        {
+          "slug": "algo",
+          "nombre": "Algo"
+        },
+        {
+          "slug": "poco",
+          "nombre": "Poco"
+        },
+        {
+          "slug": "nada",
+          "nombre": "Nada"
+        }
+      ]
+    },
+    {
+      "slug": "seguridad_percibida",
+      "texto": "¿Qué tan seguro(a) se siente en su colonia?",
+      "tipo": "opcion_unica",
+      "bloque": "percepcion",
+      "obligatoria": true,
+      "orden": 6,
+      "opciones": [
+        {
+          "slug": "muy_seguro",
+          "nombre": "Muy seguro(a)"
+        },
+        {
+          "slug": "seguro",
+          "nombre": "Seguro(a)"
+        },
+        {
+          "slug": "poco_seguro",
+          "nombre": "Poco seguro(a)"
+        },
+        {
+          "slug": "nada_seguro",
+          "nombre": "Nada seguro(a)"
+        }
+      ]
+    }
+  ],
+  "clave_prioridades": "problemas_prioridad",
+  "bloques": [
+    {
+      "slug": "demografico",
+      "nombre": "Datos generales"
+    },
+    {
+      "slug": "prioridades",
+      "nombre": "Prioridades"
+    },
+    {
+      "slug": "percepcion",
+      "nombre": "Percepción"
+    }
+  ]
+}

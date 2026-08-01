@@ -9,6 +9,7 @@ const links = [
   { to: "/reportes", label: "Reportes" },
   { to: "/observatorio", label: "Reivindicaciones" },
   { to: "/coyuntura", label: "Coyuntura" },
+  { to: "/encuestas", label: "Encuestas" },
   { to: "/actores", label: "Actores" },
   { to: "/discurso", label: "Discurso" },
   { to: "/catalogos", label: "Catálogos" },

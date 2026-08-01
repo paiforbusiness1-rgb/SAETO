@@ -13,6 +13,10 @@ import {
   CapturaDiscursoFormPage,
   CapturaDiscursoListPage,
 } from "../modules/captura/CapturaDiscursoPages";
+import {
+  CapturaEncuestaFormPage,
+  CapturaEncuestasListPage,
+} from "../modules/captura/CapturaEncuestasPages";
 import { CapturaHubPage } from "../modules/captura/CapturaHubPage";
 import { CapturaIndicadoresPage } from "../modules/captura/CapturaIndicadoresPage";
 import {
@@ -31,6 +35,7 @@ import {
   DiscursoDetailPage,
   DiscursoListPage,
 } from "../modules/discurso/DiscursoPages";
+import { EncuestaDetailPage, EncuestasListPage } from "../modules/encuestas/EncuestasPages";
 import {
   ObservatorioDetailPage,
   ObservatorioListPage,
@@ -41,6 +46,7 @@ import { ReporteContextoInegiPage } from "../modules/reportes/ReporteContextoIne
 import { ReporteCoyunturaPage } from "../modules/reportes/ReporteCoyunturaPage";
 import { ReporteDeudasPage } from "../modules/reportes/ReporteDeudasPage";
 import { ReporteDiscursoMesaPage } from "../modules/reportes/ReporteDiscursoMesaPage";
+import { ReporteEncuestasPage } from "../modules/reportes/ReporteEncuestasPage";
 import { ReporteEjecutivoPage } from "../modules/reportes/ReporteEjecutivoPage";
 import { ReporteTerritorioPage } from "../modules/reportes/ReporteTerritorioPage";
 import { ReportesHubPage } from "../modules/reportes/ReportesHubPage";
@@ -57,6 +63,7 @@ export function AppRoutes() {
       <Route path="/reportes/coyuntura" element={<ReporteCoyunturaPage />} />
       <Route path="/reportes/discurso-mesa" element={<ReporteDiscursoMesaPage />} />
       <Route path="/reportes/contexto-inegi" element={<ReporteContextoInegiPage />} />
+      <Route path="/reportes/encuestas" element={<ReporteEncuestasPage />} />
       <Route path="/reportes/deudas" element={<ReporteDeudasPage />} />
 
       <Route path="/observatorio" element={<ObservatorioListPage />} />
@@ -64,6 +71,9 @@ export function AppRoutes() {
 
       <Route path="/coyuntura" element={<CoyunturaListPage />} />
       <Route path="/coyuntura/:slug" element={<CoyunturaDetailPage />} />
+
+      <Route path="/encuestas" element={<EncuestasListPage />} />
+      <Route path="/encuestas/:slug" element={<EncuestaDetailPage />} />
 
       <Route path="/actores" element={<ActoresListPage />} />
       <Route path="/actores/:slug" element={<ActorDetailPage />} />
@@ -86,6 +96,8 @@ export function AppRoutes() {
       />
       <Route path="/captura/coyuntura" element={<CapturaCoyunturaListPage />} />
       <Route path="/captura/coyuntura/:slug" element={<CapturaCoyunturaFormPage />} />
+      <Route path="/captura/encuestas" element={<CapturaEncuestasListPage />} />
+      <Route path="/captura/encuestas/:slug" element={<CapturaEncuestaFormPage />} />
       <Route path="/captura/discurso" element={<CapturaDiscursoListPage />} />
       <Route path="/captura/discurso/:slug" element={<CapturaDiscursoFormPage />} />
       <Route path="/captura/indicadores" element={<CapturaIndicadoresPage />} />

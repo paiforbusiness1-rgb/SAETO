@@ -28,12 +28,17 @@ def clear_all_caches() -> None:
         load_coyuntura_catalogos,
         load_poder_recursos,
         load_discurso_mesa,
+        load_encuestas_indice,
+        load_plantilla_encuesta,
+        load_encuesta_rapida,
         load_actores_seed,
         load_reivindicaciones_seed,
         load_discurso_seed,
         load_brief_seed,
         load_coyuntura_seed,
         load_indicadores_seed,
+        load_encuestas_seed,
+        load_encuestas_data,
     ):
         fn.cache_clear()
 
@@ -79,6 +84,57 @@ def load_discurso_mesa() -> dict[str, Any]:
 
 
 @lru_cache(maxsize=1)
+def load_encuestas_indice() -> dict[str, Any]:
+    path = CONFIG_DIR / "encuestas-plantillas.json"
+    if not path.exists():
+        return {
+            "demo": True,
+            "plantillas": [
+                {
+                    "slug": "rapida_mesa",
+                    "nombre": "Encuesta rápida de mesa",
+                    "archivo": "encuesta-rapida.json",
+                    "orden": 1,
+                }
+            ],
+        }
+    return _read_json(path)
+
+
+@lru_cache(maxsize=16)
+def load_plantilla_encuesta(slug: str) -> dict[str, Any]:
+    for meta in load_encuestas_indice().get("plantillas", []):
+        if meta.get("slug") == slug:
+            return _read_json(CONFIG_DIR / meta["archivo"])
+    raise KeyError(f"Plantilla de encuesta desconocida: {slug}")
+
+
+@lru_cache(maxsize=1)
+def load_encuesta_rapida() -> dict[str, Any]:
+    try:
+        return load_plantilla_encuesta("rapida_mesa")
+    except KeyError:
+        return _read_json(CONFIG_DIR / "encuesta-rapida.json")
+
+
+def list_plantillas_encuesta() -> list[dict[str, Any]]:
+    items = list(load_encuestas_indice().get("plantillas", []))
+    out: list[dict[str, Any]] = []
+    for meta in sorted(items, key=lambda x: x.get("orden", 99)):
+        plantilla = load_plantilla_encuesta(meta["slug"])
+        out.append(
+            {
+                "slug": meta["slug"],
+                "nombre": plantilla.get("nombre") or meta.get("nombre", meta["slug"]),
+                "disclaimer": plantilla.get("disclaimer", ""),
+                "orden": meta.get("orden", 99),
+                "preguntas_count": len(plantilla.get("preguntas", [])),
+            }
+        )
+    return out
+
+
+@lru_cache(maxsize=1)
 def load_actores_seed() -> dict[str, Any]:
     return _read_json(DEMO_DIR / "actores.seed.json")
 
@@ -112,6 +168,39 @@ def load_indicadores_seed() -> dict[str, Any]:
     if not path.exists():
         return {"demo": True, "items": []}
     return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_encuestas_seed() -> dict[str, Any]:
+    path = DEMO_DIR / "encuestas.seed.json"
+    if not path.exists():
+        return {"demo": True, "items": []}
+    return _read_json(path)
+
+
+def _encuestas_runtime_path() -> Path:
+    return RUNTIME_DIR / "encuestas.json"
+
+
+def ensure_encuestas_runtime() -> Path:
+    """Bootstrap runtime desde seed demo si aún no existe (captura de evaluación)."""
+    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
+    path = _encuestas_runtime_path()
+    if not path.exists():
+        atomic_write_json(path, load_encuestas_seed())
+    return path
+
+
+@lru_cache(maxsize=1)
+def load_encuestas_data() -> dict[str, Any]:
+    path = ensure_encuestas_runtime()
+    return _read_json(path)
+
+
+def save_encuestas_data(data: dict[str, Any]) -> None:
+    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(_encuestas_runtime_path(), data)
+    clear_all_caches()
 
 
 def save_territorio(data: dict[str, Any]) -> None:
@@ -161,6 +250,12 @@ def save_coyuntura_seed(data: dict[str, Any]) -> None:
 
 def save_indicadores_seed(data: dict[str, Any]) -> None:
     atomic_write_json(DEMO_DIR / "indicadores_contexto.seed.json", data)
+    clear_all_caches()
+
+
+def save_encuestas_seed(data: dict[str, Any]) -> None:
+    """Solo fixtures versionados. La captura operativa usa save_encuestas_data."""
+    atomic_write_json(DEMO_DIR / "encuestas.seed.json", data)
     clear_all_caches()
 
 

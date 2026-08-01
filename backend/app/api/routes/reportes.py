@@ -43,3 +43,8 @@ def discurso_mesa():
 @router.get("/contexto-inegi")
 def contexto_inegi():
     return service.reporte_contexto_inegi()
+
+
+@router.get("/encuestas")
+def encuestas(plantilla: str | None = None):
+    return service.reporte_encuestas(plantilla_filtro=plantilla)

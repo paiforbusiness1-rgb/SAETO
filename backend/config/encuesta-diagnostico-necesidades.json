@@ -1,0 +1,676 @@
+{
+  "slug": "diagnostico_necesidades",
+  "nombre": "Encuesta de Diagnóstico de Necesidades de la zona",
+  "disclaimer": "Identifica necesidades y problemáticas para orientar planeación y políticas públicas. Confidencial, sin nombre ni teléfono. No sustituye levantamientos formales ni INEGI. La zona/comunidad se registra con la colonia del catálogo territorial.",
+  "max_problemas_prioridad": 3,
+  "clave_prioridades": "prioridades_comunidad",
+  "bloques": [
+    {
+      "slug": "datos",
+      "nombre": "I. Datos generales"
+    },
+    {
+      "slug": "servicios",
+      "nombre": "II. Servicios públicos"
+    },
+    {
+      "slug": "salud",
+      "nombre": "III. Salud"
+    },
+    {
+      "slug": "educacion",
+      "nombre": "IV. Educación"
+    },
+    {
+      "slug": "economia",
+      "nombre": "V. Economía y empleo"
+    },
+    {
+      "slug": "seguridad",
+      "nombre": "VI. Seguridad"
+    },
+    {
+      "slug": "prioridades",
+      "nombre": "VII. Prioridades de la comunidad"
+    }
+  ],
+  "preguntas": [
+    {
+      "slug": "edad",
+      "texto": "Edad",
+      "tipo": "opcion_unica",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 1,
+      "opciones": [
+        {
+          "slug": "menor_18",
+          "nombre": "Menor de 18 años"
+        },
+        {
+          "slug": "18_29",
+          "nombre": "18 a 29 años"
+        },
+        {
+          "slug": "30_44",
+          "nombre": "30 a 44 años"
+        },
+        {
+          "slug": "45_59",
+          "nombre": "45 a 59 años"
+        },
+        {
+          "slug": "60_mas",
+          "nombre": "60 años o más"
+        }
+      ]
+    },
+    {
+      "slug": "sexo",
+      "texto": "Sexo",
+      "tipo": "opcion_unica",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 2,
+      "opciones": [
+        {
+          "slug": "mujer",
+          "nombre": "Mujer"
+        },
+        {
+          "slug": "hombre",
+          "nombre": "Hombre"
+        },
+        {
+          "slug": "otro",
+          "nombre": "Otro"
+        },
+        {
+          "slug": "prefiero_no",
+          "nombre": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "slug": "personas_hogar",
+      "texto": "Número de personas que habitan en su hogar",
+      "tipo": "numero",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 3,
+      "opciones": []
+    },
+    {
+      "slug": "menores_hogar",
+      "texto": "¿Cuántos menores de edad viven en su hogar?",
+      "tipo": "opcion_unica",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 4,
+      "opciones": [
+        {
+          "slug": "ninguno",
+          "nombre": "Ninguno"
+        },
+        {
+          "slug": "1_2",
+          "nombre": "1-2"
+        },
+        {
+          "slug": "3_4",
+          "nombre": "3-4"
+        },
+        {
+          "slug": "mas_4",
+          "nombre": "Más de 4"
+        }
+      ]
+    },
+    {
+      "slug": "agua_potable",
+      "texto": "¿Su vivienda cuenta con agua potable?",
+      "tipo": "opcion_unica",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 5,
+      "opciones": [
+        {
+          "slug": "continua",
+          "nombre": "Sí, de manera continua"
+        },
+        {
+          "slug": "interrupciones",
+          "nombre": "Sí, pero con interrupciones frecuentes"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "drenaje",
+      "texto": "¿Cuenta con drenaje?",
+      "tipo": "opcion_unica",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 6,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "basura_califica",
+      "texto": "¿Cómo califica el servicio de recolección de basura?",
+      "tipo": "opcion_unica",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 7,
+      "opciones": [
+        {
+          "slug": "muy_bueno",
+          "nombre": "Muy bueno"
+        },
+        {
+          "slug": "bueno",
+          "nombre": "Bueno"
+        },
+        {
+          "slug": "regular",
+          "nombre": "Regular"
+        },
+        {
+          "slug": "malo",
+          "nombre": "Malo"
+        },
+        {
+          "slug": "muy_malo",
+          "nombre": "Muy malo"
+        }
+      ]
+    },
+    {
+      "slug": "estado_calles",
+      "texto": "¿Cómo considera el estado de las calles de esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 8,
+      "opciones": [
+        {
+          "slug": "muy_bueno",
+          "nombre": "Muy bueno"
+        },
+        {
+          "slug": "bueno",
+          "nombre": "Bueno"
+        },
+        {
+          "slug": "regular",
+          "nombre": "Regular"
+        },
+        {
+          "slug": "malo",
+          "nombre": "Malo"
+        },
+        {
+          "slug": "muy_malo",
+          "nombre": "Muy malo"
+        }
+      ]
+    },
+    {
+      "slug": "alumbrado_suficiente",
+      "texto": "¿Existe suficiente alumbrado público en su comunidad?",
+      "tipo": "opcion_unica",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 9,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "servicio_salud",
+      "texto": "¿Cuenta con algún servicio de salud?",
+      "tipo": "opcion_unica",
+      "bloque": "salud",
+      "obligatoria": true,
+      "orden": 10,
+      "opciones": [
+        {
+          "slug": "imss",
+          "nombre": "IMSS"
+        },
+        {
+          "slug": "issste",
+          "nombre": "ISSSTE"
+        },
+        {
+          "slug": "insabi",
+          "nombre": "INSABI/Servicios estatales"
+        },
+        {
+          "slug": "privado",
+          "nombre": "Privado"
+        },
+        {
+          "slug": "ninguno",
+          "nombre": "Ninguno"
+        }
+      ]
+    },
+    {
+      "slug": "acceso_medico",
+      "texto": "¿Qué tan fácil es acceder a servicios médicos en la zona donde vive?",
+      "tipo": "opcion_unica",
+      "bloque": "salud",
+      "obligatoria": true,
+      "orden": 11,
+      "opciones": [
+        {
+          "slug": "muy_facil",
+          "nombre": "Muy fácil"
+        },
+        {
+          "slug": "facil",
+          "nombre": "Fácil"
+        },
+        {
+          "slug": "dificil",
+          "nombre": "Difícil"
+        },
+        {
+          "slug": "muy_dificil",
+          "nombre": "Muy difícil"
+        }
+      ]
+    },
+    {
+      "slug": "necesidad_salud",
+      "texto": "¿Cuál es la principal necesidad en materia de salud?",
+      "tipo": "opcion_unica",
+      "bloque": "salud",
+      "obligatoria": true,
+      "orden": 12,
+      "opciones": [
+        {
+          "slug": "centros",
+          "nombre": "Más centros de salud"
+        },
+        {
+          "slug": "medicamentos",
+          "nombre": "Medicamentos"
+        },
+        {
+          "slug": "especialistas",
+          "nombre": "Especialistas"
+        },
+        {
+          "slug": "psicologica",
+          "nombre": "Atención psicológica"
+        },
+        {
+          "slug": "urgencias",
+          "nombre": "Servicios de urgencias"
+        }
+      ]
+    },
+    {
+      "slug": "escuelas_cerca",
+      "texto": "¿Hay suficientes escuelas cerca de su domicilio?",
+      "tipo": "opcion_unica",
+      "bloque": "educacion",
+      "obligatoria": true,
+      "orden": 13,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "problema_educativo",
+      "texto": "¿Cuál considera que es el principal problema educativo de esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "educacion",
+      "obligatoria": true,
+      "orden": 14,
+      "opciones": [
+        {
+          "slug": "falta_escuelas",
+          "nombre": "Falta de escuelas"
+        },
+        {
+          "slug": "desercion",
+          "nombre": "Deserción escolar"
+        },
+        {
+          "slug": "infraestructura",
+          "nombre": "Infraestructura deficiente"
+        },
+        {
+          "slug": "becas",
+          "nombre": "Falta de becas"
+        },
+        {
+          "slug": "internet",
+          "nombre": "Falta de acceso a internet"
+        }
+      ]
+    },
+    {
+      "slug": "situacion_laboral",
+      "texto": "Situación laboral actual",
+      "tipo": "opcion_unica",
+      "bloque": "economia",
+      "obligatoria": true,
+      "orden": 15,
+      "opciones": [
+        {
+          "slug": "empleado",
+          "nombre": "Empleado"
+        },
+        {
+          "slug": "desempleado",
+          "nombre": "Desempleado"
+        },
+        {
+          "slug": "independiente",
+          "nombre": "Trabajador independiente"
+        },
+        {
+          "slug": "estudiante",
+          "nombre": "Estudiante"
+        },
+        {
+          "slug": "jubilado",
+          "nombre": "Jubilado"
+        },
+        {
+          "slug": "hogar",
+          "nombre": "Ama de casa"
+        }
+      ]
+    },
+    {
+      "slug": "oportunidades_empleo",
+      "texto": "¿Considera que existen suficientes oportunidades de empleo en esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "economia",
+      "obligatoria": true,
+      "orden": 16,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "necesidad_economica",
+      "texto": "¿Cuál es la principal necesidad económica de su comunidad?",
+      "tipo": "opcion_unica",
+      "bloque": "economia",
+      "obligatoria": true,
+      "orden": 17,
+      "opciones": [
+        {
+          "slug": "empleos",
+          "nombre": "Más empleos"
+        },
+        {
+          "slug": "capacitacion",
+          "nombre": "Capacitación laboral"
+        },
+        {
+          "slug": "emprender",
+          "nombre": "Apoyos para emprender"
+        },
+        {
+          "slug": "seguridad_economica",
+          "nombre": "Mayor seguridad económica"
+        }
+      ]
+    },
+    {
+      "slug": "seguridad_percibida",
+      "texto": "¿Se siente seguro en esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 18,
+      "opciones": [
+        {
+          "slug": "muy_seguro",
+          "nombre": "Muy seguro"
+        },
+        {
+          "slug": "seguro",
+          "nombre": "Seguro"
+        },
+        {
+          "slug": "poco_seguro",
+          "nombre": "Poco seguro"
+        },
+        {
+          "slug": "nada_seguro",
+          "nombre": "Nada seguro"
+        }
+      ]
+    },
+    {
+      "slug": "victima_delito",
+      "texto": "¿Ha sido víctima de algún delito en el último año?",
+      "tipo": "opcion_unica",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 19,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "problemas_seguridad",
+      "texto": "¿Cuáles son los principales problemas de seguridad? (Puede marcar más de una opción)",
+      "tipo": "opcion_multiple",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 20,
+      "opciones": [
+        {
+          "slug": "robo",
+          "nombre": "Robo"
+        },
+        {
+          "slug": "drogas",
+          "nombre": "Consumo de drogas"
+        },
+        {
+          "slug": "violencia_familiar",
+          "nombre": "Violencia familiar"
+        },
+        {
+          "slug": "pandillas",
+          "nombre": "Pandillas"
+        },
+        {
+          "slug": "falta_vigilancia",
+          "nombre": "Falta de vigilancia policial"
+        }
+      ],
+      "max_selecciones": 5
+    },
+    {
+      "slug": "prioridades_comunidad",
+      "texto": "Seleccione las tres necesidades más importantes de esta zona",
+      "tipo": "opcion_multiple",
+      "bloque": "prioridades",
+      "obligatoria": true,
+      "orden": 21,
+      "opciones": [
+        {
+          "slug": "seguridad",
+          "nombre": "Seguridad pública"
+        },
+        {
+          "slug": "agua",
+          "nombre": "Agua potable"
+        },
+        {
+          "slug": "pavimentacion",
+          "nombre": "Pavimentación de calles"
+        },
+        {
+          "slug": "empleo",
+          "nombre": "Empleo"
+        },
+        {
+          "slug": "salud",
+          "nombre": "Salud"
+        },
+        {
+          "slug": "educacion",
+          "nombre": "Educación"
+        },
+        {
+          "slug": "transporte",
+          "nombre": "Transporte público"
+        },
+        {
+          "slug": "alumbrado",
+          "nombre": "Alumbrado público"
+        },
+        {
+          "slug": "areas_verdes",
+          "nombre": "Áreas verdes y recreativas"
+        },
+        {
+          "slug": "jovenes",
+          "nombre": "Programas para jóvenes"
+        },
+        {
+          "slug": "adultos_mayores",
+          "nombre": "Atención a adultos mayores"
+        },
+        {
+          "slug": "medio_ambiente",
+          "nombre": "Medio ambiente"
+        }
+      ],
+      "max_selecciones": 3
+    },
+    {
+      "slug": "calidad_vida_10",
+      "texto": "En una escala del 1 al 10, ¿cómo califica la calidad de vida en esta zona?",
+      "tipo": "escala",
+      "bloque": "prioridades",
+      "obligatoria": true,
+      "orden": 22,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        },
+        {
+          "slug": "6",
+          "nombre": "6"
+        },
+        {
+          "slug": "7",
+          "nombre": "7"
+        },
+        {
+          "slug": "8",
+          "nombre": "8"
+        },
+        {
+          "slug": "9",
+          "nombre": "9"
+        },
+        {
+          "slug": "10",
+          "nombre": "10"
+        }
+      ],
+      "min": 1,
+      "max": 10
+    },
+    {
+      "slug": "programa_social",
+      "texto": "¿Usted o algún integrante de su hogar recibe actualmente algún apoyo o programa social del gobierno?",
+      "tipo": "opcion_unica",
+      "bloque": "prioridades",
+      "obligatoria": true,
+      "orden": 23,
+      "opciones": [
+        {
+          "slug": "federal",
+          "nombre": "Sí, del gobierno federal"
+        },
+        {
+          "slug": "local",
+          "nombre": "Sí, del gobierno local"
+        },
+        {
+          "slug": "varios",
+          "nombre": "Sí, de más de un nivel de gobierno"
+        },
+        {
+          "slug": "ninguno",
+          "nombre": "No recibe ningún apoyo"
+        },
+        {
+          "slug": "no_sabe",
+          "nombre": "No sabe / Prefiere no responder"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,842 @@
+{
+  "slug": "percepcion_ciudadana",
+  "nombre": "Encuesta de Percepción Ciudadana de la zona",
+  "disclaimer": "Opinión y percepción sobre condiciones de la zona y desempeño de autoridades. Confidencial, sin nombre ni teléfono. No sustituye levantamientos formales ni INEGI. La comunidad se registra con la colonia del catálogo territorial.",
+  "max_problemas_prioridad": 3,
+  "clave_prioridades": "principales_problemas",
+  "bloques": [
+    {
+      "slug": "datos",
+      "nombre": "I. Datos generales"
+    },
+    {
+      "slug": "calidad_vida",
+      "nombre": "II. Calidad de vida"
+    },
+    {
+      "slug": "problemas",
+      "nombre": "III. Percepción de problemas"
+    },
+    {
+      "slug": "seguridad",
+      "nombre": "IV. Percepción de seguridad"
+    },
+    {
+      "slug": "servicios",
+      "nombre": "V. Evaluación de servicios públicos"
+    },
+    {
+      "slug": "gobierno",
+      "nombre": "VI. Percepción del gobierno"
+    },
+    {
+      "slug": "participacion",
+      "nombre": "VII. Participación ciudadana"
+    },
+    {
+      "slug": "abiertas",
+      "nombre": "VIII. Preguntas abiertas"
+    }
+  ],
+  "preguntas": [
+    {
+      "slug": "edad",
+      "texto": "Edad",
+      "tipo": "opcion_unica",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 1,
+      "opciones": [
+        {
+          "slug": "menor_18",
+          "nombre": "Menor de 18 años"
+        },
+        {
+          "slug": "18_29",
+          "nombre": "18 a 29 años"
+        },
+        {
+          "slug": "30_44",
+          "nombre": "30 a 44 años"
+        },
+        {
+          "slug": "45_59",
+          "nombre": "45 a 59 años"
+        },
+        {
+          "slug": "60_mas",
+          "nombre": "60 años o más"
+        }
+      ]
+    },
+    {
+      "slug": "sexo",
+      "texto": "Sexo",
+      "tipo": "opcion_unica",
+      "bloque": "datos",
+      "obligatoria": true,
+      "orden": 2,
+      "opciones": [
+        {
+          "slug": "mujer",
+          "nombre": "Mujer"
+        },
+        {
+          "slug": "hombre",
+          "nombre": "Hombre"
+        },
+        {
+          "slug": "otro",
+          "nombre": "Otro"
+        },
+        {
+          "slug": "prefiero_no",
+          "nombre": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "slug": "satisfaccion_zona",
+      "texto": "En general, ¿qué tan satisfecho(a) está con vivir en esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "calidad_vida",
+      "obligatoria": true,
+      "orden": 3,
+      "opciones": [
+        {
+          "slug": "muy_satisfecho",
+          "nombre": "Muy satisfecho(a)"
+        },
+        {
+          "slug": "satisfecho",
+          "nombre": "Satisfecho(a)"
+        },
+        {
+          "slug": "neutral",
+          "nombre": "Ni satisfecho(a) ni insatisfecho(a)"
+        },
+        {
+          "slug": "insatisfecho",
+          "nombre": "Insatisfecho(a)"
+        },
+        {
+          "slug": "muy_insatisfecho",
+          "nombre": "Muy insatisfecho(a)"
+        }
+      ]
+    },
+    {
+      "slug": "comparacion_5_anos",
+      "texto": "En comparación con hace cinco años, considera que esta zona está:",
+      "tipo": "opcion_unica",
+      "bloque": "calidad_vida",
+      "obligatoria": true,
+      "orden": 4,
+      "opciones": [
+        {
+          "slug": "mucho_mejor",
+          "nombre": "Mucho mejor"
+        },
+        {
+          "slug": "mejor",
+          "nombre": "Mejor"
+        },
+        {
+          "slug": "igual",
+          "nombre": "Igual"
+        },
+        {
+          "slug": "peor",
+          "nombre": "Peor"
+        },
+        {
+          "slug": "mucho_peor",
+          "nombre": "Mucho peor"
+        }
+      ]
+    },
+    {
+      "slug": "recomienda_zona",
+      "texto": "¿Recomendaría esta zona como un buen lugar para vivir?",
+      "tipo": "opcion_unica",
+      "bloque": "calidad_vida",
+      "obligatoria": true,
+      "orden": 5,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        },
+        {
+          "slug": "no_sabe",
+          "nombre": "No sabe"
+        }
+      ]
+    },
+    {
+      "slug": "principales_problemas",
+      "texto": "¿Cuáles considera que son los tres principales problemas de esta zona?",
+      "tipo": "opcion_multiple",
+      "bloque": "problemas",
+      "obligatoria": true,
+      "orden": 6,
+      "opciones": [
+        {
+          "slug": "inseguridad",
+          "nombre": "Inseguridad"
+        },
+        {
+          "slug": "desempleo",
+          "nombre": "Desempleo"
+        },
+        {
+          "slug": "corrupcion",
+          "nombre": "Corrupción"
+        },
+        {
+          "slug": "falta_agua",
+          "nombre": "Falta de agua"
+        },
+        {
+          "slug": "calles_mal_estado",
+          "nombre": "Calles en mal estado"
+        },
+        {
+          "slug": "falta_salud",
+          "nombre": "Falta de servicios de salud"
+        },
+        {
+          "slug": "contaminacion",
+          "nombre": "Contaminación"
+        },
+        {
+          "slug": "transporte_deficiente",
+          "nombre": "Transporte público deficiente"
+        },
+        {
+          "slug": "falta_espacios",
+          "nombre": "Falta de espacios recreativos"
+        },
+        {
+          "slug": "pobreza",
+          "nombre": "Pobreza"
+        },
+        {
+          "slug": "violencia_familiar",
+          "nombre": "Violencia familiar"
+        },
+        {
+          "slug": "consumo_drogas",
+          "nombre": "Consumo de drogas"
+        }
+      ],
+      "max_selecciones": 3
+    },
+    {
+      "slug": "seguridad_percibida",
+      "texto": "¿Qué tan seguro(a) se siente en esta zona?",
+      "tipo": "opcion_unica",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 7,
+      "opciones": [
+        {
+          "slug": "muy_seguro",
+          "nombre": "Muy seguro(a)"
+        },
+        {
+          "slug": "seguro",
+          "nombre": "Seguro(a)"
+        },
+        {
+          "slug": "poco_seguro",
+          "nombre": "Poco seguro(a)"
+        },
+        {
+          "slug": "nada_seguro",
+          "nombre": "Nada seguro(a)"
+        }
+      ]
+    },
+    {
+      "slug": "evita_salir",
+      "texto": "¿Evita salir a ciertas horas por temor a la delincuencia?",
+      "tipo": "opcion_unica",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 8,
+      "opciones": [
+        {
+          "slug": "siempre",
+          "nombre": "Siempre"
+        },
+        {
+          "slug": "frecuentemente",
+          "nombre": "Frecuentemente"
+        },
+        {
+          "slug": "algunas_veces",
+          "nombre": "Algunas veces"
+        },
+        {
+          "slug": "nunca",
+          "nombre": "Nunca"
+        }
+      ]
+    },
+    {
+      "slug": "presencia_policial",
+      "texto": "¿Considera suficiente la presencia policial en su comunidad?",
+      "tipo": "opcion_unica",
+      "bloque": "seguridad",
+      "obligatoria": true,
+      "orden": 9,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        },
+        {
+          "slug": "no_sabe",
+          "nombre": "No sabe"
+        }
+      ]
+    },
+    {
+      "slug": "svc_agua",
+      "texto": "Califique el servicio: Agua potable (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 10,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "svc_alumbrado",
+      "texto": "Califique el servicio: Alumbrado público (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 11,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "svc_basura",
+      "texto": "Califique el servicio: Recolección de basura (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 12,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "svc_pavimentacion",
+      "texto": "Califique el servicio: Pavimentación de calles (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 13,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "svc_parques",
+      "texto": "Califique el servicio: Parques y áreas verdes (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 14,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "svc_transporte",
+      "texto": "Califique el servicio: Transporte público (1=Muy malo … 5=Muy bueno)",
+      "tipo": "escala",
+      "bloque": "servicios",
+      "obligatoria": true,
+      "orden": 15,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        }
+      ],
+      "min": 1,
+      "max": 5,
+      "etiqueta_min": "Muy malo",
+      "etiqueta_max": "Muy bueno"
+    },
+    {
+      "slug": "confianza_gobierno",
+      "texto": "¿Qué tanto confía en el gobierno?",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 16,
+      "opciones": [
+        {
+          "slug": "mucho",
+          "nombre": "Mucho"
+        },
+        {
+          "slug": "algo",
+          "nombre": "Algo"
+        },
+        {
+          "slug": "poco",
+          "nombre": "Poco"
+        },
+        {
+          "slug": "nada",
+          "nombre": "Nada"
+        }
+      ]
+    },
+    {
+      "slug": "autoridades_escuchan",
+      "texto": "¿Considera que las autoridades escuchan las necesidades de la ciudadanía?",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 17,
+      "opciones": [
+        {
+          "slug": "siempre",
+          "nombre": "Siempre"
+        },
+        {
+          "slug": "frecuentemente",
+          "nombre": "Frecuentemente"
+        },
+        {
+          "slug": "algunas_veces",
+          "nombre": "Algunas veces"
+        },
+        {
+          "slug": "nunca",
+          "nombre": "Nunca"
+        }
+      ]
+    },
+    {
+      "slug": "transparencia",
+      "texto": "¿Qué tan transparente considera la actuación del gobierno?",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 18,
+      "opciones": [
+        {
+          "slug": "muy_transparente",
+          "nombre": "Muy transparente"
+        },
+        {
+          "slug": "transparente",
+          "nombre": "Transparente"
+        },
+        {
+          "slug": "poco_transparente",
+          "nombre": "Poco transparente"
+        },
+        {
+          "slug": "nada_transparente",
+          "nombre": "Nada transparente"
+        }
+      ]
+    },
+    {
+      "slug": "programa_social",
+      "texto": "¿Usted o algún integrante de su hogar recibe actualmente algún apoyo o programa social del gobierno?",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 19,
+      "opciones": [
+        {
+          "slug": "federal",
+          "nombre": "Sí, del gobierno federal"
+        },
+        {
+          "slug": "local",
+          "nombre": "Sí, del gobierno local"
+        },
+        {
+          "slug": "varios",
+          "nombre": "Sí, de más de un nivel de gobierno"
+        },
+        {
+          "slug": "ninguno",
+          "nombre": "No recibe ningún apoyo"
+        },
+        {
+          "slug": "no_sabe",
+          "nombre": "No sabe / Prefiere no responder"
+        }
+      ]
+    },
+    {
+      "slug": "programas_mejoran_vida",
+      "texto": "En su opinión, los programas y apoyos sociales que otorgan los gobiernos federal, estatal y municipal contribuyen a mejorar la calidad de vida de la población.",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 20,
+      "opciones": [
+        {
+          "slug": "totalmente_acuerdo",
+          "nombre": "Totalmente de acuerdo"
+        },
+        {
+          "slug": "de_acuerdo",
+          "nombre": "De acuerdo"
+        },
+        {
+          "slug": "neutral",
+          "nombre": "Ni de acuerdo ni en desacuerdo"
+        },
+        {
+          "slug": "desacuerdo",
+          "nombre": "En desacuerdo"
+        },
+        {
+          "slug": "totalmente_desacuerdo",
+          "nombre": "Totalmente en desacuerdo"
+        }
+      ]
+    },
+    {
+      "slug": "satisfaccion_acceso_programas",
+      "texto": "¿Qué tan satisfecho(a) está con la información y facilidad para acceder a los programas sociales gubernamentales?",
+      "tipo": "opcion_unica",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 21,
+      "opciones": [
+        {
+          "slug": "muy_satisfecho",
+          "nombre": "Muy satisfecho(a)"
+        },
+        {
+          "slug": "satisfecho",
+          "nombre": "Satisfecho(a)"
+        },
+        {
+          "slug": "poco_satisfecho",
+          "nombre": "Poco satisfecho(a)"
+        },
+        {
+          "slug": "nada_satisfecho",
+          "nombre": "Nada satisfecho(a)"
+        },
+        {
+          "slug": "desconozco",
+          "nombre": "Desconozco los programas existentes"
+        }
+      ]
+    },
+    {
+      "slug": "desempeno_gobierno",
+      "texto": "En una escala del 1 al 10, ¿cómo califica el desempeño del gobierno?",
+      "tipo": "escala",
+      "bloque": "gobierno",
+      "obligatoria": true,
+      "orden": 22,
+      "opciones": [
+        {
+          "slug": "1",
+          "nombre": "1"
+        },
+        {
+          "slug": "2",
+          "nombre": "2"
+        },
+        {
+          "slug": "3",
+          "nombre": "3"
+        },
+        {
+          "slug": "4",
+          "nombre": "4"
+        },
+        {
+          "slug": "5",
+          "nombre": "5"
+        },
+        {
+          "slug": "6",
+          "nombre": "6"
+        },
+        {
+          "slug": "7",
+          "nombre": "7"
+        },
+        {
+          "slug": "8",
+          "nombre": "8"
+        },
+        {
+          "slug": "9",
+          "nombre": "9"
+        },
+        {
+          "slug": "10",
+          "nombre": "10"
+        }
+      ],
+      "min": 1,
+      "max": 10
+    },
+    {
+      "slug": "participo_actividad",
+      "texto": "¿Ha participado en alguna actividad comunitaria o consulta ciudadana durante el último año?",
+      "tipo": "opcion_unica",
+      "bloque": "participacion",
+      "obligatoria": true,
+      "orden": 23,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        }
+      ]
+    },
+    {
+      "slug": "dispuesto_participar",
+      "texto": "¿Estaría dispuesto(a) a participar en actividades para mejorar su comunidad?",
+      "tipo": "opcion_unica",
+      "bloque": "participacion",
+      "obligatoria": true,
+      "orden": 24,
+      "opciones": [
+        {
+          "slug": "si",
+          "nombre": "Sí"
+        },
+        {
+          "slug": "no",
+          "nombre": "No"
+        },
+        {
+          "slug": "tal_vez",
+          "nombre": "Tal vez"
+        }
+      ]
+    },
+    {
+      "slug": "mejor_forma_escucha",
+      "texto": "¿Cuál considera que es la mejor forma para que el gobierno conozca las necesidades de la población?",
+      "tipo": "opcion_unica",
+      "bloque": "participacion",
+      "obligatoria": true,
+      "orden": 25,
+      "opciones": [
+        {
+          "slug": "asambleas",
+          "nombre": "Asambleas comunitarias"
+        },
+        {
+          "slug": "encuestas",
+          "nombre": "Encuestas ciudadanas"
+        },
+        {
+          "slug": "redes",
+          "nombre": "Redes sociales"
+        },
+        {
+          "slug": "comites",
+          "nombre": "Comités vecinales"
+        },
+        {
+          "slug": "apps",
+          "nombre": "Aplicaciones móviles"
+        },
+        {
+          "slug": "oficinas",
+          "nombre": "Atención directa en oficinas"
+        }
+      ]
+    },
+    {
+      "slug": "gusta_zona",
+      "texto": "¿Qué es lo que más le gusta de esta zona?",
+      "tipo": "texto",
+      "bloque": "abiertas",
+      "obligatoria": false,
+      "orden": 26,
+      "opciones": [],
+      "max_chars": 500
+    },
+    {
+      "slug": "preocupa_zona",
+      "texto": "¿Qué es lo que más le preocupa de esta zona?",
+      "tipo": "texto",
+      "bloque": "abiertas",
+      "obligatoria": false,
+      "orden": 27,
+      "opciones": [],
+      "max_chars": 500
+    },
+    {
+      "slug": "cambiaria_zona",
+      "texto": "Si pudiera cambiar una sola cosa de esta zona, ¿qué cambiaría?",
+      "tipo": "texto",
+      "bloque": "abiertas",
+      "obligatoria": false,
+      "orden": 28,
+      "opciones": [],
+      "max_chars": 500
+    }
+  ]
+}

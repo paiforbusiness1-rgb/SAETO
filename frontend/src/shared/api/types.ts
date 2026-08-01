@@ -86,6 +86,42 @@ export interface CatalogosConfig {
     emociones: CatalogoItem[];
     ideologias: CatalogoItem[];
   };
+  encuesta_rapida?: EncuestaPlantilla;
+  encuestas_plantillas?: EncuestaPlantillaMeta[];
+}
+
+export interface EncuestaPlantillaMeta {
+  slug: string;
+  nombre: string;
+  disclaimer?: string;
+  orden?: number;
+  preguntas_count?: number;
+}
+
+export interface EncuestaPregunta {
+  slug: string;
+  texto: string;
+  tipo: "opcion_unica" | "opcion_multiple" | "numero" | "escala" | "texto";
+  bloque?: string;
+  obligatoria?: boolean;
+  orden?: number;
+  max_selecciones?: number;
+  min?: number;
+  max?: number;
+  max_chars?: number;
+  etiqueta_min?: string;
+  etiqueta_max?: string;
+  opciones: CatalogoItem[];
+}
+
+export interface EncuestaPlantilla {
+  slug: string;
+  nombre: string;
+  disclaimer: string;
+  max_problemas_prioridad?: number;
+  clave_prioridades?: string;
+  bloques?: { slug: string; nombre: string }[];
+  preguntas: EncuestaPregunta[];
 }
 
 export interface Health {
@@ -220,6 +256,28 @@ export interface IndicadorContexto {
   fuente: string;
   nota: string;
   demo: boolean;
+}
+
+export interface EncuestaSummary {
+  slug: string;
+  fecha: string;
+  plantilla: string;
+  plantilla_nombre?: string;
+  colonia: string;
+  colonia_nombre: string;
+  zona: string;
+  zona_nombre: string;
+  edad: string | null;
+  sexo: string | null;
+  problemas_prioridad: string[];
+  demo?: boolean;
+}
+
+export interface EncuestaDetail extends EncuestaSummary {
+  demo: boolean;
+  respuestas: Record<string, string | string[] | number>;
+  notas_mesa: string;
+  plantilla_meta: EncuestaPlantilla;
 }
 
 export interface Brief {

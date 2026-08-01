@@ -1,0 +1,296 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "enc-2026-07-01-001",
+      "fecha": "2026-07-01",
+      "plantilla": "rapida_mesa",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "30_44",
+        "sexo": "mujer",
+        "problemas_prioridad": [
+          "agua",
+          "basura",
+          "seguridad"
+        ],
+        "satisfaccion_zona": "insatisfecho",
+        "confianza_gobierno": "poco",
+        "seguridad_percibida": "poco_seguro"
+      },
+      "notas_mesa": "Captura demo — tandeo recurrente",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-01-002",
+      "fecha": "2026-07-01",
+      "plantilla": "rapida_mesa",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "45_59",
+        "sexo": "hombre",
+        "problemas_prioridad": [
+          "agua",
+          "calles"
+        ],
+        "satisfaccion_zona": "muy_insatisfecho",
+        "confianza_gobierno": "nada",
+        "seguridad_percibida": "seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-02-001",
+      "fecha": "2026-07-02",
+      "plantilla": "rapida_mesa",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "18_29",
+        "sexo": "mujer",
+        "problemas_prioridad": [
+          "agua",
+          "empleo",
+          "seguridad"
+        ],
+        "satisfaccion_zona": "neutral",
+        "confianza_gobierno": "algo",
+        "seguridad_percibida": "poco_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-03-001",
+      "fecha": "2026-07-03",
+      "plantilla": "rapida_mesa",
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "30_44",
+        "sexo": "hombre",
+        "problemas_prioridad": [
+          "basura",
+          "calles",
+          "seguridad"
+        ],
+        "satisfaccion_zona": "insatisfecho",
+        "confianza_gobierno": "poco",
+        "seguridad_percibida": "nada_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-03-002",
+      "fecha": "2026-07-03",
+      "plantilla": "rapida_mesa",
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "60_mas",
+        "sexo": "mujer",
+        "problemas_prioridad": [
+          "basura",
+          "alumbrado"
+        ],
+        "satisfaccion_zona": "satisfecho",
+        "confianza_gobierno": "algo",
+        "seguridad_percibida": "poco_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-04-001",
+      "fecha": "2026-07-04",
+      "plantilla": "rapida_mesa",
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "45_59",
+        "sexo": "prefiero_no",
+        "problemas_prioridad": [
+          "seguridad",
+          "basura",
+          "calles"
+        ],
+        "satisfaccion_zona": "insatisfecho",
+        "confianza_gobierno": "poco",
+        "seguridad_percibida": "nada_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-05-001",
+      "fecha": "2026-07-05",
+      "plantilla": "rapida_mesa",
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "respuestas": {
+        "edad": "30_44",
+        "sexo": "mujer",
+        "problemas_prioridad": [
+          "seguridad",
+          "empleo",
+          "transporte"
+        ],
+        "satisfaccion_zona": "neutral",
+        "confianza_gobierno": "algo",
+        "seguridad_percibida": "poco_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-05-002",
+      "fecha": "2026-07-05",
+      "plantilla": "rapida_mesa",
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "respuestas": {
+        "edad": "18_29",
+        "sexo": "hombre",
+        "problemas_prioridad": [
+          "seguridad",
+          "calles"
+        ],
+        "satisfaccion_zona": "insatisfecho",
+        "confianza_gobierno": "poco",
+        "seguridad_percibida": "nada_seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-06-001",
+      "fecha": "2026-07-06",
+      "plantilla": "rapida_mesa",
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "respuestas": {
+        "edad": "45_59",
+        "sexo": "mujer",
+        "problemas_prioridad": [
+          "empleo",
+          "seguridad",
+          "transporte"
+        ],
+        "satisfaccion_zona": "satisfecho",
+        "confianza_gobierno": "mucho",
+        "seguridad_percibida": "seguro"
+      },
+      "notas_mesa": "",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-07-001",
+      "fecha": "2026-07-07",
+      "plantilla": "rapida_mesa",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "60_mas",
+        "sexo": "hombre",
+        "problemas_prioridad": [
+          "agua",
+          "basura",
+          "alumbrado"
+        ],
+        "satisfaccion_zona": "muy_insatisfecho",
+        "confianza_gobierno": "nada",
+        "seguridad_percibida": "poco_seguro"
+      },
+      "notas_mesa": "Cuenta pendiente de agua mencionada",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-20-perc-001",
+      "fecha": "2026-07-20",
+      "plantilla": "percepcion_ciudadana",
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "30_44",
+        "sexo": "mujer",
+        "satisfaccion_zona": "insatisfecho",
+        "comparacion_5_anos": "peor",
+        "recomienda_zona": "no",
+        "principales_problemas": [
+          "inseguridad",
+          "falta_agua",
+          "calles_mal_estado"
+        ],
+        "seguridad_percibida": "poco_seguro",
+        "evita_salir": "frecuentemente",
+        "presencia_policial": "no",
+        "svc_agua": 2,
+        "svc_alumbrado": 3,
+        "svc_basura": 3,
+        "svc_pavimentacion": 2,
+        "svc_parques": 2,
+        "svc_transporte": 3,
+        "confianza_gobierno": "poco",
+        "autoridades_escuchan": "algunas_veces",
+        "transparencia": "poco_transparente",
+        "programa_social": "federal",
+        "programas_mejoran_vida": "de_acuerdo",
+        "satisfaccion_acceso_programas": "poco_satisfecho",
+        "desempeno_gobierno": 5,
+        "participo_actividad": "no",
+        "dispuesto_participar": "tal_vez",
+        "mejor_forma_escucha": "encuestas",
+        "gusta_zona": "La convivencia vecinal",
+        "preocupa_zona": "El agua y la seguridad",
+        "cambiaria_zona": "El tandeo de agua"
+      },
+      "notas_mesa": "Demo percepción ciudadana",
+      "demo": true
+    },
+    {
+      "slug": "enc-2026-07-21-diag-001",
+      "fecha": "2026-07-21",
+      "plantilla": "diagnostico_necesidades",
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "respuestas": {
+        "edad": "45_59",
+        "sexo": "hombre",
+        "personas_hogar": 4,
+        "menores_hogar": "1_2",
+        "agua_potable": "interrupciones",
+        "drenaje": "si",
+        "basura_califica": "regular",
+        "estado_calles": "malo",
+        "alumbrado_suficiente": "no",
+        "servicio_salud": "imss",
+        "acceso_medico": "dificil",
+        "necesidad_salud": "medicamentos",
+        "escuelas_cerca": "si",
+        "problema_educativo": "infraestructura",
+        "situacion_laboral": "independiente",
+        "oportunidades_empleo": "no",
+        "necesidad_economica": "empleos",
+        "seguridad_percibida": "poco_seguro",
+        "victima_delito": "no",
+        "problemas_seguridad": [
+          "robo",
+          "falta_vigilancia"
+        ],
+        "prioridades_comunidad": [
+          "seguridad",
+          "agua",
+          "empleo"
+        ],
+        "calidad_vida_10": 5,
+        "programa_social": "ninguno"
+      },
+      "notas_mesa": "Demo diagnóstico de necesidades",
+      "demo": true
+    }
+  ]
+}

@@ -7,6 +7,7 @@ from app.api.routes import (
     coyuntura,
     dashboard,
     discurso,
+    encuestas,
     meta,
     observatorio,
     reportes,
@@ -39,4 +40,5 @@ app.include_router(observatorio.router)
 app.include_router(actores.router)
 app.include_router(discurso.router)
 app.include_router(coyuntura.router)
+app.include_router(encuestas.router)
 app.include_router(reportes.router)

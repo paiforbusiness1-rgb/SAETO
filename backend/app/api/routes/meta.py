@@ -30,4 +30,6 @@ def catalogos():
         coyuntura=seed_loader.load_coyuntura_catalogos(),
         poder=seed_loader.load_poder_recursos(),
         discurso_mesa=seed_loader.load_discurso_mesa(),
+        encuesta_rapida=seed_loader.load_encuesta_rapida(),
+        encuestas_plantillas=seed_loader.list_plantillas_encuesta(),
     )

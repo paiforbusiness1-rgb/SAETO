@@ -41,6 +41,11 @@ const items = [
     desc: "Indicadores referenciales por territorio (con disclaimer)",
   },
   {
+    to: "/reportes/encuestas",
+    title: "Encuestas",
+    desc: "Rápida, percepción ciudadana y diagnóstico por colonia",
+  },
+  {
     to: "/reportes/deudas",
     title: "Cuentas pendientes",
     desc: "Deudas históricas a cerrar antes de la coyuntura",

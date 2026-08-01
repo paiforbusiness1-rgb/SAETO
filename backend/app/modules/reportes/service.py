@@ -446,6 +446,104 @@ def reporte_deudas() -> dict:
     }
 
 
+def reporte_encuestas(plantilla_filtro: str | None = None) -> dict:
+    from app.modules.encuestas import service as encuestas_service
+
+    items = encuestas_service.list_encuestas(plantilla=plantilla_filtro)
+    label_opcion: dict[str, str] = {}
+    for meta in seed_loader.list_plantillas_encuesta():
+        plant = seed_loader.load_plantilla_encuesta(meta["slug"])
+        for preg in plant.get("preguntas", []):
+            for op in preg.get("opciones", []):
+                label_opcion[op["slug"]] = op["nombre"]
+
+    por_colonia: dict[str, dict] = {}
+    por_problema: dict[str, int] = {}
+    por_sexo: dict[str, int] = {}
+    por_edad: dict[str, int] = {}
+    por_plantilla: dict[str, int] = {}
+
+    for e in items:
+        b = por_colonia.setdefault(
+            e.colonia,
+            {
+                "colonia": e.colonia,
+                "colonia_nombre": e.colonia_nombre,
+                "zona_nombre": e.zona_nombre,
+                "count": 0,
+            },
+        )
+        b["count"] += 1
+        for p in e.problemas_prioridad:
+            por_problema[p] = por_problema.get(p, 0) + 1
+        if e.sexo:
+            por_sexo[e.sexo] = por_sexo.get(e.sexo, 0) + 1
+        if e.edad:
+            por_edad[e.edad] = por_edad.get(e.edad, 0) + 1
+        por_plantilla[e.plantilla] = por_plantilla.get(e.plantilla, 0) + 1
+
+    problemas = sorted(
+        [
+            {
+                "clave": k,
+                "etiqueta": label_opcion.get(k, k.replace("_", " ")),
+                "valor": v,
+            }
+            for k, v in por_problema.items()
+        ],
+        key=lambda x: -x["valor"],
+    )
+    colonias = sorted(por_colonia.values(), key=lambda x: -x["count"])
+    nombres = {m["slug"]: m["nombre"] for m in seed_loader.list_plantillas_encuesta()}
+
+    return {
+        "demo": True,
+        "disclaimer": (
+            "Respuestas anonimizadas (runtime local). Percepción territorial; "
+            "no sustituye INEGI ni levantamientos formales."
+        ),
+        "plantilla_filtro": plantilla_filtro,
+        "kpis": {
+            "respuestas": len(items),
+            "colonias": len(por_colonia),
+            "problemas_distintos": len(por_problema),
+            "plantillas": len(por_plantilla),
+        },
+        "por_plantilla": [
+            {
+                "clave": k,
+                "etiqueta": nombres.get(k, k),
+                "valor": v,
+            }
+            for k, v in sorted(por_plantilla.items(), key=lambda x: -x[1])
+        ],
+        "por_colonia": colonias,
+        "por_problema": problemas,
+        "por_sexo": [
+            {
+                "clave": k,
+                "etiqueta": label_opcion.get(k, k),
+                "valor": v,
+            }
+            for k, v in sorted(por_sexo.items(), key=lambda x: -x[1])
+        ],
+        "por_edad": [
+            {
+                "clave": k,
+                "etiqueta": label_opcion.get(k, k),
+                "valor": v,
+            }
+            for k, v in sorted(por_edad.items(), key=lambda x: -x[1])
+        ],
+        "lectura_gerencial": (
+            f"{len(items)} respuestas; prioridad más citada: "
+            f"{problemas[0]['etiqueta']} ({problemas[0]['valor']})."
+            if problemas
+            else "Sin respuestas de encuesta. Capture en Captura → Encuestas."
+        ),
+    }
+
+
 def _lectura_ejecutiva(semaforo: dict, temas: list, actores: list) -> str:
     if not temas and not actores:
         return "Sin datos cargados. Usa Captura para alimentar el tablero."

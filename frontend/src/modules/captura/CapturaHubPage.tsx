@@ -21,6 +21,11 @@ const items = [
     desc: "Acciones, respuesta gubernamental y reacciones",
   },
   {
+    to: "/captura/encuestas",
+    title: "Encuestas",
+    desc: "Rápida, percepción ciudadana y diagnóstico de necesidades",
+  },
+  {
     to: "/captura/discurso",
     title: "Discurso",
     desc: "Rúbricas de mesa y niveles analíticos",
