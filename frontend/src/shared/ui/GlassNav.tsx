@@ -6,6 +6,7 @@ import styles from "./GlassNav.module.css";
 
 const links = [
   { to: "/", label: "Sala de situación" },
+  { to: "/inteligencia", label: "Inteligencia" },
   { to: "/reportes", label: "Reportes" },
   { to: "/observatorio", label: "Reivindicaciones" },
   { to: "/coyuntura", label: "Coyuntura" },

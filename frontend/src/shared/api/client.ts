@@ -3,6 +3,8 @@ import type {
   ActorSummary,
   Brief,
   CatalogosConfig,
+  CeldaCalor,
+  CorredorRanking,
   CoyunturaDetail,
   CoyunturaSummary,
   DiscursoDetail,
@@ -10,11 +12,20 @@ import type {
   EncuestaDetail,
   EncuestaPlantilla,
   EncuestaSummary,
+  EvaluacionMesa,
   Health,
   IndicadorContexto,
+  MapaCalorResponse,
+  PanoramaTerritorial,
   ReivindicacionDetail,
   ReivindicacionSummary,
   SaetoRol,
+  SalaOperativa,
+  SectorCobertura,
+  ClasificarTextoResponse,
+  ContextoDecisionResponse,
+  IaStatus,
+  PanoramaLecturaResponse,
 } from "./types";
 
 const SAETO_ROL_KEY = "saeto_rol";
@@ -166,6 +177,8 @@ export type CoyunturaWrite = {
   resultado?: string;
   impacto_ciclo?: string | null;
   fuentes?: string[];
+  corredor_slug?: string | null;
+  tramo_slug?: string | null;
   slug?: string | null;
 };
 
@@ -344,4 +357,68 @@ export const api = {
     const suffix = q.toString() ? `?${q}` : "";
     return apiGet<any>(`/api/reportes/encuestas${suffix}`);
   },
+  reporteCalor: (capa = "compuesta") =>
+    apiGet<any>(`/api/reportes/calor?capa=${encodeURIComponent(capa)}`),
+  reporteCorredores: () => apiGet<any>("/api/reportes/corredores"),
+
+  inteligenciaCalor: (capa = "compuesta", top = 10) =>
+    apiGet<MapaCalorResponse>(
+      `/api/inteligencia/calor?capa=${encodeURIComponent(capa)}&top=${top}`,
+    ),
+  inteligenciaCalorTop: (n = 10, capa = "compuesta") =>
+    apiGet<CeldaCalor[]>(
+      `/api/inteligencia/calor/top?n=${n}&capa=${encodeURIComponent(capa)}`,
+    ),
+  inteligenciaPanorama: (params?: { zona?: string; colonia?: string }) => {
+    const q = new URLSearchParams();
+    if (params?.zona) q.set("zona", params.zona);
+    if (params?.colonia) q.set("colonia", params.colonia);
+    const suffix = q.toString() ? `?${q}` : "";
+    return apiGet<PanoramaTerritorial>(`/api/inteligencia/panorama${suffix}`);
+  },
+  inteligenciaCorredores: () =>
+    apiGet<CorredorRanking[]>("/api/inteligencia/corredores"),
+  inteligenciaCobertura: () =>
+    apiGet<SectorCobertura[]>("/api/inteligencia/cobertura"),
+  inteligenciaSala: () => apiGet<SalaOperativa>("/api/inteligencia/sala"),
+  inteligenciaConfigCalor: () =>
+    apiGet<{
+      umbrales: { bandas: { slug: string; nombre: string; color: string }[] };
+      capas: { capas: { slug: string; nombre: string }[] };
+    }>("/api/inteligencia/config/calor"),
+  createEvaluacionMesa: (body: {
+    ventana: string;
+    notas?: string;
+    focos_revisados?: string[];
+    checklist_ok?: string[];
+  }) =>
+    apiSend<EvaluacionMesa>(
+      "/api/inteligencia/evaluaciones-mesa",
+      "POST",
+      body,
+      actorHeaders(),
+    ),
+
+  iaStatus: () => apiGet<IaStatus>("/api/ia/status"),
+  iaPanoramaLectura: (body: { zona?: string; colonia?: string }) =>
+    apiSend<PanoramaLecturaResponse>(
+      "/api/ia/panorama-lectura",
+      "POST",
+      body,
+      actorHeaders(),
+    ),
+  iaClasificarTexto: (texto: string) =>
+    apiSend<ClasificarTextoResponse>(
+      "/api/ia/clasificar-texto",
+      "POST",
+      { texto },
+      actorHeaders(),
+    ),
+  iaContextoDecision: (demanda_slug: string) =>
+    apiSend<ContextoDecisionResponse>(
+      "/api/ia/contexto-decision",
+      "POST",
+      { demanda_slug },
+      actorHeaders(),
+    ),
 };

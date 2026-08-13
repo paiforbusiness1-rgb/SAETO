@@ -176,6 +176,43 @@ export function ActorDetailPage() {
         </div>
       ) : null}
 
+      {(item.alias && item.alias.length > 0) ||
+      (item.zona_operacion && item.zona_operacion.length > 0) ||
+      item.nivel_riesgo_nombre ||
+      item.red_afiliacion ||
+      item.cuenta_pendiente_seguridad ? (
+        <div className={styles.block}>
+          <h2>Inteligencia de actor</h2>
+          {item.alias && item.alias.length > 0 ? (
+            <p className={styles.meta}>Alias: {item.alias.join(", ")}</p>
+          ) : null}
+          {item.zona_operacion && item.zona_operacion.length > 0 ? (
+            <p className={styles.meta}>
+              Zona de operación: {item.zona_operacion.join(", ")}
+            </p>
+          ) : null}
+          {item.nivel_riesgo_nombre ? (
+            <p className={styles.meta}>Nivel de riesgo: {item.nivel_riesgo_nombre}</p>
+          ) : null}
+          {item.fuente_inteligencia_nombre ? (
+            <p className={styles.meta}>
+              Fuente: {item.fuente_inteligencia_nombre}
+            </p>
+          ) : null}
+          {item.red_afiliacion ? (
+            <p>
+              <strong>Red (sensible):</strong> {item.red_afiliacion}
+            </p>
+          ) : null}
+          {item.cuenta_pendiente_seguridad ? (
+            <p>
+              <strong>Cuenta pendiente seguridad:</strong>{" "}
+              {item.cuenta_pendiente_seguridad}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
       <div className={styles.block}>
         <h2>Reivindicaciones abiertas</h2>
         <p>{item.reivindicaciones_nombres.join(", ") || "Ninguna vinculada"}</p>

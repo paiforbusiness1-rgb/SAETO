@@ -1,0 +1,9 @@
+{
+  "demo": true,
+  "recomendaciones": [
+    { "slug": "verificar_campo", "nombre": "Verificar en campo", "prioridad_min": 4 },
+    { "slug": "seguimiento_diario", "nombre": "Seguimiento diario de mesa", "prioridad_min": 3 },
+    { "slug": "monitoreo", "nombre": "Monitoreo regular", "prioridad_min": 2 },
+    { "slug": "latencia", "nombre": "Mantener en latencia observada", "prioridad_min": 1 }
+  ]
+}

@@ -148,6 +148,29 @@ export function DashboardPage() {
           ))}
         </ul>
       </GlassPanel>
+
+      <GlassPanel>
+        <div className={styles.sectionHead}>
+          <h2>Inteligencia territorial</h2>
+          <Link to="/inteligencia" className={styles.more}>
+            Abrir hub
+          </Link>
+        </div>
+        <div className={styles.stack}>
+          <GlassCard to="/inteligencia/calor">
+            <strong>Mapa de calor</strong>
+            <p className={styles.meta}>OpenStreetMap real + choropleth Oriente</p>
+          </GlassCard>
+          <GlassCard to="/inteligencia/panorama">
+            <strong>Panorama situacional</strong>
+            <p className={styles.meta}>Lectura unificada por territorio</p>
+          </GlassCard>
+          <GlassCard to="/inteligencia/sala">
+            <strong>Sala operativa</strong>
+            <p className={styles.meta}>Registro · Análisis · Reporte · Priorización</p>
+          </GlassCard>
+        </div>
+      </GlassPanel>
     </div>
   );
 }

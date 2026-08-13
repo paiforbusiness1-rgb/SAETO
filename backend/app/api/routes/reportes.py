@@ -48,3 +48,14 @@ def contexto_inegi():
 @router.get("/encuestas")
 def encuestas(plantilla: str | None = None):
     return service.reporte_encuestas(plantilla_filtro=plantilla)
+
+
+@router.get("/calor")
+def calor(capa: str = "compuesta"):
+    return service.reporte_calor(capa=capa)
+
+
+@router.get("/corredores")
+def corredores():
+    return service.reporte_corredores()
+

@@ -1,0 +1,17 @@
+{
+  "demo": true,
+  "habilitado": true,
+  "proveedor": "groq",
+  "base_url": "https://api.groq.com/openai/v1",
+  "modelo": "llama-3.3-70b-versatile",
+  "temperatura": 0.2,
+  "max_tokens": 900,
+  "timeout_segundos": 45,
+  "roles_permitidos": ["capturista", "analista", "analista_sensible", "admin"],
+  "disclaimer": "Lectura generada por IA (Groq) a partir de hechos DEMO/públicos cargados en SAETO. No es decisión oficial ni sustituye verificación de campo. Con datos privados usará el mismo botón sobre hechos autorizados.",
+  "plantillas": {
+    "panorama_lectura": "Eres analista de mesa territorial Oriente CDMX (SAETO). Con SOLO los hechos JSON siguientes, redacta en español claro para subsecretario: (1) lectura ejecutiva 4-6 líneas, (2) 3 focos prioritarios, (3) 2 cuentas pendientes o riesgos, (4) 2 preguntas para la mesa. No inventes cifras ni actores que no estén en el JSON. Si falta dato, dilo. Hechos:\n{hechos}",
+    "clasificar_texto": "Eres clasificador SAETO. Del texto dado, responde SOLO JSON válido con claves: tema_sugerido (agua|basura|seguridad|calles|transporte|empleo|otro), fase_ciclo_sugerida (emergencia|articulacion|movilizacion|negociacion|resolucion_parcial|latencia|cierre), sentido_sugerido (escalando|estable|desescalando), confianza (0-1), resumen_corto (max 25 palabras), notas_mesa (max 40 palabras). Texto:\n{texto}",
+    "contexto_decision": "Eres el módulo de expertise/contexto SAETO. Con los hechos JSON (demanda + eventos + actores no sensibles), responde en español: (1) cuándo ocurrió lo relevante, (2) qué contexto rodeaba la decisión o presión, (3) quién aparece como interlocutor/liderazgo en los hechos, (4) acuerdos o respuestas registradas, (5) qué quedó pendiente (no cumplido / a medias) para reactivar base afín. No inventes. Si no hay evidencia, márcalo. Hechos:\n{hechos}"
+  }
+}

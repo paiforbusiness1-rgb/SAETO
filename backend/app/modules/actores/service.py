@@ -33,10 +33,14 @@ def get_actor(slug: str, rol: str = "analista") -> ActorDetail:
                     status_code=404,
                     detail="Actor no encontrado o requiere rol Analista sensible / Admin",
                 )
-            if ve and item.get("interes_reservado"):
+            if ve and (
+                item.get("interes_reservado")
+                or item.get("red_afiliacion")
+                or item.get("cuenta_pendiente_seguridad")
+            ):
                 seed_loader.append_audit(
                     {
-                        "accion": "leer_interes_reservado",
+                        "accion": "leer_ficha_inteligencia",
                         "recurso": f"actor:{slug}",
                         "rol": rol,
                     }
@@ -69,6 +73,21 @@ def _validate_refs(payload: ActorWrite, rol: str = "analista") -> None:
         require_sensible(rol, f"recursos sensibles: {', '.join(sens)}")
     if (payload.interes_reservado or "").strip():
         require_sensible(rol, "interés reservado")
+    if (payload.red_afiliacion or "").strip() or (payload.cuenta_pendiente_seguridad or "").strip():
+        require_sensible(rol, "campos de inteligencia de actor")
+    if payload.nivel_riesgo:
+        niveles = {n["slug"]: n for n in seed_loader.load_actor_inteligencia().get("niveles_riesgo", [])}
+        if payload.nivel_riesgo not in niveles:
+            raise HTTPException(status_code=400, detail="Nivel de riesgo no válido")
+        if niveles[payload.nivel_riesgo].get("sensible"):
+            require_sensible(rol, "nivel de riesgo sensible")
+    if payload.fuente_inteligencia:
+        fuentes = {f["slug"] for f in seed_loader.load_actor_inteligencia().get("fuentes_inteligencia", [])}
+        if payload.fuente_inteligencia not in fuentes:
+            raise HTTPException(status_code=400, detail="Fuente de inteligencia no válida")
+    for zop in payload.zona_operacion:
+        if zop not in colonias:
+            raise HTTPException(status_code=400, detail=f"Zona de operación inválida: {zop}")
 
 
 def _to_raw(payload: ActorWrite, slug: str) -> dict:
@@ -100,6 +119,12 @@ def _to_raw(payload: ActorWrite, slug: str) -> dict:
         "interes_reservado": payload.interes_reservado.strip(),
         "recursos_poder": payload.recursos_poder,
         "notas_poder": payload.notas_poder.strip(),
+        "alias": [a.strip() for a in payload.alias if a.strip()],
+        "zona_operacion": payload.zona_operacion,
+        "red_afiliacion": payload.red_afiliacion.strip(),
+        "nivel_riesgo": payload.nivel_riesgo,
+        "cuenta_pendiente_seguridad": payload.cuenta_pendiente_seguridad.strip(),
+        "fuente_inteligencia": payload.fuente_inteligencia,
     }
 
 

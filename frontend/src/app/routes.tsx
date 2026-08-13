@@ -36,6 +36,13 @@ import {
   DiscursoListPage,
 } from "../modules/discurso/DiscursoPages";
 import { EncuestaDetailPage, EncuestasListPage } from "../modules/encuestas/EncuestasPages";
+import { IaClasificarPage } from "../modules/ia/IaClasificarPage";
+import { CalorPage } from "../modules/inteligencia/CalorPage";
+import { CoberturaPage } from "../modules/inteligencia/CoberturaPage";
+import { CorredoresPage } from "../modules/inteligencia/CorredoresPage";
+import { InteligenciaHubPage } from "../modules/inteligencia/InteligenciaHubPage";
+import { PanoramaPage } from "../modules/inteligencia/PanoramaPage";
+import { SalaOperativaPage } from "../modules/inteligencia/SalaOperativaPage";
 import {
   ObservatorioDetailPage,
   ObservatorioListPage,
@@ -50,15 +57,26 @@ import { ReporteEncuestasPage } from "../modules/reportes/ReporteEncuestasPage";
 import { ReporteEjecutivoPage } from "../modules/reportes/ReporteEjecutivoPage";
 import { ReporteTerritorioPage } from "../modules/reportes/ReporteTerritorioPage";
 import { ReportesHubPage } from "../modules/reportes/ReportesHubPage";
+import { ReporteCalorPage } from "../modules/reportes/ReporteCalorPage";
+import { ReporteCorredoresPage } from "../modules/reportes/ReporteCorredoresPage";
 
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<DashboardPage />} />
+      <Route path="/inteligencia" element={<InteligenciaHubPage />} />
+      <Route path="/inteligencia/calor" element={<CalorPage />} />
+      <Route path="/inteligencia/panorama" element={<PanoramaPage />} />
+      <Route path="/inteligencia/corredores" element={<CorredoresPage />} />
+      <Route path="/inteligencia/cobertura" element={<CoberturaPage />} />
+      <Route path="/inteligencia/sala" element={<SalaOperativaPage />} />
+      <Route path="/inteligencia/ia-clasificar" element={<IaClasificarPage />} />
       <Route path="/reportes" element={<ReportesHubPage />} />
       <Route path="/reportes/ejecutivo" element={<ReporteEjecutivoPage />} />
       <Route path="/reportes/ciclo-vital" element={<ReporteCicloVitalPage />} />
       <Route path="/reportes/territorio" element={<ReporteTerritorioPage />} />
+      <Route path="/reportes/calor" element={<ReporteCalorPage />} />
+      <Route path="/reportes/corredores" element={<ReporteCorredoresPage />} />
       <Route path="/reportes/actores" element={<ReporteActoresPage />} />
       <Route path="/reportes/coyuntura" element={<ReporteCoyunturaPage />} />
       <Route path="/reportes/discurso-mesa" element={<ReporteDiscursoMesaPage />} />

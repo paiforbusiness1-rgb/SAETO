@@ -50,8 +50,27 @@ def _enrich(raw: dict) -> CoyunturaSummary:
     )
 
 
+def _corredor_meta(corredor_slug: str | None, tramo_slug: str | None) -> tuple[str | None, str | None]:
+    if not corredor_slug:
+        return None, None
+    for corredor in seed_loader.load_corredores().get("corredores", []):
+        if corredor["slug"] != corredor_slug:
+            continue
+        tramo_nombre = None
+        if tramo_slug:
+            for tramo in corredor.get("tramos", []):
+                if tramo["slug"] == tramo_slug:
+                    tramo_nombre = tramo["nombre"]
+                    break
+        return corredor["nombre"], tramo_nombre
+    return corredor_slug, tramo_slug
+
+
 def _detail(raw: dict) -> CoyunturaDetail:
     base = _enrich(raw)
+    corredor_nombre, tramo_nombre = _corredor_meta(
+        raw.get("corredor_slug"), raw.get("tramo_slug")
+    )
     return CoyunturaDetail(
         **base.model_dump(),
         descripcion_accion=raw.get("descripcion_accion", ""),
@@ -59,6 +78,10 @@ def _detail(raw: dict) -> CoyunturaDetail:
         resultado=raw.get("resultado", ""),
         impacto_ciclo=raw.get("impacto_ciclo"),
         fuentes=raw.get("fuentes", []),
+        corredor_slug=raw.get("corredor_slug"),
+        corredor_nombre=corredor_nombre,
+        tramo_slug=raw.get("tramo_slug"),
+        tramo_nombre=tramo_nombre,
     )
 
 
@@ -101,6 +124,14 @@ def _validate(payload: CoyunturaWrite, rol: str = "analista") -> None:
         fases = {f["slug"] for f in seed_loader.load_ciclo_vital()["fases"]}
         if payload.impacto_ciclo not in fases:
             raise HTTPException(status_code=400, detail="Impacto de ciclo inválido")
+    if payload.corredor_slug:
+        corredores = {c["slug"]: c for c in seed_loader.load_corredores().get("corredores", [])}
+        if payload.corredor_slug not in corredores:
+            raise HTTPException(status_code=400, detail="Corredor no existe en catálogo")
+        if payload.tramo_slug:
+            tramos = {t["slug"] for t in corredores[payload.corredor_slug].get("tramos", [])}
+            if payload.tramo_slug not in tramos:
+                raise HTTPException(status_code=400, detail="Tramo no pertenece al corredor")
 
 
 def _to_raw(payload: CoyunturaWrite, slug: str) -> dict:
@@ -117,6 +148,8 @@ def _to_raw(payload: CoyunturaWrite, slug: str) -> dict:
         "resultado": payload.resultado.strip(),
         "impacto_ciclo": payload.impacto_ciclo,
         "fuentes": payload.fuentes,
+        "corredor_slug": payload.corredor_slug,
+        "tramo_slug": payload.tramo_slug,
     }
 
 

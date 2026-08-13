@@ -109,6 +109,14 @@ class ActorDetail(ActorSummary):
     interes_reservado: str | None = None
     recursos_poder: list[str] = Field(default_factory=list)
     notas_poder: str = ""
+    alias: list[str] = Field(default_factory=list)
+    zona_operacion: list[str] = Field(default_factory=list)
+    red_afiliacion: str | None = None
+    nivel_riesgo: str | None = None
+    nivel_riesgo_nombre: str = ""
+    cuenta_pendiente_seguridad: str | None = None
+    fuente_inteligencia: str | None = None
+    fuente_inteligencia_nombre: str = ""
 
 
 class ReivindicacionSummary(BaseModel):
@@ -193,6 +201,10 @@ class CoyunturaDetail(CoyunturaSummary):
     resultado: str = ""
     impacto_ciclo: FaseCiclo | None = None
     fuentes: list[str] = Field(default_factory=list)
+    corredor_slug: str | None = None
+    corredor_nombre: str | None = None
+    tramo_slug: str | None = None
+    tramo_nombre: str | None = None
 
 
 class IndicadorContexto(BaseModel):
@@ -284,6 +296,12 @@ class ActorWrite(BaseModel):
     interes_reservado: str = ""
     recursos_poder: list[str] = []
     notas_poder: str = ""
+    alias: list[str] = []
+    zona_operacion: list[str] = []
+    red_afiliacion: str = ""
+    nivel_riesgo: str | None = None
+    cuenta_pendiente_seguridad: str = ""
+    fuente_inteligencia: str | None = None
     slug: str | None = None
 
 
@@ -304,6 +322,7 @@ class ReivindicacionWrite(BaseModel):
     fecha_deteccion: str | None = None
     fecha_ultima_actualizacion_ciclo: str | None = None
     notas_ciclo: str = ""
+    corredores: list[str] = []
     slug: str | None = None
 
 
@@ -336,6 +355,8 @@ class CoyunturaWrite(BaseModel):
     resultado: str = ""
     impacto_ciclo: FaseCiclo | None = None
     fuentes: list[str] = []
+    corredor_slug: str | None = None
+    tramo_slug: str | None = None
     slug: str | None = None
 
 

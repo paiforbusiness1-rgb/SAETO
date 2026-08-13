@@ -21,6 +21,16 @@ const items = [
     desc: "Qué zona y colonia concentran la presión",
   },
   {
+    to: "/reportes/calor",
+    title: "Mapa de calor (P3)",
+    desc: "Bandas y top focos por capa de inteligencia",
+  },
+  {
+    to: "/reportes/corredores",
+    title: "Corredores críticos",
+    desc: "Ejes bajo presión de eventos y demandas",
+  },
+  {
     to: "/reportes/actores",
     title: "Mapa de poder",
     desc: "Ranking de movilización (no GIS) — estimada vs comprobada",

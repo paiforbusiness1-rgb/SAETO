@@ -1,0 +1,13 @@
+{
+  "demo": true,
+  "ventanas": [
+    { "slug": "diaria", "nombre": "Evaluación diaria" },
+    { "slug": "semanal", "nombre": "Evaluación semanal" }
+  ],
+  "checklist": [
+    { "slug": "revisar_escalando", "nombre": "Revisar demandas escalando" },
+    { "slug": "revisar_calor_muy_alta", "nombre": "Revisar celdas en calor muy alto" },
+    { "slug": "revisar_corredores", "nombre": "Revisar corredores bajo presión" },
+    { "slug": "revisar_actores_en_revision", "nombre": "Revisar actores en verificación" }
+  ]
+}

@@ -25,6 +25,8 @@ const empty: CoyunturaWrite = {
   resultado: "",
   impacto_ciclo: null,
   fuentes: [],
+  corredor_slug: null,
+  tramo_slug: null,
 };
 
 export function CapturaCoyunturaListPage() {
@@ -109,16 +111,31 @@ export function CapturaCoyunturaFormPage() {
   const [actores, setActores] = useState<ActorSummary[]>([]);
   const [demandas, setDemandas] = useState<ReivindicacionSummary[]>([]);
   const [catalogos, setCatalogos] = useState<CatalogosConfig | null>(null);
+  const [corredores, setCorredores] = useState<
+    { slug: string; nombre: string; tramos: { slug: string; nombre: string }[] }[]
+  >([]);
   const [msg, setMsg] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(!isNew);
 
   useEffect(() => {
-    Promise.all([api.actores(), api.reivindicaciones(), api.catalogosConfig()])
-      .then(([acts, revs, cats]) => {
+    Promise.all([
+      api.actores(),
+      api.reivindicaciones(),
+      api.catalogosConfig(),
+      api.inteligenciaCorredores(),
+    ])
+      .then(([acts, revs, cats, corr]) => {
         setActores(acts);
         setDemandas(revs);
         setCatalogos(cats);
+        setCorredores(
+          corr.map((c) => ({
+            slug: c.slug,
+            nombre: c.nombre,
+            tramos: c.tramos.map((t) => ({ slug: t.slug, nombre: t.nombre })),
+          })),
+        );
       })
       .catch((e: Error) => setErr(e.message));
 
@@ -138,6 +155,8 @@ export function CapturaCoyunturaFormPage() {
             resultado: e.resultado,
             impacto_ciclo: e.impacto_ciclo,
             fuentes: e.fuentes,
+            corredor_slug: e.corredor_slug ?? null,
+            tramo_slug: e.tramo_slug ?? null,
             slug: e.slug,
           });
         })
@@ -314,6 +333,48 @@ export function CapturaCoyunturaFormPage() {
               </option>
             ))}
           </select>
+        </div>
+        <div className={styles.row2}>
+          <div className={styles.field}>
+            <label>Corredor crítico (opcional)</label>
+            <select
+              value={form.corredor_slug ?? ""}
+              onChange={(e) =>
+                setForm({
+                  ...form,
+                  corredor_slug: e.target.value || null,
+                  tramo_slug: null,
+                })
+              }
+            >
+              <option value="">— Sin corredor —</option>
+              {corredores.map((c) => (
+                <option key={c.slug} value={c.slug}>
+                  {c.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.field}>
+            <label>Tramo (opcional)</label>
+            <select
+              value={form.tramo_slug ?? ""}
+              onChange={(e) =>
+                setForm({ ...form, tramo_slug: e.target.value || null })
+              }
+              disabled={!form.corredor_slug}
+            >
+              <option value="">— Sin tramo —</option>
+              {(
+                corredores.find((c) => c.slug === form.corredor_slug)?.tramos ||
+                []
+              ).map((t) => (
+                <option key={t.slug} value={t.slug}>
+                  {t.nombre}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className={styles.actions}>
           <button type="submit" className={styles.btn}>

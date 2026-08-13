@@ -40,4 +40,13 @@ Nota: en Vercel el filesystem es de solo lectura; la **Captura** que escribe JSO
 
 ## Qué incluye
 
-Sala de situación, catálogos, captura, discurso, reportes gerenciales, UI glassmorphism (datos DEMO).
+Sala de situación, catálogos, captura, discurso, reportes gerenciales, inteligencia territorial (mapa real OSM), módulo IA Groq (lectura/clasificación/contexto), UI glassmorphism (datos DEMO).
+
+## IA Groq (local)
+
+1. Copia `backend/.env.example` → `backend/.env`
+2. Define `GROQ_API_KEY=...`
+3. Reinicia uvicorn
+4. En la UI (rol Analista+): Panorama / Ficha reiv / Inteligencia → IA clasificar
+
+Ver `docs/guion_demo_ia_publicos.md`.

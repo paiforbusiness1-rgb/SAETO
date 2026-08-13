@@ -15,6 +15,7 @@ import { GlassCard } from "../../shared/ui/GlassCard";
 import { GlassPanel } from "../../shared/ui/GlassPanel";
 import { SemaforoPill } from "../../shared/ui/SemaforoPill";
 import { StateBlock } from "../../shared/ui/StateBlock";
+import { IaPanel } from "../ia/IaPanel";
 import styles from "./ObservatorioPages.module.css";
 
 export function ObservatorioListPage() {
@@ -285,6 +286,17 @@ export function ObservatorioDetailPage() {
       <div className={styles.block}>
         <h2>Bitácora de coyuntura</h2>
         <CoyunturaTimeline eventos={eventos} />
+      </div>
+
+      <div className={styles.block}>
+        <IaPanel
+          title="IA · Contexto de decisión"
+          disclaimer="Arma el relato de contexto/acuerdos/pendientes con hechos de la ficha (sin campos sensibles). Es el módulo de expertise del pitch."
+          onGenerate={async () => {
+            const res = await api.iaContextoDecision(item.slug);
+            return `${res.lectura}\n\n— modelo ${res.modelo}\n${res.disclaimer}`;
+          }}
+        />
       </div>
 
       <Link to="/" className={styles.backLink}>

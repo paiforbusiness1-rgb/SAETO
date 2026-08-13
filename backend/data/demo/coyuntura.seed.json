@@ -16,7 +16,9 @@
       "fuentes": [
         "campo",
         "medios"
-      ]
+      ],
+      "corredor_slug": "eje-ermita-iztapalapa",
+      "tramo_slug": "tramo-barrio-arriba"
     },
     {
       "slug": "evt-laura-bloqueo-2026-07",
@@ -32,7 +34,9 @@
       "impacto_ciclo": "movilizacion",
       "fuentes": [
         "campo"
-      ]
+      ],
+      "corredor_slug": "eje-ermita-iztapalapa",
+      "tramo_slug": "tramo-barrio-arriba"
     },
     {
       "slug": "evt-ricardo-manifestacion",
@@ -49,7 +53,9 @@
       "fuentes": [
         "medios",
         "campo"
-      ]
+      ],
+      "corredor_slug": "eje-agricola-oriental",
+      "tramo_slug": "tramo-agricola"
     },
     {
       "slug": "evt-miguel-reunion",
@@ -66,7 +72,9 @@
       "fuentes": [
         "bd_gobierno",
         "campo"
-      ]
+      ],
+      "corredor_slug": "limite-tlahuac-oriente",
+      "tramo_slug": "tramo-tlaltenango"
     }
   ]
 }

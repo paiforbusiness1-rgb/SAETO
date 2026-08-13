@@ -14,6 +14,30 @@
       "demo": true
     },
     {
+      "slug": "inegi-poblacion-iztapalapa-2020",
+      "territorio": "barrio-arriba",
+      "zona": "iztapalapa",
+      "clave": "poblacion_total",
+      "nombre": "Población total alcaldía (contexto)",
+      "valor": 1835486,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Censo 2020 — dato público referencial de alcaldía (demo).",
+      "demo": true
+    },
+    {
+      "slug": "inegi-mayores18-iztapalapa-2020",
+      "territorio": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "clave": "poblacion_18_mas",
+      "nombre": "Población de 18 años y más (contexto)",
+      "valor": 1380000,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Estimación demo a partir de estructura etaria pública; no es padrón electoral.",
+      "demo": true
+    },
+    {
       "slug": "inegi-seguridad-iztacalco-2024",
       "territorio": "agricola-oriental",
       "zona": "iztacalco",
@@ -23,6 +47,54 @@
       "anio": 2024,
       "fuente": "INEGI",
       "nota": "Referencia demo; no sustituye encuesta in situ.",
+      "demo": true
+    },
+    {
+      "slug": "inegi-poblacion-iztacalco-2020",
+      "territorio": "agricola-oriental",
+      "zona": "iztacalco",
+      "clave": "poblacion_total",
+      "nombre": "Población total alcaldía (contexto)",
+      "valor": 404695,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Censo 2020 — dato público referencial.",
+      "demo": true
+    },
+    {
+      "slug": "inegi-poblacion-tlahuac-2020",
+      "territorio": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "clave": "poblacion_total",
+      "nombre": "Población total alcaldía (contexto)",
+      "valor": 392313,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Censo 2020 — dato público referencial.",
+      "demo": true
+    },
+    {
+      "slug": "inegi-poblacion-xochimilco-2020",
+      "territorio": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "clave": "densidad_contexto_oriente",
+      "nombre": "Densidad relativa oriente (índice demo)",
+      "valor": 112.4,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Índice demo para mesa; en producción vendrá de capa pública homologada por alcaldía.",
+      "demo": true
+    },
+    {
+      "slug": "inegi-vivienda-meyehualco-2020",
+      "territorio": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "clave": "viviendas_particulares",
+      "nombre": "Viviendas particulares habitadas (contexto)",
+      "valor": 520000,
+      "anio": 2020,
+      "fuente": "INEGI",
+      "nota": "Orden de magnitud demo a escala alcaldía.",
       "demo": true
     }
   ]

@@ -8,15 +8,27 @@ from app.api.routes import (
     dashboard,
     discurso,
     encuestas,
+    ia,
+    inteligencia,
     meta,
     observatorio,
     reportes,
 )
 
+# Carga opcional de backend/.env para GROQ_API_KEY en local
+try:
+    from pathlib import Path
+
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+except Exception:
+    pass
+
 app = FastAPI(
     title="SAETO API",
-    description="Sistema de Análisis Estratégico Territorial Oriente — captura + reportes",
-    version="0.4.0",
+    description="Sistema de Análisis Estratégico Territorial Oriente — captura + reportes + inteligencia + IA",
+    version="0.6.0",
 )
 
 app.add_middleware(
@@ -41,4 +53,6 @@ app.include_router(actores.router)
 app.include_router(discurso.router)
 app.include_router(coyuntura.router)
 app.include_router(encuestas.router)
+app.include_router(inteligencia.router)
+app.include_router(ia.router)
 app.include_router(reportes.router)

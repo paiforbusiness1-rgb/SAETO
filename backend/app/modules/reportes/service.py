@@ -628,3 +628,39 @@ def _lectura_ejecutiva(semaforo: dict, temas: list, actores: list) -> str:
             f"Actor con mayor movilización: {top.nombre} (~{top.capacidad_movilizacion})."
         )
     return " ".join(partes)
+
+
+def reporte_calor(capa: str = "compuesta") -> dict:
+    from app.modules.inteligencia import calor_service
+
+    data = calor_service.mapa_calor(capa=capa, top_n=10)
+    return {
+        "demo": True,
+        "capa": data.capa,
+        "capa_nombre": data.capa_nombre,
+        "bandas": data.bandas,
+        "top": [c.model_dump() for c in data.top],
+        "por_zona": [c.model_dump() for c in data.por_zona],
+        "lectura_gerencial": (
+            f"Capa {data.capa_nombre}: foco principal "
+            f"{data.top[0].colonia_nombre} ({data.top[0].banda_nombre}, score {data.top[0].score})."
+            if data.top
+            else "Sin celdas de calor. Capture reivindicaciones y coyuntura."
+        ),
+    }
+
+
+def reporte_corredores() -> dict:
+    from app.modules.inteligencia import corredores_service
+
+    items = corredores_service.ranking_corredores()
+    return {
+        "demo": True,
+        "corredores": [c.model_dump() for c in items],
+        "lectura_gerencial": (
+            f"Corredor bajo mayor presión: {items[0].nombre} "
+            f"({items[0].eventos} eventos, {items[0].demandas} demandas)."
+            if items
+            else "Sin corredores configurados."
+        ),
+    }

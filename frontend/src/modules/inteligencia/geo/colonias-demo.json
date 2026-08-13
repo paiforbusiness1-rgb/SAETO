@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "name": "colonias-demo-oriente",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "slug": "barrio-arriba",
+        "nombre": "Barrio Arriba",
+        "zona": "iztapalapa"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.0675, 19.3588] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slug": "santa-cruz-meyehualco",
+        "nombre": "Santa Cruz Meyehualco",
+        "zona": "iztapalapa"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.041, 19.3365] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slug": "agricola-oriental",
+        "nombre": "Agrícola Oriental",
+        "zona": "iztacalco"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.073, 19.3955] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "slug": "san-francisco-tlaltenango",
+        "nombre": "San Francisco Tlaltenango",
+        "zona": "tlahuac"
+      },
+      "geometry": { "type": "Point", "coordinates": [-99.002, 19.278] }
+    }
+  ]
+}

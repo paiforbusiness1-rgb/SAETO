@@ -27,7 +27,13 @@
         "legitimidad",
         "autoridad_moral"
       ],
-      "notas_poder": "Alto prestigio local"
+      "notas_poder": "Alto prestigio local",
+      "alias": ["La Méndez"],
+      "zona_operacion": ["barrio-arriba", "santa-cruz-meyehualco"],
+      "red_afiliacion": "",
+      "nivel_riesgo": "medio",
+      "cuenta_pendiente_seguridad": "",
+      "fuente_inteligencia": "campo"
     },
     {
       "slug": "ricardo-solis",

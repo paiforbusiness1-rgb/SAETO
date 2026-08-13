@@ -1,0 +1,49 @@
+{
+  "demo": true,
+  "corredores": [
+    {
+      "slug": "eje-ermita-iztapalapa",
+      "nombre": "Eje Ermita–Iztapalapa",
+      "tipo": "eje_vial",
+      "alcaldias": ["iztapalapa"],
+      "tramos": [
+        {
+          "slug": "tramo-barrio-arriba",
+          "nombre": "Tramo Barrio Arriba",
+          "colonias": ["barrio-arriba"]
+        },
+        {
+          "slug": "tramo-meyehualco",
+          "nombre": "Tramo Santa Cruz Meyehualco",
+          "colonias": ["santa-cruz-meyehualco"]
+        }
+      ]
+    },
+    {
+      "slug": "eje-agricola-oriental",
+      "nombre": "Eje Agrícola Oriental",
+      "tipo": "eje_vial",
+      "alcaldias": ["iztacalco"],
+      "tramos": [
+        {
+          "slug": "tramo-agricola",
+          "nombre": "Tramo Agrícola Oriental",
+          "colonias": ["agricola-oriental"]
+        }
+      ]
+    },
+    {
+      "slug": "limite-tlahuac-oriente",
+      "nombre": "Límite Tláhuac Oriente",
+      "tipo": "limite_alcaldia",
+      "alcaldias": ["tlahuac"],
+      "tramos": [
+        {
+          "slug": "tramo-tlaltenango",
+          "nombre": "Tramo San Francisco Tlaltenango",
+          "colonias": ["san-francisco-tlaltenango"]
+        }
+      ]
+    }
+  ]
+}

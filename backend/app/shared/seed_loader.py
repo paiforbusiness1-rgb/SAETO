@@ -31,6 +31,14 @@ def clear_all_caches() -> None:
         load_encuestas_indice,
         load_plantilla_encuesta,
         load_encuesta_rapida,
+        load_umbrales_calor,
+        load_calor_capas,
+        load_corredores,
+        load_panorama_plantillas,
+        load_ritmo_mesa,
+        load_cobertura_recomendaciones,
+        load_actor_inteligencia,
+        load_ia_groq,
         load_actores_seed,
         load_reivindicaciones_seed,
         load_discurso_seed,
@@ -39,6 +47,7 @@ def clear_all_caches() -> None:
         load_indicadores_seed,
         load_encuestas_seed,
         load_encuestas_data,
+        load_evaluaciones_mesa,
     ):
         fn.cache_clear()
 
@@ -115,6 +124,65 @@ def load_encuesta_rapida() -> dict[str, Any]:
         return load_plantilla_encuesta("rapida_mesa")
     except KeyError:
         return _read_json(CONFIG_DIR / "encuesta-rapida.json")
+
+
+@lru_cache(maxsize=1)
+def load_umbrales_calor() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "umbrales-calor.json")
+
+
+@lru_cache(maxsize=1)
+def load_calor_capas() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "calor-capas.json")
+
+
+@lru_cache(maxsize=1)
+def load_corredores() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "corredores.json")
+
+
+@lru_cache(maxsize=1)
+def load_panorama_plantillas() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "panorama-plantillas.json")
+
+
+@lru_cache(maxsize=1)
+def load_ritmo_mesa() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "ritmo-mesa.json")
+
+
+@lru_cache(maxsize=1)
+def load_cobertura_recomendaciones() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "cobertura-recomendaciones.json")
+
+
+@lru_cache(maxsize=1)
+def load_actor_inteligencia() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "actor-inteligencia.json")
+
+
+@lru_cache(maxsize=1)
+def load_ia_groq() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "ia-groq.json")
+
+
+def _evaluaciones_path() -> Path:
+    return RUNTIME_DIR / "evaluaciones_mesa.json"
+
+
+@lru_cache(maxsize=1)
+def load_evaluaciones_mesa() -> dict[str, Any]:
+    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
+    path = _evaluaciones_path()
+    if not path.exists():
+        atomic_write_json(path, {"demo": True, "items": []})
+    return _read_json(path)
+
+
+def save_evaluaciones_mesa(data: dict[str, Any]) -> None:
+    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(_evaluaciones_path(), data)
+    clear_all_caches()
 
 
 def list_plantillas_encuesta() -> list[dict[str, Any]]:

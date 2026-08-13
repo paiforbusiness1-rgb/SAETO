@@ -1,0 +1,15 @@
+{
+  "demo": true,
+  "niveles_riesgo": [
+    { "slug": "bajo", "nombre": "Bajo", "sensible": false },
+    { "slug": "medio", "nombre": "Medio", "sensible": false },
+    { "slug": "alto", "nombre": "Alto", "sensible": true },
+    { "slug": "critico", "nombre": "Crítico", "sensible": true }
+  ],
+  "fuentes_inteligencia": [
+    { "slug": "campo", "nombre": "Campo" },
+    { "slug": "bd_gobierno", "nombre": "BD gobierno" },
+    { "slug": "medios", "nombre": "Medios" },
+    { "slug": "otra", "nombre": "Otra" }
+  ]
+}

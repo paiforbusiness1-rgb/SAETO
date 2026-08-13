@@ -91,11 +91,39 @@ def actor_detail(raw: dict, include_sensible: bool = False) -> ActorDetail:
     reservado = raw.get("interes_reservado") or ""
     recursos = list(raw.get("recursos_poder") or [])
     notas_poder = raw.get("notas_poder", "")
+    alias = list(raw.get("alias") or [])
+    zona_operacion = list(raw.get("zona_operacion") or [])
+    red = raw.get("red_afiliacion") or ""
+    nivel = raw.get("nivel_riesgo")
+    cuenta = raw.get("cuenta_pendiente_seguridad") or ""
+    fuente_int = raw.get("fuente_inteligencia")
+    nivel_nombre = ""
+    fuente_nombre = ""
+    intel = seed_loader.load_actor_inteligencia()
+    for item in intel.get("niveles_riesgo", []):
+        if item["slug"] == nivel:
+            nivel_nombre = item["nombre"]
+            break
+    for item in intel.get("fuentes_inteligencia", []):
+        if item["slug"] == fuente_int:
+            fuente_nombre = item["nombre"]
+            break
+
     if not include_sensible:
         reservado = None
         bloqueados = set(recursos_sensibles(recursos))
         recursos = [r for r in recursos if r not in bloqueados]
         notas_poder = ""
+        red = None
+        cuenta = None
+        # ocultar niveles marcados sensibles
+        sensible_niveles = {
+            n["slug"] for n in intel.get("niveles_riesgo", []) if n.get("sensible")
+        }
+        if nivel in sensible_niveles:
+            nivel = None
+            nivel_nombre = ""
+
     return ActorDetail(
         **base.model_dump(),
         notas_mesa=raw.get("notas_mesa", ""),
@@ -106,6 +134,14 @@ def actor_detail(raw: dict, include_sensible: bool = False) -> ActorDetail:
         interes_reservado=reservado,
         recursos_poder=recursos,
         notas_poder=notas_poder,
+        alias=alias,
+        zona_operacion=zona_operacion,
+        red_afiliacion=red,
+        nivel_riesgo=nivel,
+        nivel_riesgo_nombre=nivel_nombre,
+        cuenta_pendiente_seguridad=cuenta,
+        fuente_inteligencia=fuente_int,
+        fuente_inteligencia_nombre=fuente_nombre,
     )
 
 

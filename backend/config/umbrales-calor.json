@@ -1,0 +1,9 @@
+{
+  "demo": true,
+  "bandas": [
+    { "slug": "baja", "nombre": "Baja", "min": 0, "max": 24, "color": "#3dba7c" },
+    { "slug": "media", "nombre": "Media", "min": 25, "max": 49, "color": "#d4a017" },
+    { "slug": "alta", "nombre": "Alta", "min": 50, "max": 74, "color": "#e07a3d" },
+    { "slug": "muy_alta", "nombre": "Muy alta", "min": 75, "max": 999, "color": "#e05656" }
+  ]
+}

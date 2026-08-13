@@ -160,6 +160,14 @@ export interface ActorDetail extends ActorSummary {
   interes_reservado: string | null;
   recursos_poder: string[];
   notas_poder: string;
+  alias?: string[];
+  zona_operacion?: string[];
+  red_afiliacion?: string | null;
+  nivel_riesgo?: string | null;
+  nivel_riesgo_nombre?: string;
+  cuenta_pendiente_seguridad?: string | null;
+  fuente_inteligencia?: string | null;
+  fuente_inteligencia_nombre?: string;
 }
 
 export interface ReivindicacionSummary {
@@ -242,6 +250,119 @@ export interface CoyunturaDetail extends CoyunturaSummary {
   resultado: string;
   impacto_ciclo: FaseCiclo | null;
   fuentes: string[];
+  corredor_slug?: string | null;
+  corredor_nombre?: string | null;
+  tramo_slug?: string | null;
+  tramo_nombre?: string | null;
+}
+
+export interface CeldaCalor {
+  territorio_slug?: string | null;
+  colonia_slug?: string | null;
+  colonia_nombre: string;
+  zona_slug: string;
+  zona_nombre: string;
+  capa: string;
+  score: number;
+  banda: string;
+  banda_nombre: string;
+  color: string;
+  desglose: Record<string, number>;
+}
+
+export interface MapaCalorResponse {
+  demo: boolean;
+  capa: string;
+  capa_nombre: string;
+  periodo_dias: number;
+  bandas: { slug: string; nombre: string; min: number; max: number; color: string }[];
+  celdas: CeldaCalor[];
+  por_zona: CeldaCalor[];
+  top: CeldaCalor[];
+}
+
+export interface PanoramaTerritorial {
+  demo: boolean;
+  zona_slug?: string | null;
+  zona_nombre: string;
+  colonia_slug?: string | null;
+  colonia_nombre: string;
+  resumen_ejecutivo: string;
+  intensidad: CeldaCalor | null;
+  conteo_semaforo: Record<string, number>;
+  conteo_ciclo: Record<string, number>;
+  escalando: number;
+  top_reivindicaciones: {
+    slug: string;
+    tema_nombre: string;
+    territorio_nombre: string;
+    semaforo: Semaforo;
+    semaforo_etiqueta: string;
+    fase_ciclo_nombre: string;
+    sentido_ciclo: SentidoCiclo;
+  }[];
+  eventos_recientes: {
+    slug: string;
+    fecha: string;
+    tipo_accion_nombre: string;
+    actor_nombre: string | null;
+    demanda_nombre: string | null;
+  }[];
+  actores_clave: {
+    slug: string;
+    nombre: string;
+    rol: string;
+    colonia_nombre: string;
+    movilizacion_display: number;
+    movilizacion_fuente: string;
+  }[];
+  indicadores_contexto: {
+    slug: string;
+    nombre: string;
+    valor: number | string;
+    anio: number;
+    territorio_nombre: string;
+  }[];
+  pulso_encuestas: {
+    total?: number;
+    colonias_cubiertas?: number;
+    enlace_captura?: string;
+  };
+}
+
+export interface CorredorRanking {
+  slug: string;
+  nombre: string;
+  tipo: string;
+  alcaldias: string[];
+  eventos: number;
+  demandas: number;
+  score_presion: number;
+  tramos: { slug: string; nombre: string; colonias?: string[] }[];
+}
+
+export interface SectorCobertura {
+  sector_slug: string;
+  sector_nombre: string;
+  zona_slug: string;
+  zona_nombre: string;
+  prioridad: number;
+  banda: string;
+  score: number;
+  motivo: string;
+  recomendacion: string;
+  recomendacion_nombre: string;
+  actores_a_revisar: string[];
+}
+
+export interface EvaluacionMesa {
+  slug: string;
+  fecha: string;
+  rol: string;
+  ventana: string;
+  notas: string;
+  focos_revisados: string[];
+  checklist_ok: string[];
 }
 
 export interface IndicadorContexto {
@@ -280,6 +401,39 @@ export interface EncuestaDetail extends EncuestaSummary {
   plantilla_meta: EncuestaPlantilla;
 }
 
+export interface SalaOperativa {
+  demo: boolean;
+  resumen: string;
+  registro: {
+    titulo: string;
+    descripcion: string;
+    accesos?: { label: string; to: string }[];
+  };
+  analisis: {
+    titulo: string;
+    descripcion: string;
+    top_calor?: CeldaCalor[];
+    corredores?: CorredorRanking[];
+    accesos?: { label: string; to: string }[];
+  };
+  reporteador: {
+    titulo: string;
+    descripcion: string;
+    accesos?: { label: string; to: string }[];
+  };
+  priorizacion: {
+    titulo: string;
+    descripcion: string;
+    sectores?: SectorCobertura[];
+    accesos?: { label: string; to: string }[];
+  };
+  ritmo: {
+    ventanas?: { slug: string; nombre: string }[];
+    checklist?: { slug: string; nombre: string }[];
+  };
+  evaluaciones_recientes: EvaluacionMesa[];
+}
+
 export interface Brief {
   demo: boolean;
   resumen_ejecutivo: string;
@@ -289,4 +443,43 @@ export interface Brief {
   conteo_semaforo: Record<string, number>;
   conteo_ciclo: Record<string, number>;
   escalando: number;
+}
+
+export interface IaStatus {
+  demo: boolean;
+  habilitado: boolean;
+  proveedor: string;
+  modelo: string;
+  api_key_configurada: boolean;
+  roles_permitidos: string[];
+  disclaimer: string;
+}
+
+export interface PanoramaLecturaResponse {
+  demo: boolean;
+  disclaimer: string;
+  zona?: string | null;
+  colonia?: string | null;
+  lectura: string;
+  modelo: string;
+}
+
+export interface ClasificarTextoResponse {
+  demo: boolean;
+  disclaimer: string;
+  tema_sugerido: string;
+  fase_ciclo_sugerida: string;
+  sentido_sugerido: string;
+  confianza: number;
+  resumen_corto: string;
+  notas_mesa: string;
+  modelo: string;
+}
+
+export interface ContextoDecisionResponse {
+  demo: boolean;
+  disclaimer: string;
+  demanda_slug: string;
+  lectura: string;
+  modelo: string;
 }

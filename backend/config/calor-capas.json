@@ -1,0 +1,41 @@
+{
+  "demo": true,
+  "ventana_dias_default": 120,
+  "capas": [
+    {
+      "slug": "reivindicaciones",
+      "nombre": "Reivindicaciones",
+      "descripcion": "Demandas abiertas ponderadas por grado de escalamiento",
+      "peso": 1.0,
+      "activa_default": true
+    },
+    {
+      "slug": "coyuntura",
+      "nombre": "Coyuntura",
+      "descripcion": "Eventos recientes de acción territorial",
+      "peso": 1.2,
+      "activa_default": true
+    },
+    {
+      "slug": "movilizacion",
+      "nombre": "Movilización",
+      "descripcion": "Capacidad de convocatoria de actores anclados",
+      "peso": 0.8,
+      "activa_default": true
+    },
+    {
+      "slug": "percepcion",
+      "nombre": "Percepción",
+      "descripcion": "Pulso de encuestas locales",
+      "peso": 0.9,
+      "activa_default": true
+    },
+    {
+      "slug": "compuesta",
+      "nombre": "Compuesta",
+      "descripcion": "Suma ponderada de capas activas",
+      "peso": 1.0,
+      "activa_default": true
+    }
+  ]
+}

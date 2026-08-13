@@ -1,0 +1,4 @@
+{
+  "demo": true,
+  "plantilla_resumen": "En {territorio} el calor es {banda} (score {score}). Hay {n_reivs} reivindicaciones ({n_escalando} escalando), {n_eventos} eventos recientes y {n_actores} actores clave en el radar."
+}
