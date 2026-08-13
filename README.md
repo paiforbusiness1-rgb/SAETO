@@ -36,7 +36,14 @@ El `vercel.json` define dos servicios:
 
 En Vercel: Import Git Repository → elige `paiforbusiness1-rgb/SAETO` → Root Directory `./` → Deploy.
 
-Nota: en Vercel el filesystem es de solo lectura; la **Captura** que escribe JSON puede fallar o no persistir. La sala, reportes y lectura de demos sí funcionan.
+### Variables de entorno (servicio backend)
+
+| Variable | Obligatoria | Notas |
+|----------|-------------|--------|
+| `GROQ_API_KEY` | Sí para IA | Misma key que en local; sin ella `/api/ia/*` responde 503 |
+| `SAETO_RUNTIME_DIR` | No | Por defecto usa `/tmp/saeto-runtime` si el FS del deploy es read-only |
+
+Nota: en Vercel las escrituras de captura/audit son **efímeras** (viven en `/tmp` por instancia). La lectura de seeds demo e IA sí deben funcionar tras configurar `GROQ_API_KEY`.
 
 ## Qué incluye
 

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -10,7 +12,37 @@ from app.shared.persistence import atomic_write_json
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
 CONFIG_DIR = BACKEND_ROOT / "config"
 DEMO_DIR = BACKEND_ROOT / "data" / "demo"
-RUNTIME_DIR = BACKEND_ROOT / "data" / "runtime"
+# Preferido en local; en Vercel (FS read-only) se resuelve a /tmp vía get_runtime_dir().
+_RUNTIME_DIR_PREFERRED = BACKEND_ROOT / "data" / "runtime"
+
+
+@lru_cache(maxsize=1)
+def get_runtime_dir() -> Path:
+    """Directorio escribible para runtime (encuestas, audit, evaluaciones).
+
+    Vercel solo permite escritura en /tmp. Opcional: SAETO_RUNTIME_DIR.
+    """
+    candidates: list[Path] = []
+    override = (os.getenv("SAETO_RUNTIME_DIR") or "").strip()
+    if override:
+        candidates.append(Path(override))
+    candidates.append(_RUNTIME_DIR_PREFERRED)
+    candidates.append(Path(tempfile.gettempdir()) / "saeto-runtime")
+
+    for directory in candidates:
+        try:
+            directory.mkdir(parents=True, exist_ok=True)
+            probe = directory / ".saeto_write_ok"
+            probe.write_text("1", encoding="utf-8")
+            probe.unlink(missing_ok=True)
+            return directory
+        except OSError:
+            continue
+    return Path(tempfile.gettempdir()) / "saeto-runtime"
+
+
+# Compatibilidad con imports antiguos
+RUNTIME_DIR = _RUNTIME_DIR_PREFERRED
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -167,20 +199,22 @@ def load_ia_groq() -> dict[str, Any]:
 
 
 def _evaluaciones_path() -> Path:
-    return RUNTIME_DIR / "evaluaciones_mesa.json"
+    return get_runtime_dir() / "evaluaciones_mesa.json"
 
 
 @lru_cache(maxsize=1)
 def load_evaluaciones_mesa() -> dict[str, Any]:
-    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
-    path = _evaluaciones_path()
-    if not path.exists():
-        atomic_write_json(path, {"demo": True, "items": []})
-    return _read_json(path)
+    empty = {"demo": True, "items": []}
+    try:
+        path = _evaluaciones_path()
+        if not path.exists():
+            atomic_write_json(path, empty)
+        return _read_json(path)
+    except OSError:
+        return empty
 
 
 def save_evaluaciones_mesa(data: dict[str, Any]) -> None:
-    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
     atomic_write_json(_evaluaciones_path(), data)
     clear_all_caches()
 
@@ -247,12 +281,11 @@ def load_encuestas_seed() -> dict[str, Any]:
 
 
 def _encuestas_runtime_path() -> Path:
-    return RUNTIME_DIR / "encuestas.json"
+    return get_runtime_dir() / "encuestas.json"
 
 
 def ensure_encuestas_runtime() -> Path:
     """Bootstrap runtime desde seed demo si aún no existe (captura de evaluación)."""
-    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
     path = _encuestas_runtime_path()
     if not path.exists():
         atomic_write_json(path, load_encuestas_seed())
@@ -261,12 +294,15 @@ def ensure_encuestas_runtime() -> Path:
 
 @lru_cache(maxsize=1)
 def load_encuestas_data() -> dict[str, Any]:
-    path = ensure_encuestas_runtime()
-    return _read_json(path)
+    """Lee encuestas de runtime; si el FS no permite escribir, cae al seed demo."""
+    try:
+        path = ensure_encuestas_runtime()
+        return _read_json(path)
+    except OSError:
+        return load_encuestas_seed()
 
 
 def save_encuestas_data(data: dict[str, Any]) -> None:
-    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
     atomic_write_json(_encuestas_runtime_path(), data)
     clear_all_caches()
 
@@ -328,10 +364,13 @@ def save_encuestas_seed(data: dict[str, Any]) -> None:
 
 
 def append_audit(entry: dict[str, Any]) -> None:
+    """Auditoría best-effort: no tumba la API si el FS es read-only."""
     from datetime import datetime, timezone
 
-    RUNTIME_DIR.mkdir(parents=True, exist_ok=True)
-    path = RUNTIME_DIR / "audit.log.jsonl"
     payload = {"ts": datetime.now(timezone.utc).isoformat(), **entry}
-    with path.open("a", encoding="utf-8") as fh:
-        fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    try:
+        path = get_runtime_dir() / "audit.log.jsonl"
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    except OSError:
+        return
