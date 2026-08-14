@@ -17,17 +17,22 @@ from app.shared.seed_loader import BACKEND_ROOT
 
 GEO_DIR = BACKEND_ROOT / "data" / "geo"
 TILE_CACHE = BACKEND_ROOT / "data" / "cache" / "osm_tiles"
-TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+# Carto primero (fiable en cloud); OSM como respaldo. Datos © OSM.
+TILE_URLS = (
+    "https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+)
 USER_AGENT = "SAETO-CuartoDiagnostico/1.0 (contacto: mesa-oriente; uso institucional)"
 TILE_SIZE = 256
 DEFAULT_ZONA = "#5a7a6a"
-STROKE_RGBA = (255, 255, 255, 170)
+STROKE_RGBA = (255, 255, 255, 200)
 TITLE_BG = (15, 28, 36, 230)
 ACCENT = "#c4a35a"
 TEAL = "#7eb8a2"
 MARKER = "#c4a35a"
 WHITE = "#ffffff"
-FILL_OPACITY = 0.55
+FILL_OPACITY = 0.38
+FILL_OPACITY_NO_BASE = 0.18
 
 
 @lru_cache(maxsize=1)
@@ -159,6 +164,13 @@ def _choose_zoom(
     return 11
 
 
+def _tile_from_bytes(content: bytes) -> Image.Image | None:
+    try:
+        return Image.open(BytesIO(content)).convert("RGB")
+    except Exception:
+        return None
+
+
 def _load_cached_tile(z: int, x: int, y: int) -> Image.Image | None:
     cache_path = TILE_CACHE / f"{z}_{x}_{y}.png"
     if not cache_path.exists():
@@ -169,14 +181,25 @@ def _load_cached_tile(z: int, x: int, y: int) -> Image.Image | None:
         return None
 
 
-def _save_tile(z: int, x: int, y: int, content: bytes) -> Image.Image | None:
-    TILE_CACHE.mkdir(parents=True, exist_ok=True)
-    cache_path = TILE_CACHE / f"{z}_{x}_{y}.png"
+def _maybe_cache_tile(z: int, x: int, y: int, content: bytes) -> None:
+    """Caché best-effort (en Vercel el FS puede ser de solo lectura)."""
     try:
-        cache_path.write_bytes(content)
-        return Image.open(BytesIO(content)).convert("RGB")
+        TILE_CACHE.mkdir(parents=True, exist_ok=True)
+        (TILE_CACHE / f"{z}_{x}_{y}.png").write_bytes(content)
     except OSError:
-        return None
+        return
+
+
+def _fetch_tile_bytes(client: httpx.Client, z: int, x: int, y: int) -> bytes | None:
+    for template in TILE_URLS:
+        url = template.format(z=z, x=x, y=y)
+        try:
+            resp = client.get(url)
+            if resp.status_code == 200 and resp.content:
+                return resp.content
+        except Exception:
+            continue
+    return None
 
 
 def _render_basemap(
@@ -200,7 +223,8 @@ def _render_basemap(
     y1 = int(math.floor((top + height) / TILE_SIZE))
 
     canvas = Image.new("RGB", (width, height), (232, 236, 232))
-    got_any = False
+    got = 0
+    needed = 0
     missing: list[tuple[int, int]] = []
 
     for ty in range(y0, y1 + 1):
@@ -208,36 +232,39 @@ def _render_basemap(
             n = 2**zoom
             if tx < 0 or ty < 0 or tx >= n or ty >= n:
                 continue
+            needed += 1
             tile = _load_cached_tile(zoom, tx, ty)
             if tile is None:
                 missing.append((tx, ty))
                 continue
-            got_any = True
+            got += 1
             canvas.paste(tile, (int(tx * TILE_SIZE - left), int(ty * TILE_SIZE - top)))
 
     if missing:
         try:
-            with httpx.Client(timeout=12.0, headers={"User-Agent": USER_AGENT}) as client:
+            with httpx.Client(
+                timeout=8.0,
+                headers={"User-Agent": USER_AGENT, "Accept": "image/png,*/*"},
+                follow_redirects=True,
+            ) as client:
                 for tx, ty in missing:
-                    url = TILE_URL.format(z=zoom, x=tx, y=ty)
-                    try:
-                        resp = client.get(url)
-                        if resp.status_code != 200:
-                            continue
-                        tile = _save_tile(zoom, tx, ty, resp.content)
-                        if tile is None:
-                            continue
-                        got_any = True
-                        canvas.paste(
-                            tile,
-                            (int(tx * TILE_SIZE - left), int(ty * TILE_SIZE - top)),
-                        )
-                    except Exception:
+                    content = _fetch_tile_bytes(client, zoom, tx, ty)
+                    if not content:
                         continue
+                    tile = _tile_from_bytes(content)
+                    if tile is None:
+                        continue
+                    _maybe_cache_tile(zoom, tx, ty, content)
+                    got += 1
+                    canvas.paste(
+                        tile,
+                        (int(tx * TILE_SIZE - left), int(ty * TILE_SIZE - top)),
+                    )
         except Exception:
             pass
 
-    if not got_any:
+    # Exigir cobertura útil; si casi no hay tiles, mejor fallback legible
+    if needed == 0 or got < max(1, needed // 3):
         return None
 
     def project(lon: float, lat: float) -> tuple[int, int]:
@@ -361,20 +388,23 @@ def _compose_map(
 
     hi_w, hi_h = width * 2, height * 2
     base_pack = _render_basemap(bbox, hi_w, hi_h)
+    has_basemap = base_pack is not None
     if base_pack is None:
-        base = Image.new("RGB", (hi_w, hi_h), (244, 247, 245))
+        base = Image.new("RGB", (hi_w, hi_h), (236, 240, 238))
         project = lambda lon, lat: _project_flat(lon, lat, bbox, hi_w, hi_h)
     else:
         base, project = base_pack
 
     overlay = Image.new("RGBA", (hi_w, hi_h), (0, 0, 0, 0))
+    fill_op = FILL_OPACITY if has_basemap else FILL_OPACITY_NO_BASE
+    dim_op = 0.22 if has_basemap else 0.10
 
     # Alcaldías del recorte (calor del caso) + vecinas tenues si entran al frame
     for f in alcaldias:
         slug = (f.get("properties") or {}).get("slug") or ""
         fill = color_zonas.get(slug) or DEFAULT_ZONA
-        opacity = FILL_OPACITY if slug in color_zonas else 0.28
-        outline = 4 if slug in color_zonas else 2
+        opacity = fill_op if slug in color_zonas else dim_op
+        outline = 5 if slug in color_zonas else 2
         _draw_feature_poly(
             overlay, f, project, fill, opacity=opacity, outline_width=outline
         )
@@ -384,6 +414,7 @@ def _compose_map(
     font_title = _font(34)
     font_sub = _font(22)
     font_small = _font(18)
+    font_label = _font(20)
 
     # Cabecera compacta
     draw.rectangle((0, 0, hi_w, 56), fill=TITLE_BG)
@@ -397,7 +428,7 @@ def _compose_map(
             anchor="ra",
         )
 
-    # Colonias del caso en grande; otras solo si caen en el encuadre
+    # Colonias del caso en grande + etiqueta legible
     minx, miny, maxx, maxy = bbox
     for f in colonias:
         props = f.get("properties") or {}
@@ -411,6 +442,7 @@ def _compose_map(
         if slug not in color_colonias and not in_frame:
             continue
         x, y = project(lon, lat)
+        nombre = str(props.get("nombre") or slug)
         if slug in color_colonias:
             fill = color_colonias[slug]
             r = 22
@@ -419,6 +451,21 @@ def _compose_map(
                 fill=_hex_rgba(fill, 0.92),
                 outline=(255, 255, 255, 230),
                 width=4,
+            )
+            # Halo + texto para que no se pierda sobre el calor
+            draw.text(
+                (x + 1, y - r - 10),
+                nombre[:28],
+                fill=(255, 255, 255, 230),
+                font=font_label,
+                anchor="mb",
+            )
+            draw.text(
+                (x, y - r - 11),
+                nombre[:28],
+                fill=(26, 36, 32, 255),
+                font=font_label,
+                anchor="mb",
             )
         elif in_frame:
             r = 9
@@ -464,9 +511,14 @@ def _compose_map(
                 font=font_small,
             )
 
+    credit = (
+        "Mapa base OSM/CARTO · calor SAETO"
+        if has_basemap
+        else "Calor SAETO · base no disponible en este entorno"
+    )
     draw.text(
         (hi_w - 20, hi_h - 16),
-        "Mapa base OpenStreetMap · calor SAETO",
+        credit,
         fill=_hex_rgb(TEAL),
         font=font_small,
         anchor="rd",

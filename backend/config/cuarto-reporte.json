@@ -16,7 +16,7 @@
     { "slug": "lectura", "titulo": "Lectura y recomendaciones de mesa" }
   ],
   "pie": "SAETO · mesa Oriente · diagnóstico territorial (no es boletín policial ni War Room de campaña)",
-  "nota_mapa": "Mapa base OpenStreetMap con calor SAETO (mismas capas que el portal). El mapa interactivo sigue en el cuarto de situación.",
+  "nota_mapa": "Mapa base OSM/CARTO con calor SAETO (mismas capas que el portal). El mapa interactivo sigue en el cuarto de situación.",
   "nota_electoral": "Índice y historicidad 2021–2024 son cifras territoriales de análisis, no padrón oficial ni corte por sección.",
   "meses": [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
