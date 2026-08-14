@@ -18,9 +18,9 @@
     { "slug": "inegi_referencia", "nombre": "Referencia INEGI (contexto)" },
     { "slug": "bd_gobierno", "nombre": "Base de gobierno" },
     { "slug": "campo", "nombre": "Verificación de campo" },
-    { "slug": "encuesta_demo", "nombre": "Encuesta demo (legacy)" },
-    { "slug": "bd_gobierno_demo", "nombre": "BD gobierno demo (legacy)" },
-    { "slug": "campo_demo", "nombre": "Campo demo (legacy)" }
+    { "slug": "encuesta_demo", "nombre": "Encuesta (legacy)" },
+    { "slug": "bd_gobierno_demo", "nombre": "BD gobierno (legacy)" },
+    { "slug": "campo_demo", "nombre": "Campo (legacy)" }
   ],
   "sentidos_ciclo": [
     { "slug": "escalando", "nombre": "Escalando" },

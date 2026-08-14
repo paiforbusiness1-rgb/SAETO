@@ -1,0 +1,15 @@
+{
+  "demo": true,
+  "pesos": {
+    "problema": 0.5,
+    "electoral": 0.3,
+    "densidad": 0.2
+  },
+  "bandas": [
+    { "slug": "baja", "nombre": "Baja", "min": 0, "max": 34, "color": "#3dba7c" },
+    { "slug": "media", "nombre": "Media", "min": 35, "max": 54, "color": "#d4a017" },
+    { "slug": "alta", "nombre": "Alta", "min": 55, "max": 74, "color": "#e07a3d" },
+    { "slug": "muy_alta", "nombre": "Muy alta", "min": 75, "max": 100, "color": "#e05656" }
+  ],
+  "disclaimer": "Cruce territorial: intensidad del problema + índice electoral + densidad."
+}

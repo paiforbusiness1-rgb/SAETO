@@ -15,7 +15,7 @@ export function AcercaPage() {
   return (
     <GlassPanel strong>
       <BotonVolver />
-      <h1>Acerca del prototipo SAETO</h1>
+      <h1>Acerca de SAETO</h1>
       <p className={styles.pitch}>
         No les traemos más información: les traemos una llave para consumir la que
         ya tienen — quién manda en el territorio, qué se les debe y qué está
@@ -23,17 +23,17 @@ export function AcercaPage() {
         experiencia de mesa.
       </p>
       <div className={styles.block}>
-        <h2>Fase 0</h2>
+        <h2>Sistema</h2>
         <p>
-          Prototipo conceptual fullstack (API Python + sala de situación en
-          React). Datos ficticios de demostración. Sin conexión a bases oficiales.
+          SAETO (API + sala de situación) para análisis territorial Oriente.
+          Consolida capturas, inteligencia y lecturas de mesa.
         </p>
       </div>
       {health ? (
         <p className={styles.disclaimer}>{health.disclaimer}</p>
       ) : (
         <p className={styles.disclaimer}>
-          Prototipo DEMO — encienda el backend para ver el estado del servicio.
+          Encienda el backend para ver el estado del servicio.
         </p>
       )}
     </GlassPanel>

@@ -447,7 +447,7 @@ def reporte_contexto_inegi() -> dict:
     return {
         "demo": True,
         "disclaimer": (
-            "Indicadores referenciales (demo). No son levantamiento SAETO ni sustituyen "
+            "Indicadores referenciales de contexto. No son levantamiento SAETO ni sustituyen "
             "la lectura de campo; sirven solo como contexto estadístico. "
             "La 'brecha' y el 'triplete' son lecturas orientativas de mesa, "
             "no un índice estadístico oficial. La encuesta no crea reivindicaciones solas."

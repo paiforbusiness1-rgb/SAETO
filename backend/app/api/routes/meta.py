@@ -13,8 +13,8 @@ def health():
         sistema="SAETO",
         demo=True,
         disclaimer=(
-            "Prototipo conceptual con datos de demostración. "
-            "No representa registros oficiales ni personas reales."
+            "SAETO — Sistema de Análisis Estratégico Territorial Oriente. "
+            "Herramienta de mesa para lectura territorial."
         ),
     )
 

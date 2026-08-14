@@ -7,6 +7,7 @@ import styles from "./GlassNav.module.css";
 const links = [
   { to: "/", label: "Sala de situación" },
   { to: "/inteligencia", label: "Inteligencia" },
+  { to: "/consumibles", label: "Consumibles" },
   { to: "/reportes", label: "Reportes" },
   { to: "/observatorio", label: "Reivindicaciones" },
   { to: "/coyuntura", label: "Coyuntura" },
@@ -67,14 +68,14 @@ export function GlassNav() {
         <div className={styles.topActions}>
           <div className={styles.rolWrap}>
             <label className={styles.rolLabel} htmlFor="saeto-rol">
-              Rol demo
+              Rol
             </label>
             <select
               id="saeto-rol"
               className={styles.rolSelect}
               value={rol}
               onChange={(e) => onRolChange(e.target.value as SaetoRol)}
-              title="Control de acceso demo para campos sensibles"
+              title="Control de acceso para campos sensibles"
             >
               {ROLES.map((r) => (
                 <option key={r.value} value={r.value}>
@@ -83,7 +84,6 @@ export function GlassNav() {
               ))}
             </select>
           </div>
-          <span className={styles.badge}>DEMO</span>
           <button
             type="button"
             className={styles.menuBtn}

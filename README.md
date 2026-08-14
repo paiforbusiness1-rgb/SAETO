@@ -47,7 +47,7 @@ Nota: en Vercel las escrituras de captura/audit son **efímeras** (viven en `/tm
 
 ## Qué incluye
 
-Sala de situación, catálogos, captura, discurso, reportes gerenciales, inteligencia territorial (mapa real OSM), módulo IA Groq (lectura/clasificación/contexto), UI glassmorphism (datos DEMO).
+Sala de situación, catálogos, captura, discurso, reportes gerenciales, inteligencia territorial (mapa real OSM), **consumibles DEMO** (láminas mapa+gráfica+cruce electoral mock), módulo IA Groq, UI glassmorphism (datos DEMO).
 
 ## IA Groq (local)
 

@@ -1,0 +1,1080 @@
+{
+  "demo": true,
+  "disclaimer": "Problemáticas territoriales de zona Oriente para análisis de mesa.",
+  "meses": [
+    "nov",
+    "dic",
+    "ene",
+    "feb",
+    "mar",
+    "abr",
+    "may",
+    "jun"
+  ],
+  "items": [
+    {
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "tema": "agua",
+      "intensidad": 92,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 18,
+      "serie_mensual": [
+        70,
+        74,
+        78,
+        82,
+        85,
+        88,
+        90,
+        92
+      ],
+      "nota_mesa": "Tandeo severo; vecinos reportan cisternas vacías."
+    },
+    {
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "tema": "basura",
+      "intensidad": 55,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 3,
+      "serie_mensual": [
+        40,
+        42,
+        45,
+        48,
+        50,
+        52,
+        54,
+        55
+      ],
+      "nota_mesa": "Retraso moderado en camión compactador."
+    },
+    {
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "tema": "alumbrado",
+      "intensidad": 48,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 14,
+      "serie_mensual": [
+        30,
+        32,
+        35,
+        38,
+        40,
+        44,
+        46,
+        48
+      ],
+      "nota_mesa": "Tramos oscuros en avenida principal."
+    },
+    {
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "tema": "seguridad",
+      "intensidad": 68,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 68,
+      "serie_mensual": [
+        50,
+        55,
+        58,
+        60,
+        62,
+        64,
+        66,
+        68
+      ],
+      "nota_mesa": "Percepción al alza tras cortes de agua nocturnos."
+    },
+    {
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "tema": "agua",
+      "intensidad": 88,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 16,
+      "serie_mensual": [
+        65,
+        68,
+        72,
+        75,
+        78,
+        82,
+        85,
+        88
+      ],
+      "nota_mesa": "Presión irregular; pipas saturadas."
+    },
+    {
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "tema": "basura",
+      "intensidad": 62,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 4,
+      "serie_mensual": [
+        45,
+        48,
+        50,
+        52,
+        55,
+        58,
+        60,
+        62
+      ],
+      "nota_mesa": "Puntos críticos en mercado."
+    },
+    {
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "tema": "alumbrado",
+      "intensidad": 40,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 9,
+      "serie_mensual": [
+        28,
+        30,
+        32,
+        34,
+        35,
+        36,
+        38,
+        40
+      ],
+      "nota_mesa": "Mejora parcial tras reporte vecinal."
+    },
+    {
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "tema": "seguridad",
+      "intensidad": 60,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 60,
+      "serie_mensual": [
+        48,
+        50,
+        52,
+        54,
+        55,
+        57,
+        58,
+        60
+      ],
+      "nota_mesa": "Robo a transeúnte en horarios pico."
+    },
+    {
+      "colonia": "unidad-vicente-guerrero",
+      "zona": "iztapalapa",
+      "tema": "agua",
+      "intensidad": 75,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 12,
+      "serie_mensual": [
+        55,
+        58,
+        60,
+        63,
+        66,
+        70,
+        72,
+        75
+      ],
+      "nota_mesa": "Tandeo intermitente en unidades."
+    },
+    {
+      "colonia": "unidad-vicente-guerrero",
+      "zona": "iztapalapa",
+      "tema": "basura",
+      "intensidad": 70,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 5,
+      "serie_mensual": [
+        50,
+        52,
+        55,
+        58,
+        60,
+        64,
+        67,
+        70
+      ],
+      "nota_mesa": "Contenedores desbordados."
+    },
+    {
+      "colonia": "unidad-vicente-guerrero",
+      "zona": "iztapalapa",
+      "tema": "alumbrado",
+      "intensidad": 58,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 18,
+      "serie_mensual": [
+        40,
+        42,
+        45,
+        48,
+        50,
+        53,
+        55,
+        58
+      ],
+      "nota_mesa": "Pasillos internos oscuros."
+    },
+    {
+      "colonia": "unidad-vicente-guerrero",
+      "zona": "iztapalapa",
+      "tema": "seguridad",
+      "intensidad": 72,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 72,
+      "serie_mensual": [
+        55,
+        58,
+        60,
+        63,
+        65,
+        68,
+        70,
+        72
+      ],
+      "nota_mesa": "Quejas de vigilancia nocturna."
+    },
+    {
+      "colonia": "el-develadero",
+      "zona": "iztapalapa",
+      "tema": "agua",
+      "intensidad": 80,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 14,
+      "serie_mensual": [
+        60,
+        63,
+        66,
+        68,
+        70,
+        74,
+        77,
+        80
+      ],
+      "nota_mesa": "Fugas frecuentes reportadas."
+    },
+    {
+      "colonia": "el-develadero",
+      "zona": "iztapalapa",
+      "tema": "basura",
+      "intensidad": 50,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 2,
+      "serie_mensual": [
+        38,
+        40,
+        42,
+        44,
+        45,
+        47,
+        48,
+        50
+      ],
+      "nota_mesa": "Servicio irregular pero contenido."
+    },
+    {
+      "colonia": "el-develadero",
+      "zona": "iztapalapa",
+      "tema": "alumbrado",
+      "intensidad": 65,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 20,
+      "serie_mensual": [
+        45,
+        48,
+        50,
+        53,
+        55,
+        58,
+        62,
+        65
+      ],
+      "nota_mesa": "Callejuelas sin cobertura."
+    },
+    {
+      "colonia": "el-develadero",
+      "zona": "iztapalapa",
+      "tema": "seguridad",
+      "intensidad": 65,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 65,
+      "serie_mensual": [
+        50,
+        52,
+        55,
+        58,
+        60,
+        62,
+        64,
+        65
+      ],
+      "nota_mesa": "Vinculado a oscuridad."
+    },
+    {
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "tema": "agua",
+      "intensidad": 45,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 4,
+      "serie_mensual": [
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        45
+      ],
+      "nota_mesa": "Presión aceptable; quejas puntuales."
+    },
+    {
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "tema": "basura",
+      "intensidad": 90,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 7,
+      "serie_mensual": [
+        70,
+        74,
+        78,
+        80,
+        83,
+        85,
+        88,
+        90
+      ],
+      "nota_mesa": "Retraso severo; foco demo de basura."
+    },
+    {
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "tema": "alumbrado",
+      "intensidad": 52,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 11,
+      "serie_mensual": [
+        35,
+        38,
+        40,
+        42,
+        45,
+        48,
+        50,
+        52
+      ],
+      "nota_mesa": "Avenidas cubiertas; laterales no."
+    },
+    {
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "tema": "seguridad",
+      "intensidad": 85,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 85,
+      "serie_mensual": [
+        65,
+        68,
+        70,
+        74,
+        76,
+        80,
+        82,
+        85
+      ],
+      "nota_mesa": "Mayor percepción de inseguridad del recorte."
+    },
+    {
+      "colonia": "campamento-2",
+      "zona": "iztacalco",
+      "tema": "agua",
+      "intensidad": 50,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 5,
+      "serie_mensual": [
+        32,
+        35,
+        38,
+        40,
+        42,
+        45,
+        48,
+        50
+      ],
+      "nota_mesa": "Servicio estable con picos."
+    },
+    {
+      "colonia": "campamento-2",
+      "zona": "iztacalco",
+      "tema": "basura",
+      "intensidad": 86,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 6,
+      "serie_mensual": [
+        68,
+        70,
+        74,
+        76,
+        80,
+        82,
+        84,
+        86
+      ],
+      "nota_mesa": "Tiraderos improvisados."
+    },
+    {
+      "colonia": "campamento-2",
+      "zona": "iztacalco",
+      "tema": "alumbrado",
+      "intensidad": 44,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 8,
+      "serie_mensual": [
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        44
+      ],
+      "nota_mesa": "Mantenimiento reciente."
+    },
+    {
+      "colonia": "campamento-2",
+      "zona": "iztacalco",
+      "tema": "seguridad",
+      "intensidad": 78,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 78,
+      "serie_mensual": [
+        60,
+        62,
+        65,
+        68,
+        70,
+        73,
+        75,
+        78
+      ],
+      "nota_mesa": "Corredor comercial bajo tensión."
+    },
+    {
+      "colonia": "juventino-rosas",
+      "zona": "iztacalco",
+      "tema": "agua",
+      "intensidad": 38,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 2,
+      "serie_mensual": [
+        25,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38
+      ],
+      "nota_mesa": "Menor presión hídrica relativa."
+    },
+    {
+      "colonia": "juventino-rosas",
+      "zona": "iztacalco",
+      "tema": "basura",
+      "intensidad": 72,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 5,
+      "serie_mensual": [
+        55,
+        58,
+        60,
+        63,
+        65,
+        68,
+        70,
+        72
+      ],
+      "nota_mesa": "Retraso en fin de semana."
+    },
+    {
+      "colonia": "juventino-rosas",
+      "zona": "iztacalco",
+      "tema": "alumbrado",
+      "intensidad": 35,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 5,
+      "serie_mensual": [
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        35
+      ],
+      "nota_mesa": "Cobertura razonable."
+    },
+    {
+      "colonia": "juventino-rosas",
+      "zona": "iztacalco",
+      "tema": "seguridad",
+      "intensidad": 70,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 70,
+      "serie_mensual": [
+        52,
+        55,
+        58,
+        60,
+        63,
+        65,
+        68,
+        70
+      ],
+      "nota_mesa": "Incidentes en paraderos."
+    },
+    {
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "tema": "agua",
+      "intensidad": 60,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 8,
+      "serie_mensual": [
+        42,
+        45,
+        48,
+        50,
+        52,
+        55,
+        58,
+        60
+      ],
+      "nota_mesa": "Tandeo intermedio."
+    },
+    {
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "tema": "basura",
+      "intensidad": 48,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 2,
+      "serie_mensual": [
+        30,
+        32,
+        35,
+        38,
+        40,
+        42,
+        45,
+        48
+      ],
+      "nota_mesa": "Recolección irregular en orillas."
+    },
+    {
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "tema": "alumbrado",
+      "intensidad": 88,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 28,
+      "serie_mensual": [
+        65,
+        68,
+        72,
+        75,
+        78,
+        82,
+        85,
+        88
+      ],
+      "nota_mesa": "Foco demo de alumbrado."
+    },
+    {
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "tema": "seguridad",
+      "intensidad": 58,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 58,
+      "serie_mensual": [
+        45,
+        47,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58
+      ],
+      "nota_mesa": "Percepción ligada a oscuridad."
+    },
+    {
+      "colonia": "la-noria",
+      "zona": "tlahuac",
+      "tema": "agua",
+      "intensidad": 55,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 7,
+      "serie_mensual": [
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        55
+      ],
+      "nota_mesa": "Pozos saturados en estiaje."
+    },
+    {
+      "colonia": "la-noria",
+      "zona": "tlahuac",
+      "tema": "basura",
+      "intensidad": 42,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 2,
+      "serie_mensual": [
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42
+      ],
+      "nota_mesa": "Servicio aceptable."
+    },
+    {
+      "colonia": "la-noria",
+      "zona": "tlahuac",
+      "tema": "alumbrado",
+      "intensidad": 82,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 24,
+      "serie_mensual": [
+        60,
+        63,
+        66,
+        70,
+        72,
+        76,
+        80,
+        82
+      ],
+      "nota_mesa": "Parques y andadores oscuros."
+    },
+    {
+      "colonia": "la-noria",
+      "zona": "tlahuac",
+      "tema": "seguridad",
+      "intensidad": 52,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 52,
+      "serie_mensual": [
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        51,
+        52
+      ],
+      "nota_mesa": "Estable con picos de fin de semana."
+    },
+    {
+      "colonia": "zacatlan",
+      "zona": "tlahuac",
+      "tema": "agua",
+      "intensidad": 48,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 5,
+      "serie_mensual": [
+        35,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48
+      ],
+      "nota_mesa": "Presión baja en punta."
+    },
+    {
+      "colonia": "zacatlan",
+      "zona": "tlahuac",
+      "tema": "basura",
+      "intensidad": 58,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 3,
+      "serie_mensual": [
+        40,
+        42,
+        45,
+        48,
+        50,
+        52,
+        55,
+        58
+      ],
+      "nota_mesa": "Acopio irregular."
+    },
+    {
+      "colonia": "zacatlan",
+      "zona": "tlahuac",
+      "tema": "alumbrado",
+      "intensidad": 70,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 16,
+      "serie_mensual": [
+        50,
+        52,
+        55,
+        58,
+        60,
+        64,
+        67,
+        70
+      ],
+      "nota_mesa": "Posteado incompleto."
+    },
+    {
+      "colonia": "zacatlan",
+      "zona": "tlahuac",
+      "tema": "seguridad",
+      "intensidad": 45,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 45,
+      "serie_mensual": [
+        35,
+        36,
+        38,
+        40,
+        41,
+        42,
+        44,
+        45
+      ],
+      "nota_mesa": "Menor tensión relativa."
+    },
+    {
+      "colonia": "santa-cecilia-tepalcatlalpan",
+      "zona": "xochimilco",
+      "tema": "agua",
+      "intensidad": 70,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 10,
+      "serie_mensual": [
+        50,
+        52,
+        55,
+        58,
+        60,
+        64,
+        67,
+        70
+      ],
+      "nota_mesa": "Chinampas y red mixta bajo estrés."
+    },
+    {
+      "colonia": "santa-cecilia-tepalcatlalpan",
+      "zona": "xochimilco",
+      "tema": "basura",
+      "intensidad": 66,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 4,
+      "serie_mensual": [
+        48,
+        50,
+        52,
+        55,
+        58,
+        60,
+        63,
+        66
+      ],
+      "nota_mesa": "Residuos en canales."
+    },
+    {
+      "colonia": "santa-cecilia-tepalcatlalpan",
+      "zona": "xochimilco",
+      "tema": "alumbrado",
+      "intensidad": 60,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 15,
+      "serie_mensual": [
+        42,
+        45,
+        48,
+        50,
+        52,
+        55,
+        58,
+        60
+      ],
+      "nota_mesa": "Andadores lacustres oscuros."
+    },
+    {
+      "colonia": "santa-cecilia-tepalcatlalpan",
+      "zona": "xochimilco",
+      "tema": "seguridad",
+      "intensidad": 55,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 55,
+      "serie_mensual": [
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        55
+      ],
+      "nota_mesa": "Turismo + presión local."
+    },
+    {
+      "colonia": "san-gregorio-atlapulco",
+      "zona": "xochimilco",
+      "tema": "agua",
+      "intensidad": 65,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 9,
+      "serie_mensual": [
+        48,
+        50,
+        52,
+        55,
+        58,
+        60,
+        62,
+        65
+      ],
+      "nota_mesa": "Pozo local con baja presión."
+    },
+    {
+      "colonia": "san-gregorio-atlapulco",
+      "zona": "xochimilco",
+      "tema": "basura",
+      "intensidad": 60,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 3,
+      "serie_mensual": [
+        42,
+        44,
+        46,
+        48,
+        50,
+        54,
+        57,
+        60
+      ],
+      "nota_mesa": "Camión no entra a callejones."
+    },
+    {
+      "colonia": "san-gregorio-atlapulco",
+      "zona": "xochimilco",
+      "tema": "alumbrado",
+      "intensidad": 75,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 19,
+      "serie_mensual": [
+        55,
+        58,
+        60,
+        63,
+        66,
+        70,
+        72,
+        75
+      ],
+      "nota_mesa": "Foco secundario de alumbrado."
+    },
+    {
+      "colonia": "san-gregorio-atlapulco",
+      "zona": "xochimilco",
+      "tema": "seguridad",
+      "intensidad": 50,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 50,
+      "serie_mensual": [
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        49,
+        50
+      ],
+      "nota_mesa": "Estable."
+    },
+    {
+      "colonia": "villa-milpa-alta",
+      "zona": "milpa-alta",
+      "tema": "agua",
+      "intensidad": 58,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 7,
+      "serie_mensual": [
+        40,
+        42,
+        45,
+        48,
+        50,
+        53,
+        55,
+        58
+      ],
+      "nota_mesa": "Abasto por pipa en temporada seca."
+    },
+    {
+      "colonia": "villa-milpa-alta",
+      "zona": "milpa-alta",
+      "tema": "basura",
+      "intensidad": 40,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 2,
+      "serie_mensual": [
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        39,
+        40
+      ],
+      "nota_mesa": "Menor volumen; logística larga."
+    },
+    {
+      "colonia": "villa-milpa-alta",
+      "zona": "milpa-alta",
+      "tema": "alumbrado",
+      "intensidad": 55,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 12,
+      "serie_mensual": [
+        38,
+        40,
+        42,
+        45,
+        48,
+        50,
+        52,
+        55
+      ],
+      "nota_mesa": "Cobertura parcial en periferia."
+    },
+    {
+      "colonia": "villa-milpa-alta",
+      "zona": "milpa-alta",
+      "tema": "seguridad",
+      "intensidad": 42,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 42,
+      "serie_mensual": [
+        32,
+        34,
+        35,
+        36,
+        38,
+        40,
+        41,
+        42
+      ],
+      "nota_mesa": "Menor incidencia relativa."
+    },
+    {
+      "colonia": "san-salvador-cuauhtenco",
+      "zona": "milpa-alta",
+      "tema": "agua",
+      "intensidad": 52,
+      "metrica_clave": "dias_tandeo_mes",
+      "metrica_valor": 6,
+      "serie_mensual": [
+        36,
+        38,
+        40,
+        42,
+        45,
+        48,
+        50,
+        52
+      ],
+      "nota_mesa": "Dependencia de pipas."
+    },
+    {
+      "colonia": "san-salvador-cuauhtenco",
+      "zona": "milpa-alta",
+      "tema": "basura",
+      "intensidad": 35,
+      "metrica_clave": "dias_retraso",
+      "metrica_valor": 1,
+      "serie_mensual": [
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        35
+      ],
+      "nota_mesa": "Servicio semanal estable."
+    },
+    {
+      "colonia": "san-salvador-cuauhtenco",
+      "zona": "milpa-alta",
+      "tema": "alumbrado",
+      "intensidad": 62,
+      "metrica_clave": "luminarias_apagadas",
+      "metrica_valor": 14,
+      "serie_mensual": [
+        45,
+        48,
+        50,
+        52,
+        55,
+        58,
+        60,
+        62
+      ],
+      "nota_mesa": "Tramos rurales oscuros."
+    },
+    {
+      "colonia": "san-salvador-cuauhtenco",
+      "zona": "milpa-alta",
+      "tema": "seguridad",
+      "intensidad": 38,
+      "metrica_clave": "percepcion_idx",
+      "metrica_valor": 38,
+      "serie_mensual": [
+        28,
+        30,
+        32,
+        33,
+        34,
+        35,
+        36,
+        38
+      ],
+      "nota_mesa": "Baja tensión relativa."
+    }
+  ]
+}

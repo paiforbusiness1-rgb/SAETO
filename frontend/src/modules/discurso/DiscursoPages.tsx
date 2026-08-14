@@ -164,7 +164,7 @@ export function DiscursoDetailPage() {
                 </button>
                 {isOpen ? (
                   <div className={styles.body}>
-                    <p>{item.niveles[nivel.slug] ?? "Sin captura en demo."}</p>
+                    <p>{item.niveles[nivel.slug] ?? "Sin captura."}</p>
                   </div>
                 ) : null}
               </div>

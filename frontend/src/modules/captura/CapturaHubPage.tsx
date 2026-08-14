@@ -49,7 +49,7 @@ export function CapturaHubPage() {
       <h1>Captura y alimentación</h1>
       <p className={styles.lead}>
         Carga la información que alimenta la sala de situación. Los cambios se
-        guardan en este equipo (archivos locales DEMO).
+        guardan en este equipo.
       </p>
       <div className={styles.hub}>
         {items.map((item) => (

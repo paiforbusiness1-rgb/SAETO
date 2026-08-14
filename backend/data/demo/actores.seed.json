@@ -136,7 +136,7 @@
       "metodo_comprobacion": null,
       "tipo_actor": "generador_violencia",
       "interes_declarado": "Presión por servicio de agua en la colonia",
-      "interes_reservado": "DEMO — control de ruta de bloqueo y disuasión de interlocutores rivales (ficticio)",
+      "interes_reservado": "control de ruta de bloqueo y disuasión de interlocutores rivales",
       "recursos_poder": [
         "movilizacion",
         "violencia",

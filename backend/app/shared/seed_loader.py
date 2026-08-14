@@ -71,6 +71,11 @@ def clear_all_caches() -> None:
         load_cobertura_recomendaciones,
         load_actor_inteligencia,
         load_ia_groq,
+        load_consumibles_temas,
+        load_consumibles_cruce,
+        load_consumibles_plantillas,
+        load_problematicas_territorio_seed,
+        load_demografia_electoral_seed,
         load_actores_seed,
         load_reivindicaciones_seed,
         load_discurso_seed,
@@ -196,6 +201,37 @@ def load_actor_inteligencia() -> dict[str, Any]:
 @lru_cache(maxsize=1)
 def load_ia_groq() -> dict[str, Any]:
     return _read_json(CONFIG_DIR / "ia-groq.json")
+
+
+@lru_cache(maxsize=1)
+def load_consumibles_temas() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "consumibles-temas.json")
+
+
+@lru_cache(maxsize=1)
+def load_consumibles_cruce() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "consumibles-cruce.json")
+
+
+@lru_cache(maxsize=1)
+def load_consumibles_plantillas() -> dict[str, Any]:
+    return _read_json(CONFIG_DIR / "consumibles-plantillas.json")
+
+
+@lru_cache(maxsize=1)
+def load_problematicas_territorio_seed() -> dict[str, Any]:
+    path = DEMO_DIR / "problematicas_territorio.seed.json"
+    if not path.exists():
+        return {"demo": True, "items": [], "meses": []}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_demografia_electoral_seed() -> dict[str, Any]:
+    path = DEMO_DIR / "demografia_electoral.seed.json"
+    if not path.exists():
+        return {"demo": True, "items": []}
+    return _read_json(path)
 
 
 def _evaluaciones_path() -> Path:

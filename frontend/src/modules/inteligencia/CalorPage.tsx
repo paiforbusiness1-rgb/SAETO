@@ -59,9 +59,8 @@ export function CalorPage() {
         <h1>Mapa de calor territorial</h1>
         <p className={styles.lead}>
           Mapa real Oriente (OpenStreetMap) con calor SAETO por alcaldía y
-          colonias demo. El score sale de reivindicaciones, coyuntura,
-          movilización y percepción. Licenciamiento GIS comercial se decide en
-          arranque real; este adaptador es sustituible.
+          colonias. El score sale de reivindicaciones, coyuntura,
+          movilización y percepción.
         </p>
         <div className={styles.filters}>
           <label>

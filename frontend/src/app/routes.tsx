@@ -37,6 +37,8 @@ import {
 } from "../modules/discurso/DiscursoPages";
 import { EncuestaDetailPage, EncuestasListPage } from "../modules/encuestas/EncuestasPages";
 import { IaClasificarPage } from "../modules/ia/IaClasificarPage";
+import { ConsumiblesHubPage } from "../modules/consumibles/ConsumiblesHubPage";
+import { LaminaViewerPage } from "../modules/consumibles/LaminaViewerPage";
 import { CalorPage } from "../modules/inteligencia/CalorPage";
 import { CoberturaPage } from "../modules/inteligencia/CoberturaPage";
 import { CorredoresPage } from "../modules/inteligencia/CorredoresPage";
@@ -71,6 +73,8 @@ export function AppRoutes() {
       <Route path="/inteligencia/cobertura" element={<CoberturaPage />} />
       <Route path="/inteligencia/sala" element={<SalaOperativaPage />} />
       <Route path="/inteligencia/ia-clasificar" element={<IaClasificarPage />} />
+      <Route path="/consumibles" element={<ConsumiblesHubPage />} />
+      <Route path="/consumibles/:slug" element={<LaminaViewerPage />} />
       <Route path="/reportes" element={<ReportesHubPage />} />
       <Route path="/reportes/ejecutivo" element={<ReporteEjecutivoPage />} />
       <Route path="/reportes/ciclo-vital" element={<ReporteCicloVitalPage />} />

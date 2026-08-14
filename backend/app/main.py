@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import (
     actores,
     catalogos,
+    consumibles,
     coyuntura,
     dashboard,
     discurso,
@@ -27,8 +28,8 @@ except Exception:
 
 app = FastAPI(
     title="SAETO API",
-    description="Sistema de Análisis Estratégico Territorial Oriente — captura + reportes + inteligencia + IA",
-    version="0.6.0",
+    description="Sistema de Análisis Estratégico Territorial Oriente — captura + reportes + inteligencia + IA + consumibles",
+    version="0.7.0",
 )
 
 app.add_middleware(
@@ -55,4 +56,5 @@ app.include_router(coyuntura.router)
 app.include_router(encuestas.router)
 app.include_router(inteligencia.router)
 app.include_router(ia.router)
+app.include_router(consumibles.router)
 app.include_router(reportes.router)

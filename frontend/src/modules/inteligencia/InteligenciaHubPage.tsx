@@ -6,6 +6,11 @@ import styles from "./InteligenciaPages.module.css";
 
 const items = [
   {
+    to: "/consumibles",
+    title: "Consumibles",
+    desc: "Mapa + gráfica + cruce electoral — outputs tipo presentación",
+  },
+  {
     to: "/inteligencia/calor",
     title: "Mapa de calor",
     desc: "Capas territoriales y bandas de intensidad",

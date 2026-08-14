@@ -1,0 +1,55 @@
+{
+  "demo": true,
+  "disclaimer": "Láminas de presentación para mesa territorial Oriente.",
+  "laminas": [
+    {
+      "slug": "panorama-oriente",
+      "nombre": "Panorama Oriente",
+      "subtitulo": "Situación territorial a golpe de vista",
+      "tipo": "panorama",
+      "orden": 1
+    },
+    {
+      "slug": "calor-agua",
+      "nombre": "Calor temático · Agua",
+      "subtitulo": "Dónde duele el tandeo y la falta de agua",
+      "tipo": "calor_tematico",
+      "tema_default": "agua",
+      "orden": 2
+    },
+    {
+      "slug": "calor-tematico",
+      "nombre": "Calor temático · Selector",
+      "subtitulo": "Basura, alumbrado o seguridad en el mismo formato",
+      "tipo": "calor_tematico",
+      "tema_default": "basura",
+      "permite_selector": true,
+      "orden": 3
+    },
+    {
+      "slug": "cruce-electoral",
+      "nombre": "Cruce electoral × problemática",
+      "subtitulo": "Se ve en mapa y gráfica",
+      "tipo": "cruce",
+      "tema_default": "agua",
+      "permite_selector": true,
+      "orden": 4
+    },
+    {
+      "slug": "constructo-problema",
+      "nombre": "Constructo de un problema",
+      "subtitulo": "Historia completa: contexto → mapa → tendencia → recomendaciones",
+      "tipo": "constructo",
+      "tema_default": "agua",
+      "permite_selector": true,
+      "orden": 5
+    }
+  ],
+  "lecturas": {
+    "panorama-oriente": "El Oriente concentra presión diferenciada: Iztapalapa lidera quejas de agua; Iztacalco muestra calor en basura y seguridad; Tláhuac y Xochimilco presentan focos de alumbrado. La lámina ordena demografía y problemáticas para decidir dónde abrir panorama operativo.",
+    "agua": "Barrio Arriba y Santa Cruz Meyehualco concentran tandeo severo. El cruce con densidad y lista nominal eleva la prioridad de mesa: no es solo servicio, es presión territorial con peso demográfico.",
+    "basura": "Agrícola Oriental y Campamento 2 acumulan retrasos de recolección. Los puntos críticos coinciden con colonias de alta densidad: el mapa habla antes que el expediente.",
+    "alumbrado": "San Francisco Tlaltenango y La Noria reportan luminarias apagadas de forma sostenida. La oscuridad eleva percepción de inseguridad aunque el incidente sea de infraestructura.",
+    "seguridad": "Iztacalco muestra el índice más alto de percepción de inseguridad. El constructo recomienda cobertura de mesa (no patrullaje) y cruce con coyuntura reciente."
+  }
+}

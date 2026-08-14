@@ -24,7 +24,9 @@ import type {
   SectorCobertura,
   ClasificarTextoResponse,
   ContextoDecisionResponse,
+  ConsumiblesIndice,
   IaStatus,
+  LaminaConsumible,
   PanoramaLecturaResponse,
 } from "./types";
 
@@ -421,4 +423,10 @@ export const api = {
       { demanda_slug },
       actorHeaders(),
     ),
+
+  consumiblesIndice: () => apiGet<ConsumiblesIndice>("/api/consumibles"),
+  consumibleLamina: (slug: string, tema?: string) => {
+    const q = tema ? `?tema=${encodeURIComponent(tema)}` : "";
+    return apiGet<LaminaConsumible>(`/api/consumibles/laminas/${slug}${q}`);
+  },
 };

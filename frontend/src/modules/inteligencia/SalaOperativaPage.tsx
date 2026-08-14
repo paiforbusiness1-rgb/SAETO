@@ -94,7 +94,7 @@ export function SalaOperativaPage() {
         <BotonVolver to="/inteligencia" />
         <h1>Sala operativa</h1>
         <p className={styles.lead}>{sala.resumen}</p>
-        <p className={styles.meta}>Rol demo actual: {getSaetoRol()}</p>
+        <p className={styles.meta}>Rol actual: {getSaetoRol()}</p>
         <div className={styles.actions}>
           <button type="button" onClick={load}>
             Recalcular
@@ -105,7 +105,7 @@ export function SalaOperativaPage() {
         </div>
         <IaPanel
           title="Lectura IA de sala (panorama Oriente)"
-          disclaimer="Genera narrativa de mesa con hechos públicos/demo del panorama compuesto."
+          disclaimer="Genera narrativa de mesa con hechos del panorama compuesto."
           onGenerate={async () => {
             const res = await api.iaPanoramaLectura({});
             return `${res.lectura}\n\n— modelo ${res.modelo}\n${res.disclaimer}`;

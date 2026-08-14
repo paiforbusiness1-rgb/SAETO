@@ -237,7 +237,7 @@ export function PanoramaPage() {
       <GlassPanel>
         <IaPanel
           title="Lectura IA del panorama (Groq)"
-          disclaimer="Usa hechos DEMO/públicos ya cargados. No envía intereses reservados ni PII de encuestas. Con BD privada usará el mismo botón."
+          disclaimer="Usa hechos públicos ya cargados. No envía intereses reservados ni PII de encuestas. Con BD privada usará el mismo botón."
           onGenerate={async () => {
             const res = await api.iaPanoramaLectura({
               zona: zona || undefined,

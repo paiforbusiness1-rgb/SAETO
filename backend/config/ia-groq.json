@@ -8,7 +8,7 @@
   "max_tokens": 900,
   "timeout_segundos": 45,
   "roles_permitidos": ["capturista", "analista", "analista_sensible", "admin"],
-  "disclaimer": "Lectura generada por IA (Groq) a partir de hechos DEMO/públicos cargados en SAETO. No es decisión oficial ni sustituye verificación de campo. Con datos privados usará el mismo botón sobre hechos autorizados.",
+  "disclaimer": "Lectura generada por IA a partir de hechos cargados en SAETO. No sustituye verificación de campo ni decisión oficial.",
   "plantillas": {
     "panorama_lectura": "Eres analista de mesa territorial Oriente CDMX (SAETO). Con SOLO los hechos JSON siguientes, redacta en español claro para subsecretario: (1) lectura ejecutiva 4-6 líneas, (2) 3 focos prioritarios, (3) 2 cuentas pendientes o riesgos, (4) 2 preguntas para la mesa. No inventes cifras ni actores que no estén en el JSON. Si falta dato, dilo. Hechos:\n{hechos}",
     "clasificar_texto": "Eres clasificador SAETO. Del texto dado, responde SOLO JSON válido con claves: tema_sugerido (agua|basura|seguridad|calles|transporte|empleo|otro), fase_ciclo_sugerida (emergencia|articulacion|movilizacion|negociacion|resolucion_parcial|latencia|cierre), sentido_sugerido (escalando|estable|desescalando), confianza (0-1), resumen_corto (max 25 palabras), notas_mesa (max 40 palabras). Texto:\n{texto}",

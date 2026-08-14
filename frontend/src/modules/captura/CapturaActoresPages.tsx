@@ -374,7 +374,7 @@ export function CapturaActorFormPage() {
               }
             >
               <option value="declarado">Declarado</option>
-              <option value="corroborado_demo">Corroborado demo</option>
+              <option value="corroborado_demo">Corroborado</option>
               <option value="corroborado">Corroborado</option>
               <option value="en_revision">En revisión</option>
             </select>
@@ -399,7 +399,7 @@ export function CapturaActorFormPage() {
           </div>
         ) : (
           <p className={styles.meta}>
-            Interés reservado oculto — cambia el rol demo a Analista sensible o Admin para
+            Interés reservado oculto — cambia el rol a Analista sensible o Admin para
             capturarlo.
           </p>
         )}

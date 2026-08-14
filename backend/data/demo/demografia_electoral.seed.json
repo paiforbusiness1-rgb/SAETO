@@ -1,0 +1,398 @@
+{
+  "demo": true,
+  "disclaimer": "Datos demográficos y electorales de zona Oriente para análisis de mesa.",
+  "items": [
+    {
+      "colonia": "barrio-arriba",
+      "zona": "iztapalapa",
+      "nombre": "Barrio Arriba",
+      "poblacion_total": 28400,
+      "densidad_hab_km2": 18200,
+      "viviendas": 7100,
+      "pct_viviendas_sin_agua": 22.5,
+      "poblacion_18_mas": 20100,
+      "casillas": 18,
+      "participacion_pct": 48.2,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 41.2,
+          "fuerza_b": 36.8,
+          "otros": 22.0
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 39.5,
+          "fuerza_b": 38.1,
+          "otros": 22.4
+        }
+      ],
+      "lista_nominal": 19250,
+      "indice_electoral": 78
+    },
+    {
+      "colonia": "santa-cruz-meyehualco",
+      "zona": "iztapalapa",
+      "nombre": "Santa Cruz Meyehualco",
+      "poblacion_total": 32100,
+      "densidad_hab_km2": 16500,
+      "viviendas": 8050,
+      "pct_viviendas_sin_agua": 19.8,
+      "poblacion_18_mas": 22800,
+      "casillas": 21,
+      "participacion_pct": 46.5,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 44.0,
+          "fuerza_b": 34.2,
+          "otros": 21.8
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 42.1,
+          "fuerza_b": 35.9,
+          "otros": 22.0
+        }
+      ],
+      "lista_nominal": 21900,
+      "indice_electoral": 74
+    },
+    {
+      "colonia": "unidad-vicente-guerrero",
+      "zona": "iztapalapa",
+      "nombre": "Unidad Vicente Guerrero",
+      "poblacion_total": 41200,
+      "densidad_hab_km2": 22100,
+      "viviendas": 10200,
+      "pct_viviendas_sin_agua": 15.2,
+      "poblacion_18_mas": 29500,
+      "casillas": 26,
+      "participacion_pct": 51.0,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 38.5,
+          "fuerza_b": 40.2,
+          "otros": 21.3
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 37.0,
+          "fuerza_b": 41.5,
+          "otros": 21.5
+        }
+      ],
+      "lista_nominal": 28100,
+      "indice_electoral": 81
+    },
+    {
+      "colonia": "el-develadero",
+      "zona": "iztapalapa",
+      "nombre": "El Develadero",
+      "poblacion_total": 19800,
+      "densidad_hab_km2": 14800,
+      "viviendas": 4950,
+      "pct_viviendas_sin_agua": 17.6,
+      "poblacion_18_mas": 14100,
+      "casillas": 12,
+      "participacion_pct": 44.8,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 46.2,
+          "fuerza_b": 31.5,
+          "otros": 22.3
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 45.0,
+          "fuerza_b": 32.8,
+          "otros": 22.2
+        }
+      ],
+      "lista_nominal": 13400,
+      "indice_electoral": 66
+    },
+    {
+      "colonia": "agricola-oriental",
+      "zona": "iztacalco",
+      "nombre": "Agrícola Oriental",
+      "poblacion_total": 35600,
+      "densidad_hab_km2": 19800,
+      "viviendas": 8900,
+      "pct_viviendas_sin_agua": 8.4,
+      "poblacion_18_mas": 25400,
+      "casillas": 22,
+      "participacion_pct": 52.4,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 35.8,
+          "fuerza_b": 42.6,
+          "otros": 21.6
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 34.2,
+          "fuerza_b": 44.0,
+          "otros": 21.8
+        }
+      ],
+      "lista_nominal": 24200,
+      "indice_electoral": 85
+    },
+    {
+      "colonia": "campamento-2",
+      "zona": "iztacalco",
+      "nombre": "Campamento 2",
+      "poblacion_total": 22100,
+      "densidad_hab_km2": 17600,
+      "viviendas": 5520,
+      "pct_viviendas_sin_agua": 9.1,
+      "poblacion_18_mas": 15800,
+      "casillas": 14,
+      "participacion_pct": 49.1,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 37.5,
+          "fuerza_b": 40.0,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 36.0,
+          "fuerza_b": 41.2,
+          "otros": 22.8
+        }
+      ],
+      "lista_nominal": 15100,
+      "indice_electoral": 72
+    },
+    {
+      "colonia": "juventino-rosas",
+      "zona": "iztacalco",
+      "nombre": "Juventino Rosas",
+      "poblacion_total": 18700,
+      "densidad_hab_km2": 15200,
+      "viviendas": 4680,
+      "pct_viviendas_sin_agua": 6.8,
+      "poblacion_18_mas": 13300,
+      "casillas": 11,
+      "participacion_pct": 50.2,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 40.1,
+          "fuerza_b": 37.4,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 39.0,
+          "fuerza_b": 38.2,
+          "otros": 22.8
+        }
+      ],
+      "lista_nominal": 12700,
+      "indice_electoral": 68
+    },
+    {
+      "colonia": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "nombre": "San Francisco Tlaltenango",
+      "poblacion_total": 15200,
+      "densidad_hab_km2": 9200,
+      "viviendas": 3800,
+      "pct_viviendas_sin_agua": 12.4,
+      "poblacion_18_mas": 10800,
+      "casillas": 9,
+      "participacion_pct": 47.6,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 48.5,
+          "fuerza_b": 29.0,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 47.2,
+          "fuerza_b": 30.1,
+          "otros": 22.7
+        }
+      ],
+      "lista_nominal": 10200,
+      "indice_electoral": 58
+    },
+    {
+      "colonia": "la-noria",
+      "zona": "tlahuac",
+      "nombre": "La Noria",
+      "poblacion_total": 13400,
+      "densidad_hab_km2": 8700,
+      "viviendas": 3350,
+      "pct_viviendas_sin_agua": 14.0,
+      "poblacion_18_mas": 9500,
+      "casillas": 8,
+      "participacion_pct": 45.9,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 49.0,
+          "fuerza_b": 28.5,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 48.0,
+          "fuerza_b": 29.2,
+          "otros": 22.8
+        }
+      ],
+      "lista_nominal": 9100,
+      "indice_electoral": 55
+    },
+    {
+      "colonia": "zacatlan",
+      "zona": "tlahuac",
+      "nombre": "Zacatlán",
+      "poblacion_total": 9800,
+      "densidad_hab_km2": 7100,
+      "viviendas": 2450,
+      "pct_viviendas_sin_agua": 11.2,
+      "poblacion_18_mas": 7000,
+      "casillas": 6,
+      "participacion_pct": 43.5,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 51.2,
+          "fuerza_b": 26.8,
+          "otros": 22.0
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 50.0,
+          "fuerza_b": 27.5,
+          "otros": 22.5
+        }
+      ],
+      "lista_nominal": 6700,
+      "indice_electoral": 48
+    },
+    {
+      "colonia": "santa-cecilia-tepalcatlalpan",
+      "zona": "xochimilco",
+      "nombre": "Santa Cecilia Tepalcatalpan",
+      "poblacion_total": 17600,
+      "densidad_hab_km2": 6400,
+      "viviendas": 4400,
+      "pct_viviendas_sin_agua": 16.5,
+      "poblacion_18_mas": 12500,
+      "casillas": 10,
+      "participacion_pct": 46.0,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 43.5,
+          "fuerza_b": 34.0,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 42.0,
+          "fuerza_b": 35.2,
+          "otros": 22.8
+        }
+      ],
+      "lista_nominal": 11900,
+      "indice_electoral": 61
+    },
+    {
+      "colonia": "san-gregorio-atlapulco",
+      "zona": "xochimilco",
+      "nombre": "San Gregorio Atlapulco",
+      "poblacion_total": 16200,
+      "densidad_hab_km2": 5800,
+      "viviendas": 4050,
+      "pct_viviendas_sin_agua": 18.0,
+      "poblacion_18_mas": 11500,
+      "casillas": 9,
+      "participacion_pct": 44.2,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 45.0,
+          "fuerza_b": 32.5,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 43.8,
+          "fuerza_b": 33.7,
+          "otros": 22.5
+        }
+      ],
+      "lista_nominal": 10900,
+      "indice_electoral": 57
+    },
+    {
+      "colonia": "villa-milpa-alta",
+      "zona": "milpa-alta",
+      "nombre": "Villa Milpa Alta",
+      "poblacion_total": 12100,
+      "densidad_hab_km2": 2100,
+      "viviendas": 3020,
+      "pct_viviendas_sin_agua": 20.5,
+      "poblacion_18_mas": 8600,
+      "casillas": 7,
+      "participacion_pct": 52.8,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 52.0,
+          "fuerza_b": 25.5,
+          "otros": 22.5
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 50.5,
+          "fuerza_b": 26.8,
+          "otros": 22.7
+        }
+      ],
+      "lista_nominal": 8200,
+      "indice_electoral": 52
+    },
+    {
+      "colonia": "san-salvador-cuauhtenco",
+      "zona": "milpa-alta",
+      "nombre": "San Salvador Cuauhtenco",
+      "poblacion_total": 8900,
+      "densidad_hab_km2": 1800,
+      "viviendas": 2220,
+      "pct_viviendas_sin_agua": 21.8,
+      "poblacion_18_mas": 6300,
+      "casillas": 5,
+      "participacion_pct": 50.5,
+      "historicidad": [
+        {
+          "eleccion": "2021",
+          "fuerza_a": 54.0,
+          "fuerza_b": 24.0,
+          "otros": 22.0
+        },
+        {
+          "eleccion": "2024",
+          "fuerza_a": 52.5,
+          "fuerza_b": 25.2,
+          "otros": 22.3
+        }
+      ],
+      "lista_nominal": 6000,
+      "indice_electoral": 45
+    }
+  ]
+}

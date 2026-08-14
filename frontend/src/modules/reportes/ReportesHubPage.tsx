@@ -6,6 +6,11 @@ import styles from "./reportes.module.css";
 
 const items = [
   {
+    to: "/consumibles",
+    title: "Consumibles",
+    desc: "Mapa, gráfica y cruce electoral × problema — formato presentación",
+  },
+  {
     to: "/reportes/ejecutivo",
     title: "Tablero ejecutivo",
     desc: "Semáforo global, presión por tema y focos prioritarios",

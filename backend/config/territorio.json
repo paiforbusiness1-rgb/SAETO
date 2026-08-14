@@ -9,7 +9,17 @@
   "colonias_demo": [
     { "slug": "barrio-arriba", "nombre": "Barrio Arriba", "zona": "iztapalapa" },
     { "slug": "santa-cruz-meyehualco", "nombre": "Santa Cruz Meyehualco", "zona": "iztapalapa" },
+    { "slug": "unidad-vicente-guerrero", "nombre": "Unidad Vicente Guerrero", "zona": "iztapalapa" },
+    { "slug": "el-develadero", "nombre": "El Develadero", "zona": "iztapalapa" },
     { "slug": "agricola-oriental", "nombre": "Agrícola Oriental", "zona": "iztacalco" },
-    { "slug": "san-francisco-tlaltenango", "nombre": "San Francisco Tlaltenango", "zona": "tlahuac" }
+    { "slug": "campamento-2", "nombre": "Campamento 2", "zona": "iztacalco" },
+    { "slug": "juventino-rosas", "nombre": "Juventino Rosas", "zona": "iztacalco" },
+    { "slug": "san-francisco-tlaltenango", "nombre": "San Francisco Tlaltenango", "zona": "tlahuac" },
+    { "slug": "la-noria", "nombre": "La Noria", "zona": "tlahuac" },
+    { "slug": "zacatlan", "nombre": "Zacatlán", "zona": "tlahuac" },
+    { "slug": "santa-cecilia-tepalcatlalpan", "nombre": "Santa Cecilia Tepalcatalpan", "zona": "xochimilco" },
+    { "slug": "san-gregorio-atlapulco", "nombre": "San Gregorio Atlapulco", "zona": "xochimilco" },
+    { "slug": "villa-milpa-alta", "nombre": "Villa Milpa Alta", "zona": "milpa-alta" },
+    { "slug": "san-salvador-cuauhtenco", "nombre": "San Salvador Cuauhtenco", "zona": "milpa-alta" }
   ]
 }

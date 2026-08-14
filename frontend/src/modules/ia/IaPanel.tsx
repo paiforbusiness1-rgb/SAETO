@@ -33,7 +33,7 @@ export function IaPanel({ title, disclaimer, onGenerate, disabled }: Props) {
     setError(null);
     if (!rolOk) {
       setError(
-        `Tu rol demo es "${rol}". Cambia a Capturista/Analista (o superior) en la barra superior y vuelve a intentar.`,
+        `Tu rol actual es "${rol}". Cambia a Capturista/Analista (o superior) en la barra superior y vuelve a intentar.`,
       );
       setLoading(false);
       return;

@@ -483,3 +483,61 @@ export interface ContextoDecisionResponse {
   lectura: string;
   modelo: string;
 }
+
+export interface ConsumibleMeta {
+  slug: string;
+  nombre: string;
+  subtitulo?: string;
+  tipo: string;
+  orden: number;
+  tema_default?: string | null;
+  permite_selector?: boolean;
+}
+
+export interface TemaConsumible {
+  slug: string;
+  nombre: string;
+  descripcion?: string;
+  color?: string;
+}
+
+export interface CeldaConsumible {
+  colonia_slug: string;
+  colonia_nombre: string;
+  zona_slug: string;
+  zona_nombre: string;
+  score: number;
+  banda_slug: string;
+  banda_nombre: string;
+  color: string;
+  intensidad_tema?: number | null;
+  indice_electoral?: number | null;
+  densidad?: number | null;
+  metrica_clave?: string | null;
+  metrica_valor?: number | null;
+  nota_mesa?: string | null;
+}
+
+export interface LaminaConsumible {
+  demo: boolean;
+  disclaimer: string;
+  lamina: ConsumibleMeta;
+  tema?: TemaConsumible | null;
+  temas_disponibles: TemaConsumible[];
+  lectura_gerencial: string;
+  kpis: { label: string; value: string; hint?: string }[];
+  celdas: CeldaConsumible[];
+  por_zona: CeldaConsumible[];
+  barras_zona: { label: string; value: number; tone?: string; hint?: string }[];
+  serie_global: { mes: string; valor: number }[];
+  tabla: Record<string, unknown>[];
+  constructo: Record<string, unknown>;
+  top: CeldaConsumible[];
+}
+
+export interface ConsumiblesIndice {
+  demo: boolean;
+  disclaimer: string;
+  laminas: ConsumibleMeta[];
+  temas: TemaConsumible[];
+}
