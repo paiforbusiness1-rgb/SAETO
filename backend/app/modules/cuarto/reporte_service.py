@@ -12,6 +12,7 @@ from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
 from reportlab.platypus import (
+    Image as RLImage,
     PageBreak,
     Paragraph,
     SimpleDocTemplate,
@@ -22,6 +23,7 @@ from reportlab.platypus import (
 
 from app.modules.consumibles import cruce_service, tematicos_service
 from app.modules.cuarto import caso_service
+from app.modules.cuarto import mapa_ficha_service as mapa
 from app.modules.cuarto.schemas import CasoSituacion
 from app.shared import seed_loader
 
@@ -130,6 +132,88 @@ def _fmt(n: int | float | None) -> str:
     if n is None:
         return "—"
     return f"{int(round(n)):,}".replace(",", " ")
+
+
+def _keep_png(assets: list[BytesIO], png: bytes) -> BytesIO:
+    bio = BytesIO(png)
+    assets.append(bio)
+    return bio
+
+
+def _flow_map(assets: list[BytesIO], png: bytes, width: float, height: float) -> RLImage:
+    img = RLImage(_keep_png(assets, png), width=width, height=height)
+    img.hAlign = "CENTER"
+    return img
+
+
+def _mapa_calor(caso: CasoSituacion, titulo: str) -> bytes:
+    color_zonas = {z.zona_slug: z.color for z in caso.por_zona if z.zona_slug}
+    color_colonias = {
+        c.colonia_slug: c.color for c in caso.celdas if c.colonia_slug
+    }
+    leyenda = mapa.leyenda_bandas(
+        [(c.banda_nombre, c.color) for c in caso.celdas if c.colonia_slug]
+        + [(z.banda_nombre, z.color) for z in caso.por_zona]
+    )
+    return mapa.render_mapa_ficha(
+        titulo=titulo,
+        subtitulo=caso.tema_nombre,
+        color_zonas=color_zonas,
+        color_colonias=color_colonias,
+        focus_zonas=set(color_zonas.keys()),
+        focus_colonias=set(color_colonias.keys()),
+        leyenda=leyenda,
+    )
+
+
+def _mapa_cruce(caso: CasoSituacion, celdas_cruce: list) -> bytes:
+    color_colonias = {
+        c.colonia_slug: c.color for c in celdas_cruce if c.colonia_slug
+    }
+    # Alcaldías: promedio visual desde primera colonia de esa zona
+    color_zonas: dict[str, str] = {}
+    for c in celdas_cruce:
+        if c.zona_slug and c.zona_slug not in color_zonas:
+            color_zonas[c.zona_slug] = c.color
+    leyenda = mapa.leyenda_bandas(
+        [(c.banda_nombre, c.color) for c in celdas_cruce if c.colonia_slug]
+    )
+    return mapa.render_mapa_ficha(
+        titulo=f"Cruce electoral × {caso.tema_nombre}",
+        subtitulo=caso.nombre,
+        color_zonas=color_zonas,
+        color_colonias=color_colonias,
+        focus_zonas=set(color_zonas.keys()),
+        focus_colonias=set(color_colonias.keys()),
+        leyenda=leyenda,
+    )
+
+
+def _mapa_instalaciones(caso: CasoSituacion) -> bytes:
+    color_zonas = {z.zona_slug: z.color for z in caso.por_zona if z.zona_slug}
+    color_colonias = {
+        c.colonia_slug: c.color for c in caso.celdas if c.colonia_slug
+    }
+    marcadores = [
+        {
+            "lat": p.lat,
+            "lng": p.lng,
+            "nombre": p.nombre,
+            "color": "#c4a35a",
+        }
+        for p in caso.instalaciones
+    ]
+    return mapa.render_mapa_ficha(
+        titulo=f"Infraestructura · {caso.tema_nombre}",
+        subtitulo="Marcadores del recorte",
+        color_zonas=color_zonas,
+        color_colonias=color_colonias,
+        focus_zonas=set(color_zonas.keys()),
+        focus_colonias=set(color_colonias.keys()),
+        marcadores=marcadores,
+        leyenda=[("Instalación", "#c4a35a")]
+        + mapa.leyenda_bandas([(c.banda_nombre, c.color) for c in caso.celdas]),
+    )
 
 
 def _table(data: list[list], col_widths: list[float]) -> Table:
@@ -247,9 +331,8 @@ def _cover(caso: CasoSituacion, width: float) -> list:
     return [shell]
 
 
-def _page_panorama(caso: CasoSituacion, width: float) -> list:
+def _page_panorama(caso: CasoSituacion, width: float, assets: list[BytesIO]) -> list:
     s = _styles()
-    d = caso.demanda
     story: list = [
         _p(_titulo_seccion("panorama", "Panorama del caso"), s["h1"]),
         _p(caso.resumen, s["lead"]),
@@ -260,17 +343,25 @@ def _page_panorama(caso: CasoSituacion, width: float) -> list:
         ("Viviendas", _fmt(caso.impacto.viviendas_total)),
         ("Lista nominal", _fmt(caso.impacto.lista_nominal_total)),
     ]
+    d = caso.demanda
     if d:
         kpis.insert(1, ("Semáforo", d.semaforo_etiqueta))
         kpis.append(("Ciclo", f"{d.fase_ciclo_nombre} · {d.sentido_ciclo}"))
     story.append(_kpis(kpis, width))
-    story.append(Spacer(1, 4 * mm))
+    story.append(Spacer(1, 3 * mm))
+    try:
+        png = _mapa_calor(caso, f"Mapa del recorte · {caso.tema_nombre}")
+        story.append(_flow_map(assets, png, width, 92 * mm))
+        story.append(Spacer(1, 2 * mm))
+        story.append(_p(str(_cfg().get("nota_mapa") or ""), s["meta"]))
+    except Exception:
+        story.append(_p("No se pudo dibujar el mapa de este recorte.", s["meta"]))
     if d:
         story.append(_p(f"Reivindicación ancla: {d.titulo} · {d.zona_nombre}", s["meta"]))
         if d.resumen_deuda:
             story.append(_p(d.resumen_deuda, s["lead"]))
     if caso.entonces and caso.ahora:
-        story.append(_p(_titulo_seccion("impacto", "Entonces y ahora"), s["h1"]))
+        story.append(_p("Entonces y ahora", s["h1"]))
         story.append(
             _table(
                 [
@@ -296,17 +387,24 @@ def _page_panorama(caso: CasoSituacion, width: float) -> list:
                 [38 * mm, 32 * mm, 28 * mm, width - 98 * mm],
             )
         )
-    story.append(Spacer(1, 3 * mm))
-    story.append(_p(str(_cfg().get("nota_mapa") or ""), s["meta"]))
     return story
 
 
-def _page_intensidad(caso: CasoSituacion, width: float) -> list:
+def _page_intensidad(caso: CasoSituacion, width: float, assets: list[BytesIO]) -> list:
     s = _styles()
     story: list = [
         _p(_titulo_seccion("intensidad", "Intensidad territorial"), s["h1"]),
-        _p("Recorte del caso por colonia. El color de banda equivale al semáforo de lámina.", s["lead"]),
+        _p(
+            "Recorte del caso por colonia. El mapa pinta el tema evaluado en la ubicación del caso.",
+            s["lead"],
+        ),
     ]
+    try:
+        png = _mapa_calor(caso, f"Intensidad · {caso.tema_nombre}")
+        story.append(_flow_map(assets, png, width, 88 * mm))
+        story.append(Spacer(1, 3 * mm))
+    except Exception:
+        story.append(_p("No se pudo dibujar el mapa de intensidad.", s["meta"]))
     head = [
         _p("Colonia", s["th"]),
         _p("Alcaldía", s["th"]),
@@ -334,7 +432,7 @@ def _page_intensidad(caso: CasoSituacion, width: float) -> list:
     if len(rows) > 1:
         story.append(_table(rows, [48 * mm, 38 * mm, 24 * mm, 28 * mm, width - 138 * mm]))
     if caso.por_zona:
-        story.append(Spacer(1, 5 * mm))
+        story.append(Spacer(1, 4 * mm))
         story.append(_p("Agregado por alcaldía", s["h1"]))
         zrows = [[_p("Alcaldía", s["th"]), _p("Índice", s["th"]), _p("Banda", s["th"])]]
         for z in caso.por_zona:
@@ -403,7 +501,7 @@ def _page_impacto(caso: CasoSituacion, width: float) -> list:
     return story
 
 
-def _page_cruce(caso: CasoSituacion, width: float) -> list:
+def _page_cruce(caso: CasoSituacion, width: float, assets: list[BytesIO]) -> list:
     s = _styles()
     story: list = [
         _p(_titulo_seccion("cruce", "Cruce electoral × problemática"), s["h1"]),
@@ -415,6 +513,13 @@ def _page_cruce(caso: CasoSituacion, width: float) -> list:
         for c in cruce_service.celdas_cruce(caso.tema)
         if not wanted or c.colonia_slug in wanted
     ]
+    if cruce:
+        try:
+            png = _mapa_cruce(caso, cruce)
+            story.append(_flow_map(assets, png, width, 86 * mm))
+            story.append(Spacer(1, 3 * mm))
+        except Exception:
+            story.append(_p("No se pudo dibujar el mapa de cruce.", s["meta"]))
     rows = [
         [
             _p("Colonia", s["th"]),
@@ -482,14 +587,20 @@ def _pct(v: object) -> str:
         return "—"
 
 
-def _page_instalaciones(caso: CasoSituacion, width: float) -> list | None:
+def _page_instalaciones(caso: CasoSituacion, width: float, assets: list[BytesIO]) -> list | None:
     if not caso.instalaciones:
         return None
     s = _styles()
     story: list = [
         _p(_titulo_seccion("instalaciones", "Infraestructura del recorte"), s["h1"]),
-        _p("Puntos temáticos del recorte (pipas, tanques, circuitos u otros según el caso).", s["lead"]),
+        _p("Puntos temáticos del recorte sobre el mapa del caso.", s["lead"]),
     ]
+    try:
+        png = _mapa_instalaciones(caso)
+        story.append(_flow_map(assets, png, width, 88 * mm))
+        story.append(Spacer(1, 3 * mm))
+    except Exception:
+        story.append(_p("No se pudo dibujar el mapa de instalaciones.", s["meta"]))
     rows = [
         [
             _p("Punto", s["th"]),
@@ -581,6 +692,7 @@ def _page_lectura(caso: CasoSituacion, _width: float) -> list:
 def generar_pdf(slug: str) -> tuple[bytes, str]:
     caso = caso_service.get_caso(slug)
     buf = BytesIO()
+    assets: list[BytesIO] = []
     pagesize = landscape(A4)
     width = pagesize[0] - 32 * mm
 
@@ -606,11 +718,11 @@ def generar_pdf(slug: str) -> tuple[bytes, str]:
     story: list = []
     story.extend(_cover(caso, pagesize[0] - 32 * mm))
     bloques = (
-        _page_panorama(caso, width),
-        _page_intensidad(caso, width),
+        _page_panorama(caso, width, assets),
+        _page_intensidad(caso, width, assets),
         _page_impacto(caso, width),
-        _page_cruce(caso, width),
-        _page_instalaciones(caso, width),
+        _page_cruce(caso, width, assets),
+        _page_instalaciones(caso, width, assets),
         _page_hechos(caso, width),
         _page_lectura(caso, width),
     )

@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "name": "colonias-demo-oriente",
+  "features": [
+    {"type":"Feature","properties":{"slug":"barrio-arriba","nombre":"Barrio Arriba","zona":"iztapalapa"},"geometry":{"type":"Point","coordinates":[-99.0675,19.3588]}},
+    {"type":"Feature","properties":{"slug":"santa-cruz-meyehualco","nombre":"Santa Cruz Meyehualco","zona":"iztapalapa"},"geometry":{"type":"Point","coordinates":[-99.041,19.3365]}},
+    {"type":"Feature","properties":{"slug":"unidad-vicente-guerrero","nombre":"Unidad Vicente Guerrero","zona":"iztapalapa"},"geometry":{"type":"Point","coordinates":[-99.055,19.345]}},
+    {"type":"Feature","properties":{"slug":"el-develadero","nombre":"El Develadero","zona":"iztapalapa"},"geometry":{"type":"Point","coordinates":[-99.028,19.352]}},
+    {"type":"Feature","properties":{"slug":"agricola-oriental","nombre":"Agrícola Oriental","zona":"iztacalco"},"geometry":{"type":"Point","coordinates":[-99.073,19.3955]}},
+    {"type":"Feature","properties":{"slug":"campamento-2","nombre":"Campamento 2","zona":"iztacalco"},"geometry":{"type":"Point","coordinates":[-99.082,19.388]}},
+    {"type":"Feature","properties":{"slug":"juventino-rosas","nombre":"Juventino Rosas","zona":"iztacalco"},"geometry":{"type":"Point","coordinates":[-99.065,19.402]}},
+    {"type":"Feature","properties":{"slug":"san-francisco-tlaltenango","nombre":"San Francisco Tlaltenango","zona":"tlahuac"},"geometry":{"type":"Point","coordinates":[-99.002,19.278]}},
+    {"type":"Feature","properties":{"slug":"la-noria","nombre":"La Noria","zona":"tlahuac"},"geometry":{"type":"Point","coordinates":[-99.015,19.265]}},
+    {"type":"Feature","properties":{"slug":"zacatlan","nombre":"Zacatlán","zona":"tlahuac"},"geometry":{"type":"Point","coordinates":[-98.995,19.288]}},
+    {"type":"Feature","properties":{"slug":"santa-cecilia-tepalcatlalpan","nombre":"Santa Cecilia Tepalcatalpan","zona":"xochimilco"},"geometry":{"type":"Point","coordinates":[-99.105,19.255]}},
+    {"type":"Feature","properties":{"slug":"san-gregorio-atlapulco","nombre":"San Gregorio Atlapulco","zona":"xochimilco"},"geometry":{"type":"Point","coordinates":[-99.055,19.248]}},
+    {"type":"Feature","properties":{"slug":"villa-milpa-alta","nombre":"Villa Milpa Alta","zona":"milpa-alta"},"geometry":{"type":"Point","coordinates":[-99.023,19.192]}},
+    {"type":"Feature","properties":{"slug":"san-salvador-cuauhtenco","nombre":"San Salvador Cuauhtenco","zona":"milpa-alta"},"geometry":{"type":"Point","coordinates":[-99.045,19.175]}}
+  ]
+}

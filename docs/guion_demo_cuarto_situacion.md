@@ -21,7 +21,7 @@
 8. **Entonces y ahora** — marzo 2024 vs agosto 2026.
 9. **Contexto de analista** — plantilla lista. Opcional: Generar lectura IA.
 10. **Decisión de mesa** — cuatro recomendaciones de cobertura (no patrullaje).
-11. Cierre: **Descargar diagnóstico** (PDF del caso). El mismo flujo, con su información, sin rehacer la mesa. Probar **Basura Iztacalco** si hay tiempo.
+11. Cierre: **Descargar diagnóstico** (PDF del caso con mapas del recorte). El mismo flujo, con su información, sin rehacer la mesa. Probar **Basura Iztacalco** si hay tiempo.
 
 ## Qué no mostrar
 
