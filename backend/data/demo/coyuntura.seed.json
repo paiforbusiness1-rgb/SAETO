@@ -75,6 +75,76 @@
       ],
       "corredor_slug": "limite-tlahuac-oriente",
       "tramo_slug": "tramo-tlaltenango"
+    },
+    {
+      "slug": "evt-agua-planton-2024-11",
+      "fecha": "2024-11-12",
+      "actor": "laura-mendez",
+      "demanda": "agua-barrio-arriba",
+      "tipo_accion": "planton",
+      "descripcion_accion": "Plantón frente a la jefatura por cisternas vacías (estiaje).",
+      "respuesta_gobierno": "concesion",
+      "detalle_respuesta": "Se autorizaron pipas de emergencia tres días por semana.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "Alivio temporal; sin intervención de red.",
+      "impacto_ciclo": "articulacion",
+      "fuentes": ["campo", "percepcion_local"]
+    },
+    {
+      "slug": "evt-agua-reunion-2026-03",
+      "fecha": "2026-03-04",
+      "actor": "laura-mendez",
+      "demanda": "agua-barrio-arriba",
+      "tipo_accion": "reunion",
+      "descripcion_accion": "Reunión técnica: vecinos presentaron bitácora de 14 días sin agua.",
+      "respuesta_gobierno": "mesa_negociacion",
+      "detalle_respuesta": "Se prometió diagnóstico de red en 45 días.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "Compromiso registrado; el plazo venció sin informe público.",
+      "impacto_ciclo": "negociacion",
+      "fuentes": ["campo", "bd_gobierno"]
+    },
+    {
+      "slug": "evt-agua-comunicado-2026-06",
+      "fecha": "2026-06-20",
+      "actor": "elena-quiroz",
+      "demanda": "agua-barrio-arriba",
+      "tipo_accion": "comunicado",
+      "descripcion_accion": "Comunicado vecinal: el diagnóstico no llegó y las pipas se saturaron.",
+      "respuesta_gobierno": "silencio",
+      "detalle_respuesta": "Sin posicionamiento en 10 días.",
+      "reaccion": "diferimiento",
+      "resultado": "La demanda pasa de negociación tensa a pre-bloqueo.",
+      "impacto_ciclo": "movilizacion",
+      "fuentes": ["medios", "campo"]
+    },
+    {
+      "slug": "evt-basura-planton-2026-04",
+      "fecha": "2026-04-22",
+      "actor": "ricardo-solis",
+      "demanda": "basura-meyehualco",
+      "tipo_accion": "planton",
+      "descripcion_accion": "Plantón por compactador sin paso en Agrícola Oriental.",
+      "respuesta_gobierno": "concesion",
+      "detalle_respuesta": "Se ofreció refuerzo de ruta los sábados.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "El refuerzo se saltó dos fines de semana.",
+      "impacto_ciclo": "movilizacion",
+      "fuentes": ["campo"]
+    },
+    {
+      "slug": "evt-alumbrado-reunion-2026-05",
+      "fecha": "2026-05-09",
+      "actor": "miguel-herrera",
+      "demanda": "alumbrado-tlaltenango",
+      "tipo_accion": "reunion",
+      "descripcion_accion": "Reunión por andadores oscuros en Tlaltenango y La Noria.",
+      "respuesta_gobierno": "mesa_negociacion",
+      "detalle_respuesta": "Cuadrilla comprometida para 80 luminarias.",
+      "reaccion": "aceptacion_parcial",
+      "resultado": "Avance parcial; el circuito principal sigue apagado.",
+      "impacto_ciclo": "negociacion",
+      "fuentes": ["campo", "bd_gobierno"]
     }
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "portada": {
+    "kicker": "Cuarto de situación territorial",
+    "producto": "SAETO",
+    "producto_largo": "Sistema de Análisis Estratégico Territorial Oriente",
+    "territorio": "Zona Oriente · CDMX",
+    "tipo_documento": "Diagnóstico de caso"
+  },
+  "secciones": [
+    { "slug": "panorama", "titulo": "Panorama del caso" },
+    { "slug": "intensidad", "titulo": "Intensidad territorial" },
+    { "slug": "impacto", "titulo": "A quién impacta" },
+    { "slug": "cruce", "titulo": "Cruce electoral × problemática" },
+    { "slug": "instalaciones", "titulo": "Infraestructura del recorte" },
+    { "slug": "hechos", "titulo": "Hechos y decisiones" },
+    { "slug": "lectura", "titulo": "Lectura y recomendaciones de mesa" }
+  ],
+  "pie": "SAETO · mesa Oriente · diagnóstico territorial (no es boletín policial ni War Room de campaña)",
+  "nota_mapa": "El mapa interactivo vive en el cuarto de situación. Esta lámina resume colonias, intensidad y semáforo.",
+  "nota_electoral": "Índice y historicidad 2021–2024 son cifras territoriales de análisis, no padrón oficial ni corte por sección.",
+  "meses": [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  ]
+}

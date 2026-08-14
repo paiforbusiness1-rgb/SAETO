@@ -541,3 +541,113 @@ export interface ConsumiblesIndice {
   laminas: ConsumibleMeta[];
   temas: TemaConsumible[];
 }
+
+export interface PasoCuarto {
+  slug: string;
+  orden: number;
+  titulo: string;
+  obligatorio: boolean;
+  vista: string;
+}
+
+export interface DemandaAncla {
+  slug: string;
+  titulo: string;
+  tema: string;
+  tema_nombre: string;
+  territorio_nombre: string;
+  zona_nombre: string;
+  intensidad: number;
+  semaforo: Semaforo;
+  semaforo_etiqueta: string;
+  fase_ciclo_nombre: string;
+  sentido_ciclo: SentidoCiclo;
+  deuda_historica: boolean;
+  resumen_deuda: string;
+  notas_ciclo: string;
+}
+
+export interface ImpactoColonia {
+  colonia_nombre: string;
+  zona_nombre: string;
+  poblacion?: number | null;
+  densidad?: number | null;
+  viviendas?: number | null;
+  lista_nominal?: number | null;
+  metrica_clave?: string | null;
+  metrica_valor?: number | null;
+  nota_mesa?: string | null;
+}
+
+export interface ImpactoAgregado {
+  colonias: ImpactoColonia[];
+  poblacion_total: number;
+  densidad_promedio?: number | null;
+  viviendas_total: number;
+  lista_nominal_total: number;
+  actores: string[];
+}
+
+export interface InstalacionPunto {
+  nombre: string;
+  tipo_nombre: string;
+  colonia_nombre: string;
+  lat: number;
+  lng: number;
+  estado_nombre: string;
+  nota: string;
+}
+
+export interface TimelineEventoCuarto {
+  fecha: string;
+  tipo_nombre: string;
+  actor_nombre?: string | null;
+  demanda_nombre?: string | null;
+  descripcion: string;
+  respuesta_nombre: string;
+  detalle_respuesta: string;
+  resultado: string;
+  enlace?: string | null;
+}
+
+export interface CorteTemporal {
+  etiqueta: string;
+  poblacion: number;
+  intensidad: number;
+  nota: string;
+}
+
+export interface ContextoAnalista {
+  texto: string;
+  factores: string[];
+}
+
+export interface CasoIndice {
+  slug: string;
+  nombre: string;
+  subtitulo: string;
+  tema: string;
+  tema_nombre: string;
+  resumen: string;
+}
+
+export interface CasoSituacion {
+  slug: string;
+  nombre: string;
+  subtitulo: string;
+  tema: string;
+  tema_nombre: string;
+  resumen: string;
+  demanda: DemandaAncla | null;
+  pasos: PasoCuarto[];
+  celdas: CeldaConsumible[];
+  por_zona: CeldaConsumible[];
+  barras_zona: { label: string; value: number; tone?: string; hint?: string }[];
+  impacto: ImpactoAgregado;
+  instalaciones: InstalacionPunto[];
+  timeline: TimelineEventoCuarto[];
+  entonces: CorteTemporal | null;
+  ahora: CorteTemporal | null;
+  contexto: ContextoAnalista;
+  recomendaciones: string[];
+}

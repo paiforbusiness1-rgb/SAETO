@@ -15,11 +15,19 @@ import alcaldias from "./geo/alcaldias-oriente.json";
 import colonias from "./geo/colonias-demo.json";
 import styles from "./InteligenciaPages.module.css";
 
+type MarcadorExtra = {
+  lat: number;
+  lng: number;
+  nombre: string;
+  nota?: string;
+};
+
 type Props = {
   celdas: CeldaCalor[];
   porZona: CeldaCalor[];
   onSelectColonia?: (slug: string) => void;
   onSelectZona?: (slug: string) => void;
+  marcadores?: MarcadorExtra[];
 };
 
 type ZonaFeatureProps = { slug?: string; nombre?: string };
@@ -61,6 +69,7 @@ export function MapaCalorTerritorial({
   porZona,
   onSelectColonia,
   onSelectZona,
+  marcadores = [],
 }: Props) {
   const colorZona = useMemo(() => {
     const map = new Map<string, string>();
@@ -171,6 +180,23 @@ export function MapaCalorTerritorial({
             </CircleMarker>
           );
         })}
+        {marcadores.map((m) => (
+          <CircleMarker
+            key={`${m.nombre}-${m.lat}-${m.lng}`}
+            center={[m.lat, m.lng]}
+            radius={8}
+            pathOptions={{
+              color: "#1a1a1a",
+              weight: 2,
+              fillColor: "#c4a35a",
+              fillOpacity: 0.95,
+            }}
+          >
+            <Tooltip direction="top" offset={[0, -4]} opacity={0.95}>
+              {m.nota ? `${m.nombre}: ${m.nota}` : m.nombre}
+            </Tooltip>
+          </CircleMarker>
+        ))}
       </MapContainer>
       <p className={styles.mapCredit}>
         Mapa base OpenStreetMap · polígonos de alcaldías vía OSM Nominatim · calor

@@ -74,8 +74,14 @@ def clear_all_caches() -> None:
         load_consumibles_temas,
         load_consumibles_cruce,
         load_consumibles_plantillas,
+        load_cuarto_pasos,
+        load_cuarto_recomendaciones,
+        load_cuarto_contexto_plantillas,
+        load_cuarto_reporte,
         load_problematicas_territorio_seed,
         load_demografia_electoral_seed,
+        load_casos_situacion_seed,
+        load_instalaciones_territorio_seed,
         load_actores_seed,
         load_reivindicaciones_seed,
         load_discurso_seed,
@@ -216,6 +222,54 @@ def load_consumibles_cruce() -> dict[str, Any]:
 @lru_cache(maxsize=1)
 def load_consumibles_plantillas() -> dict[str, Any]:
     return _read_json(CONFIG_DIR / "consumibles-plantillas.json")
+
+
+@lru_cache(maxsize=1)
+def load_cuarto_pasos() -> dict[str, Any]:
+    path = CONFIG_DIR / "cuarto-pasos.json"
+    if not path.exists():
+        return {"pasos": []}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_cuarto_recomendaciones() -> dict[str, Any]:
+    path = CONFIG_DIR / "cuarto-recomendaciones.json"
+    if not path.exists():
+        return {"por_tema": {}}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_cuarto_contexto_plantillas() -> dict[str, Any]:
+    path = CONFIG_DIR / "cuarto-contexto-plantillas.json"
+    if not path.exists():
+        return {"por_tema": {}}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_cuarto_reporte() -> dict[str, Any]:
+    path = CONFIG_DIR / "cuarto-reporte.json"
+    if not path.exists():
+        return {}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_casos_situacion_seed() -> dict[str, Any]:
+    path = DEMO_DIR / "casos_situacion.seed.json"
+    if not path.exists():
+        return {"demo": True, "items": []}
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_instalaciones_territorio_seed() -> dict[str, Any]:
+    path = DEMO_DIR / "instalaciones_territorio.seed.json"
+    if not path.exists():
+        return {"demo": True, "items": []}
+    return _read_json(path)
 
 
 @lru_cache(maxsize=1)

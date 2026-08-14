@@ -99,6 +99,9 @@ export function SalaOperativaPage() {
           <button type="button" onClick={load}>
             Recalcular
           </button>
+          <Link className={styles.panelLink} to="/cuarto/agua-oriente">
+            Abrir cuarto de situación
+          </Link>
           <Link className={styles.panelLink} to="/">
             Brief Capa 1
           </Link>

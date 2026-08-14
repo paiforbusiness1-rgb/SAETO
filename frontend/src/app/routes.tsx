@@ -39,6 +39,8 @@ import { EncuestaDetailPage, EncuestasListPage } from "../modules/encuestas/Encu
 import { IaClasificarPage } from "../modules/ia/IaClasificarPage";
 import { ConsumiblesHubPage } from "../modules/consumibles/ConsumiblesHubPage";
 import { LaminaViewerPage } from "../modules/consumibles/LaminaViewerPage";
+import { CuartoHubPage } from "../modules/cuarto/CuartoHubPage";
+import { RecorridoPage } from "../modules/cuarto/RecorridoPage";
 import { CalorPage } from "../modules/inteligencia/CalorPage";
 import { CoberturaPage } from "../modules/inteligencia/CoberturaPage";
 import { CorredoresPage } from "../modules/inteligencia/CorredoresPage";
@@ -66,6 +68,8 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<DashboardPage />} />
+      <Route path="/cuarto" element={<CuartoHubPage />} />
+      <Route path="/cuarto/:slug" element={<RecorridoPage />} />
       <Route path="/inteligencia" element={<InteligenciaHubPage />} />
       <Route path="/inteligencia/calor" element={<CalorPage />} />
       <Route path="/inteligencia/panorama" element={<PanoramaPage />} />

@@ -187,6 +187,42 @@
       ]
     },
     {
+      "slug": "alumbrado-tlaltenango",
+      "tema": "calles",
+      "territorio": "san-francisco-tlaltenango",
+      "zona": "tlahuac",
+      "intensidad": 4,
+      "deuda_historica": true,
+      "resumen_deuda": "Andadores y parque oscuros de forma sostenida; cuadrilla comprometida sin cierre.",
+      "fuente": "encuesta_demo",
+      "peso_opinion": 74,
+      "tipo_demanda": "actual_in_situ",
+      "fuentes_evidencia": [
+        "percepcion_local",
+        "campo"
+      ],
+      "fase_ciclo_vital": "negociacion",
+      "grado_escalamiento": 4,
+      "sentido_ciclo": "escalando",
+      "fecha_deteccion": "2025-06-01",
+      "fecha_ultima_actualizacion_ciclo": "2026-05-09",
+      "notas_ciclo": "Alumbrado como cuenta pendiente de servicio y de percepción.",
+      "historial_ciclo": [
+        {
+          "fase": "emergencia",
+          "fecha": "2025-06-01",
+          "origen": "deteccion",
+          "nota": "Quejas de postes en Tlaltenango"
+        },
+        {
+          "fase": "negociacion",
+          "fecha": "2026-05-09",
+          "origen": "coyuntura:evt-alumbrado-reunion-2026-05",
+          "nota": "Cuadrilla comprometida"
+        }
+      ]
+    },
+    {
       "slug": "empleo-agricola",
       "tema": "empleo",
       "territorio": "agricola-oriental",

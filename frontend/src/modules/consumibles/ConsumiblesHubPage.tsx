@@ -40,6 +40,8 @@ export function ConsumiblesHubPage() {
         ))}
       </div>
       <p className={styles.meta} style={{ marginTop: "1rem" }}>
+        <Link to="/cuarto">Cuarto de situación</Link>
+        {" · "}
         <Link to="/reportes">También en Reportes</Link>
         {" · "}
         <Link to="/inteligencia">Volver a Inteligencia</Link>

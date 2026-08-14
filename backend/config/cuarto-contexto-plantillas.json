@@ -1,0 +1,37 @@
+{
+  "por_tema": {
+    "agua": {
+      "contexto": "El tandeo en Iztapalapa no es un corte puntual: viene de varios ciclos de cuenta pendiente. En 2024 la red ya operaba con presión irregular; en 2026 el estiaje y las pipas saturadas convirtieron el agravio en movilización. El número frío (días sin agua) no explica solos los bloqueos: hay promesa de diagnóstico sin fecha de obra.",
+      "factores": [
+        "Estiaje más largo que el ciclo anterior.",
+        "Cisternas vecinales al límite en Barrio Arriba.",
+        "Mesa de negociación abierta en mayo sin calendario firme.",
+        "Bloqueo de julio por incumplimiento de plazos."
+      ]
+    },
+    "basura": {
+      "contexto": "El retraso del compactador en Iztacalco se concentra en corredor comercial y unidades densas. No es volumen menor: es frecuencia rota. La percepción de abandono crece más rápido que las toneladas no levantadas.",
+      "factores": [
+        "Ruta de fin de semana saltada dos veces en el último mes.",
+        "Contenedores desbordados en Agrícola Oriental.",
+        "Tiraderos improvisados en Campamento 2."
+      ]
+    },
+    "alumbrado": {
+      "contexto": "En Tláhuac la oscuridad sostenida convierte un problema de infraestructura en problema de percepción. Los vecinos no reportan ‘un foco’: reportan andadores enteros.",
+      "factores": [
+        "Cuadrilla comprometida y no concluida.",
+        "Andadores y parques sin cobertura continua.",
+        "Cruce con quejas de seguridad nocturna."
+      ]
+    },
+    "seguridad": {
+      "contexto": "La percepción de inseguridad en Iztacalco sube en paralelo a quejas de basura y a corredor comercial. El analista no debe leer el índice como incidente único: es acumulación de abandono visible.",
+      "factores": [
+        "Paraderos y avenidas con quejas reiteradas.",
+        "Marcha de junio sin posicionamiento inmediato.",
+        "Solapamiento con calor de basura en las mismas colonias."
+      ]
+    }
+  }
+}

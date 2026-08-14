@@ -6,6 +6,11 @@ import styles from "./InteligenciaPages.module.css";
 
 const items = [
   {
+    to: "/cuarto/agua-oriente",
+    title: "Cuarto de situación",
+    desc: "Un problema de agua, paso a paso, hasta recomendaciones de mesa",
+  },
+  {
     to: "/consumibles",
     title: "Consumibles",
     desc: "Mapa + gráfica + cruce electoral — outputs tipo presentación",

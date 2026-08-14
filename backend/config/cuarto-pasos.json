@@ -1,0 +1,12 @@
+{
+  "pasos": [
+    { "slug": "problema", "orden": 1, "titulo": "El problema", "obligatorio": true, "vista": "problema" },
+    { "slug": "donde", "orden": 2, "titulo": "Dónde está", "obligatorio": true, "vista": "mapa" },
+    { "slug": "impacto", "orden": 3, "titulo": "A quién impacta", "obligatorio": true, "vista": "impacto" },
+    { "slug": "instalaciones", "orden": 4, "titulo": "Instalaciones", "obligatorio": false, "vista": "instalaciones" },
+    { "slug": "decisiones", "orden": 5, "titulo": "Qué se decidió", "obligatorio": true, "vista": "timeline" },
+    { "slug": "entonces-ahora", "orden": 6, "titulo": "Entonces y ahora", "obligatorio": true, "vista": "cortes" },
+    { "slug": "contexto", "orden": 7, "titulo": "Contexto de analista", "obligatorio": true, "vista": "contexto" },
+    { "slug": "decision", "orden": 8, "titulo": "Decisión de mesa", "obligatorio": true, "vista": "recomendaciones" }
+  ]
+}

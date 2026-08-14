@@ -157,6 +157,10 @@ export function DashboardPage() {
           </Link>
         </div>
         <div className={styles.stack}>
+          <GlassCard to="/cuarto/agua-oriente">
+            <strong>Cuarto de situación · Agua Oriente</strong>
+            <p className={styles.meta}>Recorrido guiado: un problema hasta la decisión de mesa</p>
+          </GlassCard>
           <GlassCard to="/inteligencia/calor">
             <strong>Mapa de calor</strong>
             <p className={styles.meta}>OpenStreetMap real + choropleth Oriente</p>

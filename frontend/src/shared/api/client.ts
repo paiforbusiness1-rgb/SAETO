@@ -28,6 +28,8 @@ import type {
   IaStatus,
   LaminaConsumible,
   PanoramaLecturaResponse,
+  CasoSituacion,
+  CasoIndice,
 } from "./types";
 
 const SAETO_ROL_KEY = "saeto_rol";
@@ -428,5 +430,32 @@ export const api = {
   consumibleLamina: (slug: string, tema?: string) => {
     const q = tema ? `?tema=${encodeURIComponent(tema)}` : "";
     return apiGet<LaminaConsumible>(`/api/consumibles/laminas/${slug}${q}`);
+  },
+
+  cuartoCasos: () => apiGet<CasoIndice[]>("/api/cuarto/casos"),
+  cuartoCaso: (slug: string) => apiGet<CasoSituacion>(`/api/cuarto/casos/${encodeURIComponent(slug)}`),
+  cuartoDescargarReporte: async (slug: string, nombre: string) => {
+    const res = await fetch(`/api/cuarto/casos/${encodeURIComponent(slug)}/reporte`, {
+      headers: actorHeaders(),
+    });
+    if (!res.ok) {
+      let detail = `Error ${res.status}`;
+      try {
+        const body = await res.json();
+        detail = body.detail ?? detail;
+      } catch {
+        /* ignore */
+      }
+      throw new Error(typeof detail === "string" ? detail : JSON.stringify(detail));
+    }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `SAETO diagnóstico ${nombre}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
   },
 };

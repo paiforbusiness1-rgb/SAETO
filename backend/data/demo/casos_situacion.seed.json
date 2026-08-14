@@ -1,0 +1,94 @@
+{
+  "demo": true,
+  "items": [
+    {
+      "slug": "agua-oriente",
+      "nombre": "Agua y tandeo en Oriente",
+      "subtitulo": "De la queja al cuarto de situación",
+      "tema": "agua",
+      "demanda_slug": "agua-barrio-arriba",
+      "colonias": [
+        "barrio-arriba",
+        "santa-cruz-meyehualco",
+        "unidad-vicente-guerrero",
+        "el-develadero"
+      ],
+      "resumen": "Tandeo severo en Iztapalapa: cuatro colonias concentran días sin agua, densidad alta y cuenta pendiente de red.",
+      "entonces": {
+        "etiqueta": "Marzo 2024",
+        "poblacion": 108000,
+        "intensidad": 58,
+        "nota": "El problema ya estaba en el radar; la red operaba con presión irregular y aún no había bloqueos."
+      },
+      "ahora": {
+        "etiqueta": "Agosto 2026",
+        "poblacion": 121500,
+        "intensidad": 92,
+        "nota": "Más gente en las mismas colonias, tandeo de hasta 18 días y movilización activa."
+      }
+    },
+    {
+      "slug": "basura-iztacalco",
+      "nombre": "Recolección de basura en Iztacalco",
+      "subtitulo": "Retraso del compactador y puntos críticos",
+      "tema": "basura",
+      "demanda_slug": "basura-meyehualco",
+      "colonias": ["agricola-oriental", "campamento-2", "juventino-rosas"],
+      "resumen": "Tres colonias de Iztacalco acumulan retraso de recolección y contenedores desbordados.",
+      "entonces": {
+        "etiqueta": "Enero 2025",
+        "poblacion": 72000,
+        "intensidad": 48,
+        "nota": "El servicio era irregular pero contenido; aún no había tiraderos improvisados."
+      },
+      "ahora": {
+        "etiqueta": "Agosto 2026",
+        "poblacion": 76400,
+        "intensidad": 90,
+        "nota": "Retraso de hasta 7 días; el mapa habla antes que el expediente."
+      }
+    },
+    {
+      "slug": "alumbrado-tlahuac",
+      "nombre": "Alumbrado público en Tláhuac",
+      "subtitulo": "Oscuridad sostenida en andadores",
+      "tema": "alumbrado",
+      "demanda_slug": "alumbrado-tlaltenango",
+      "colonias": ["san-francisco-tlaltenango", "la-noria", "zacatlan"],
+      "resumen": "Luminarias apagadas de forma sostenida; la oscuridad eleva percepción de inseguridad.",
+      "entonces": {
+        "etiqueta": "Junio 2025",
+        "poblacion": 36800,
+        "intensidad": 42,
+        "nota": "Quejas puntuales de postes; la cuadrilla aún no se había comprometido."
+      },
+      "ahora": {
+        "etiqueta": "Agosto 2026",
+        "poblacion": 38400,
+        "intensidad": 88,
+        "nota": "Andadores y parques oscuros; compromiso de cuadrilla sin cierre."
+      }
+    },
+    {
+      "slug": "seguridad-iztacalco",
+      "nombre": "Seguridad percibida en Iztacalco",
+      "subtitulo": "Corredor comercial bajo tensión",
+      "tema": "seguridad",
+      "demanda_slug": "seguridad-agricola",
+      "colonias": ["agricola-oriental", "campamento-2", "juventino-rosas"],
+      "resumen": "Iztacalco concentra el índice más alto de percepción de inseguridad del recorte Oriente.",
+      "entonces": {
+        "etiqueta": "Febrero 2025",
+        "poblacion": 72000,
+        "intensidad": 55,
+        "nota": "Quejas de paraderos; aún no había marcha ni silencio institucional."
+      },
+      "ahora": {
+        "etiqueta": "Agosto 2026",
+        "poblacion": 76400,
+        "intensidad": 85,
+        "nota": "Percepción al alza; se solapa con basura y con corredor comercial."
+      }
+    }
+  ]
+}
